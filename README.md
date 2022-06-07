@@ -1,7 +1,11 @@
 # COBRA DEN Quick Configuration Scripts
-Ansible Scripts for COBRA DEN configurations
+Ansible Scripts for COBRA DEN configurations instructions.
 
-Change username and password placeholders (see_vta_for_value) in the following files:
+1. SSH into guac using command `ssh cobra@10.255.255.253`
+
+2. Clone this repo using command `git clone https://github.com/PACAF-COBRA/cobraden.git`
+
+3. Change username and password placeholders (see_vta_for_value) in the following files:
 
 * ansible/group_vars/all/vars.yml
 
@@ -11,4 +15,6 @@ Change username and password placeholders (see_vta_for_value) in the following f
 
 * enable-winlogbeat.sh
 
-run command `chmod +x *.sh`
+4. run command `chmod +x *.sh`
+
+5. run config script.
