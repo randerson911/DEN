@@ -1,4 +1,4 @@
-# cobraden
+# COBRA DEN Quick Configuration Scripts
 Ansible Scripts for COBRA DEN configurations
 
 Change username and password placeholders (see_vta_for_value) in the following files:
