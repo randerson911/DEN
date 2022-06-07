@@ -7,3 +7,5 @@ ansible/group_vars/all/vars.yml
 ansible/role/windows/winlogbeat/files/winlogbeat.yml
 enable-arkime-index.sh
 enable-winlogbeat.sh
+
+run command `chmod +x *.sh`
