@@ -5,3 +5,5 @@ Change username and password placeholders (see_vta_for_value) in the following f
 
 ansible/group_vars/all/vars.yml
 ansible/role/windows/winlogbeat/files/winlogbeat.yml
+enable-arkime-index.sh
+enable-winlogbeat.sh

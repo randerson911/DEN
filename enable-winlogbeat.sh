@@ -13,4 +13,4 @@ echo ""
 echo ""
 echo "Action complete."
 echo ""
-cd ~
+cd ..
