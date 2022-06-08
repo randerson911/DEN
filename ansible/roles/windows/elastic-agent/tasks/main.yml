@@ -1,9 +1,6 @@
 - name: Copy ElasticAgent installation file to host
   ansible.windows.win_copy:
-    src: ./elastic-agent-7.17.4-windows-x86_64.zip
-    dest: 'C:\elastic-agent\'
-- ansible.windows.win_copy:
-    src: ./install.bat
+    src: ./elastic-agent-7.17.4-windows-x86_64/
     dest: 'C:\elastic-agent\'
 
 - name: Copy CA certificate to host
@@ -15,7 +12,7 @@
   ansible.windows.win_command: certutil -addstore "Root" "C:\elastic-agent\ca.crt"
 
 - name: Install ElasticAgent
-  ansible.windows.win_shell: "C:\elastic-agent\install.bat"
+  ansible.windows.win_command: C:\elastic-agent\elastic-agent.exe install -f --url=https://172.17.60.50:8220 --enrollment-token=SEtOVHYzOEIwYzJrYk01WUJqYVk6a3NoMWJVQkdUMlcwU3RQRl9yYW5qdw==
 
 - name: Clean up install files
   ansible.windows.win_file:
