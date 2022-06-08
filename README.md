@@ -5,16 +5,18 @@ Ansible Scripts for COBRA DEN configurations instructions.
 
 2. Clone this repo using command `git clone https://github.com/PACAF-COBRA/cobraden.git`
 
-3. Change username and password placeholders (see_vta_for_value) in the following files:
+~~3. Change username and password placeholders (see_vta_for_value) in the following files:~~
 
-* ansible/group_vars/all/vars.yml
+~~* ansible/group_vars/all/vars.yml~~
 
-* ansible/role/windows/winlogbeat/files/winlogbeat.yml
+~~* ansible/role/windows/winlogbeat/files/winlogbeat.yml~~
 
-* enable-arkime-index.sh
+~~* enable-arkime-index.sh~~
 
-* enable-winlogbeat.sh
+~~* enable-winlogbeat.sh~~
+
+3. *(Update) Scripts have been updated to prompt for credentials.*
 
 4. run command `chmod +x *.sh`
 
-5. run config script.
+5. run config script and enter valid credentials.
