@@ -5,9 +5,8 @@ read elasticuser
 echo "Enter elastic password: "
 read elasticpass
 
-response=$(curl -k -u $elasticuser:$elasticpass --write-out '%{http_code}' --silent --output /dev/nul -XGET https://172.17.60.40:5601/status -I)
-
-if [[ "$response" -ne 200]]; then
+if [[ $(curl -k -u $elasticuser:$elasticpass --write-out '%{http_code}' --silent --output /dev/nul -XGET https://172.17.60.40:5601/status -I) != 200 ]];
+then
   echo "Invalid username or password. Please check and retry."
   exit
 fi
