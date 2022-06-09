@@ -1,0 +1,33 @@
+- name: Auto connect collector
+  hosts: gns3
+  gather_facts: no
+  vars:
+    gns3_server: "http://10.255.255.100"
+    gns3_project: "COBRA DEN"
+    node_links:
+      - ["collector", "Ethernet1", "External", "eth7"]
+      - ["collector", "Ethernet2", "DMZ", "eth7"]
+      - ["collector", "Ethernet3", "Internal", "eth7"]
+      - ["collector", "Ethernet4", "CN-RTR-1", "eth7"]
+      - ["collector", "Ethernet5", "CN-RTR-2", "eth7"]
+      - ["collector", "Ethernet6", "CN-RTR-3", "eth7"]
+      - ["collector", "Ethernet7", "CN-RTR-4", "eth7"]
+  collections:
+    - davidban77.gns3
+  tasks:
+    - name: Install PIP
+      apt:
+        name: python3-pip
+        update_cache: yes
+      become: yes
+
+    - name: Install gns3fy
+      pip:
+        name: gns3fy
+
+    - name: "Auto-tap routers"
+      gns3_project:
+        url: "{{ gns3_server }}"
+        project_name: "{{ gns3_project }}"
+        links_spec: "{{ node_links }}"
+        state: present

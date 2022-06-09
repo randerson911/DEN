@@ -1,4 +1,4 @@
-- name: Configure Windows system for log ingestion (Winlogbeat/sysmon64)
+- name: Add CA certificate to trust store
   hosts: datacenter subnet1 subnet2 subnet3
   gather_facts: no
   vars:
@@ -13,4 +13,4 @@
     reconnection_retries: 10
     timeout: 60
   roles:
-    - role: roles/windows/winlogbeat
+    - role: roles/windows/root-cert
