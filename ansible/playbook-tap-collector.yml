@@ -25,7 +25,7 @@
     #   pip:
     #     name: gns3fy
 
-    - name: "Auto-tap routers"
+    - name: Auto-tap routers
       gns3_project:
         url: "{{ gns3_server }}"
         project_name: "{{ gns3_project }}"
