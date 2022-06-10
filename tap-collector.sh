@@ -6,7 +6,7 @@ echo "the following prompts."
 echo ""
 
 cd ansible
-ansible-galaxy collection install davidban77.gns3
+# ansible-galaxy collection install davidban77.gns3
 ansible-playbook -i inventory playbook-tap-collector.yml -K
 echo ""
 echo ""
