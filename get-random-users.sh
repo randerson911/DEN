@@ -16,8 +16,9 @@ sed -i "s/see_vta_for_pass/$denpass/g" ansible/group_vars/all/vars.yml
 
 cd ansible
 ansible-playbook -i inventory playbook-get-random-users.yml
+cd ..
+cat users.txt
 echo ""
 echo ""
 echo "Action complete."
 echo ""
-cd ..

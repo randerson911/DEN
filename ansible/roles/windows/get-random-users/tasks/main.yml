@@ -5,10 +5,10 @@
   ansible.windows.win_shell: Get-Content C:\users.txt | % { if ($_ -ne "") { net user $_.trim() ComtechAzure123  }}
 
 - name: Retrive file to ansible server for record
-  ansible.windows.win_copy:
-    src: C:\users.txt
-    dest: ./users.txt
-    remote_src: yes
+  fetch:
+    src: C:/users.txt
+    dest: ../users.txt
+    flat: yes
 
 - name: Clean up file
   ansible.windows.win_file:
