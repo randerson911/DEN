@@ -1,3 +1,7 @@
+- name: Wait for system to become reachable over WinRM
+  wait_for_connection:
+    timeout: 900
+
 - name: Execute Set-Autologon.ps1
   script: files/Set-Autologon.ps1 -username "{{ username }}" -password "ComtechAzure123" -domain "basex"
 
