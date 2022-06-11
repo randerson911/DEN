@@ -20,14 +20,18 @@ then
     cd ansible
     ansible-playbook -i inventory playbook-get-random-users.yml
     cd ..
+    sed -i 's/[^[:print:]]//g' users.txt
+    sed -i '/^$/d' users.txt
+    sed -i '1d' users.txt
+    sed -r -i 's/\s+//g' users.txt
     cat users.txt
 fi
 
-if [ ! -f userlist.txt ]
+if [ ! -f users.txt ]
 then
     echo ""
     echo "Modify inventory file and integrate selected users."
-    head -n 31 users.txt | tail -n 30 > userlist.txt
+
     c=0
     var1="user"
     var2=":var"
@@ -38,7 +42,7 @@ then
         let c=c+1
         echo "" >> ansible/inventory
         echo [$var1$c$var2] >> ansible/inventory
-        echo $varname$line | xargs >> ansible/inventory
+        echo $varname$line >> ansible/inventory
     done
 fi
 
