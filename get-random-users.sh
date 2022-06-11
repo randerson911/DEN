@@ -17,6 +17,10 @@ sed -i "s/see_vta_for_pass/$denpass/g" ansible/group_vars/all/vars.yml
 cd ansible
 ansible-playbook -i inventory playbook-get-random-users.yml
 cd ..
+sed -i 's/[^[:print:]]//g' users.txt
+sed -i '/^$/d' users.txt
+sed -i '1d' users.txt
+sed -r -i 's/\s+//g' users.txt
 cat users.txt
 echo ""
 echo ""
