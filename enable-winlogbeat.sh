@@ -16,7 +16,7 @@ then
 
   sed -i "s/elastic_user_in_vta/$elasticuser/g" ansible/roles/windows/winlogbeat/files/winlogbeat.yml
   sed -i "s/elastic_password_in_vta/$elasticpass/g" ansible/roles/windows/winlogbeat/files/winlogbeat.yml
-  echo "Complete." > elmarker.txt
+  echo $elasticuser:$elasticpass > elmarker.txt
 fi
 
 if [ ! -f umarker.txt ]
@@ -40,7 +40,8 @@ fi
 
 cd ansible
 ansible-playbook -i inventory playbook-winlogbeat.yml
-curl -u $elasticuser:$elasticpass -k -X POST "https://172.17.60.40:5601/api/index_patterns/index_pattern" -H 'kbn-xsrf: true' -H 'Content-Type: application/json' -d'
+creds=$(cat elmarker.txt)
+curl -u $creds -k -X POST "https://172.17.60.40:5601/api/index_patterns/index_pattern" -H 'kbn-xsrf: true' -H 'Content-Type: application/json' -d'
 {
   "index_pattern": {
      "title": "winlogbeat-*"
