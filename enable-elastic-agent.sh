@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo ""
+echo "Please provide sudo password to install apt dependency on the ansible server. This is the linux"
+echo "password in the VTA."
+echo ""
 sudo apt install unzip -y
 
 wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-windows-x86_64.zip -O ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip
