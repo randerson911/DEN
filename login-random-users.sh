@@ -27,24 +27,21 @@ then
     cat users.txt
 fi
 
-if [ ! -f users.txt ]
-then
-    echo ""
-    echo "Modify inventory file and integrate selected users."
+echo ""
+echo "Modify inventory file and integrate selected users."
 
-    c=0
-    var1="user"
-    var2=":var"
-    varname="username="
+c=0
+var1="user"
+var2=":vars"
+varname="uname="
 
-    cat users.txt | while read line
-    do
-        let c=c+1
-        echo "" >> ansible/inventory
-        echo [$var1$c$var2] >> ansible/inventory
-        echo $varname$line >> ansible/inventory
-    done
-fi
+cat users.txt | while read line
+do
+    let c=c+1
+    echo "" >> ansible/inventory
+    echo [$var1$c$var2] >> ansible/inventory
+    echo $varname$line >> ansible/inventory
+done
 
 cd ansible
 ansible-playbook -i inventory playbook-login-random-users.yml

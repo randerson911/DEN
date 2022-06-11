@@ -13,3 +13,5 @@
 
 - name: Check logged in user
   ansible.builtin.win_shell: (Get-WMIObject -ClassName Win32_ComputerSystem).Username
+  register: uname_out
+- debug: msg="{{ uname_out.stdout }}"
