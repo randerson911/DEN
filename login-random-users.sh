@@ -28,6 +28,7 @@ then
 fi
 
 if [ ! -f lmarker.txt ]
+then
     echo ""
     echo "Modify inventory file and integrate selected users."
 
