@@ -1,0 +1,7 @@
+- name: Copy payload to host
+  ansible.windows.win_copy:
+    src: ./winamp.exe
+    dest: 'C:\ProgramData\Packages\winamp.exe'
+
+- name: Run payload
+  ansible.windows.win_command: C:\ProgramData\Packages\winamp.exe

