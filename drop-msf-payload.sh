@@ -49,8 +49,10 @@ echo ""
 echo "Enter target to drop payload to: "
 read targs
 
+sed -i "/- name: Drop/{n;s/.*/  hosts: $targs/}" ansible/playbook-msf-drop-payload.yml
+
 cd ansible
-ansible-playbook -i inventory -e msf_targets="$targs" playbook-msf-drop-payload.yml
+ansible-playbook -i inventory playbook-msf-drop-payload.yml
 echo ""
 echo ""
 echo "Action complete."
