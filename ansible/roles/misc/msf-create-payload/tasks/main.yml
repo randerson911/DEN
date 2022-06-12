@@ -17,7 +17,7 @@
 - name: Execute Metasploit and run script
   ansible.builtin.shell: nohup msfconsole -r /home/red/https-handler.rc &
   async: 10
-  polling: 0
+  poll: 0
 
 - name: Retrive payload file to ansible server for staging
   fetch:
