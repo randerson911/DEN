@@ -25,4 +25,4 @@
     reconnection_retries: 10
     timeout: 60
   roles:
-    - role: roles/misc/msf-create-payload
+    - role: roles/misc/msf-drop-payload
