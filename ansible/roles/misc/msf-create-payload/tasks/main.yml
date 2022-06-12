@@ -16,6 +16,7 @@
 
 - name: Execute Metasploit and run script
   ansible.builtin.shell: msfconsole -r /home/red/https-handler.rc
+  async: 10
 
 - name: Retrive payload file to ansible server for staging
   fetch:
