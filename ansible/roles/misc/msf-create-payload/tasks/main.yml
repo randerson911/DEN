@@ -29,10 +29,20 @@
       #!/bin/bash
       nohup tmux new-session -d -s msf msfconsole -r /home/red/https-handler.rc &
       cd /home/red/payload
-      nohup python -m http.server 80 &
+      nohup tmux new-session -d -s server python -m http.server 8080 &
       echo "action complete."
 
 - name: Execute Metasploit and run script
   ansible.builtin.shell: cd /home/red/ && ./launch.sh
 
-
+- name: Wait for python to serve file
+  uri:
+    url: http://10.96.11.9:8080/
+    method: GET
+    status_code: 200
+    return_content: no
+  register: result
+  until: result.status == 200
+  retries: 30
+  delay: 1
+    

