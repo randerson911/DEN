@@ -17,6 +17,6 @@ Ansible Scripts for COBRA DEN configurations instructions.
 
 3. *(Update) Scripts have been updated to prompt for credentials.*
 
-4. run command `chmod +x *.sh` (drop-msf-payload.sh is currently work in progress.)
+4. run command `cd cobraden && chmod +x *.sh`
 
 5. run config script and enter valid credentials.

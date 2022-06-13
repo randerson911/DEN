@@ -37,12 +37,12 @@
 
 - name: Wait for python to serve file
   uri:
-    url: http://10.96.11.9:8080/
+    url: http://10.96.11.9:8080/winamp.exe
     method: GET
     status_code: 200
     return_content: no
   register: result
   until: result.status == 200
   retries: 30
-  delay: 1
+  delay: 5
     
