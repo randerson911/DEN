@@ -33,8 +33,8 @@ then
     echo "Enter Windows admin password: "
     read denpass
 
-    sed -i "/den_user:/c\/den_user: $denuser" ansible/group_vars/all/vars.yml
-    sed -i "/den_user_password:/c\/den_user_password: $denpass" ansible/group_vars/all/vars.yml
+    sed -i "/den_user:/c\den_user: $denuser" ansible/group_vars/all/vars.yml
+    sed -i "/den_user_password:/c\den_user_password: $denpass" ansible/group_vars/all/vars.yml
     echo "Complete." > umarker.txt
 fi
 
