@@ -5,7 +5,7 @@ then
     echo ""
     echo "Important: If you encounter errors in the ansible output, it will most likely be"
     echo "credentials related. Please ensure you are providing the Kali Red credentials in"
-    echo "the following prompts. Delete the umarker.txt and input the correct values."
+    echo "the following prompts. Delete the rmarker.txt and input the correct values."
     echo ""
 
     echo "Enter Kali username: "
@@ -14,8 +14,8 @@ then
     echo "Enter Kali password: "
     read redpass
 
-    sed -i "s/see_vta_for_red_user/$reduser/g" ansible/group_vars/all/vars.yml
-    sed -i "s/see_vta_for_red_pass/$redpass/g" ansible/group_vars/all/vars.yml
+    sed -i "/red_user:/c\red_user: $reduser" ansible/group_vars/all/vars.yml
+    sed -i "/red_user_password:/c\red_user_password: $redpass" ansible/group_vars/all/vars.yml
     echo "Complete." > rmarker.txt
 fi
 
