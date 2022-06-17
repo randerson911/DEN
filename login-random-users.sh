@@ -1,5 +1,18 @@
 #!/bin/bash
 
+if [ -f users.txt ]
+then
+    echo "It looks like you already have a list of users."
+    echo "Do you wish to generate a new one?"
+    echo ""
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) rm -f users.txt; break;;
+            No ) break;;
+        esac
+    done
+fi
+
 if [ ! -f umarker.txt ]
 then
     echo ""

@@ -8,7 +8,7 @@ then
     select yn in "Yes" "No"; do
         case $yn in
             Yes ) rm -f users.txt; break;;
-            No ) exit;;
+            No ) break;;
         esac
     done
 fi
