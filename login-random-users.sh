@@ -33,6 +33,13 @@ fi
 
 if [ ! -f lmarker.txt ]
 then
+
+    if grep -q "user1:vars" ansible/inventory
+    then
+        lnr=$(sed -n '/##marker/=' ansible/inventory)
+        sed -i "1, $lnr ! d" ansible/inventory
+    fi
+
     echo ""
     echo "Modify inventory file and integrate selected users."
 

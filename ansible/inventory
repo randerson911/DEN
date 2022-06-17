@@ -1,3 +1,5 @@
+## If adding hosts to this file, it is recommended to add them in the beginning or before the ##marker as there are operations that add and remove lines in the scripts.
+
 [datacenter]
 172.17.40.4
 172.17.40.5
@@ -162,3 +164,5 @@
 
 [user30]
 172.17.30.13
+
+##marker

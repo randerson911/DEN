@@ -1,5 +1,18 @@
 #!/bin/bash
 
+if [ -f users.txt ]
+then
+    echo "It looks like this script has already been run once."
+    echo "Do you wish to run it again?"
+    echo ""
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) rm -f users.txt; break;;
+            No ) exit;;
+        esac
+    done
+fi
+
 if [ ! -f umarker.txt ]
 then
     echo ""
@@ -30,6 +43,7 @@ then
     sed -r -i 's/\s+//g' users.txt
     cat users.txt
 fi
+
 echo ""
 echo ""
 echo "Action complete."
