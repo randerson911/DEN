@@ -46,7 +46,8 @@ creds=$(cat elmarker.txt)
 curl -u $creds -k -X POST "https://172.17.60.40:5601/api/index_patterns/index_pattern" -H 'kbn-xsrf: true' -H 'Content-Type: application/json' -d'
 {
   "index_pattern": {
-     "title": "winlogbeat-*"
+     "title": "winlogbeat-*",
+     "timeFieldName": "@timestamp"
   }
 }
 '
