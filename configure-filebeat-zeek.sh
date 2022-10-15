@@ -20,7 +20,7 @@ then
 fi
 
 cd ansible
-ansible-playbook -i inventory playbook.yml
+ansible-playbook -i inventory playbook-config-filebeat-zeek.yml
 
 cd ..
 
