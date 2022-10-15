@@ -2,7 +2,7 @@
   hosts: sensor
   gather_facts: no
   become: true
-   vars:
+  vars:
     ansible_user: "{{ linux_user }}"
     ansible_password: "{{ linux_user_password }}"
     ansible_become_password: "{{ linux_user_password }}"
@@ -10,4 +10,4 @@
     reconnection_retries: 10
     timeout: 60
   roles:
-    - roles/zeek/configure
+    - role: roles/zeek/configure

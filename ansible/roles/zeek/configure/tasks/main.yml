@@ -6,7 +6,7 @@
 - name: Delete factory filebeat zeek.yml config
   ansible.builtin.file:
     path: /etc/filebeat/modules.d/zeek.yml
-    status: absent
+    state: absent
 
 - name: Create zeek.yml config
   ansible.builtin.copy:
