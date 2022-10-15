@@ -4,7 +4,7 @@ if [ ! -f linuxcreds.txt ]
 then
     echo ""
     echo "Important: If you encounter errors in the ansible output, it will most likely be"
-    echo "credentials related. Please ensure you are providing the Kali Red credentials in"
+    echo "credentials related. Please ensure you are providing the linux credentials in"
     echo "the following prompts. Delete the linuxcreds.txt and input the correct values."
     echo ""
 

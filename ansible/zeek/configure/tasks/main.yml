@@ -1,3 +1,8 @@
+- name: Stop filebeat service
+  ansible.builtin.systemd:
+    state: stopped
+    name: filebeat
+
 - name: Delete factory filebeat zeek.yml config
   ansible.builtin.file:
     path: /etc/filebeat/modules.d/zeek.yml
@@ -132,8 +137,8 @@
           # Filebeat will choose the paths depending on your OS.
           #var.paths:
 
-- name: Restart filebeat service
+- name: Start filebeat service
   ansible.builtin.systemd:
-    state: restarted
+    state: started
     daemon_reload: yes
     name: filebeat

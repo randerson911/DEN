@@ -27,4 +27,4 @@
         url: "{{ gns3_server }}"
         project_name: "{{ gns3_project }}"
         links_spec: "{{ node_links }}"
-        state: present
+        state: absent
