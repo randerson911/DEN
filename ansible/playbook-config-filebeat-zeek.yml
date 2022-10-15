@@ -1,0 +1,13 @@
+- name: Auto connect collector
+  hosts: sensor
+  gather_facts: no
+  become: true
+   vars:
+    ansible_user: "{{ linux_user }}"
+    ansible_password: "{{ linux_user_password }}"
+    ansible_become_password: "{{ linux_user_password }}"
+    ansible_connection: ssh
+    reconnection_retries: 10
+    timeout: 60
+  roles:
+    - roles/zeek/configure

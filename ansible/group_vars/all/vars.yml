@@ -1,4 +1,6 @@
 ---
+linux_user: see_vta_for_linux_user
+linux_user_password: see_vta_for_linux_user_password
 den_user: see_vta_for_user
 den_user_password: see_vta_for_pass
 red_user: see_vta_for_red_user
