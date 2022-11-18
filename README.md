@@ -16,7 +16,8 @@ Ansible Scripts for COBRA DEN configurations instructions.
 
 
 ### Use in the Kibana Dev Tools
-`POST /_security/api_key
+```
+POST /_security/api_key
     {
         "name": "fleet_host001", 
         "role_descriptors": {
@@ -30,11 +31,14 @@ Ansible Scripts for COBRA DEN configurations instructions.
             ]
         }
     }
-}`
+}
+```
 
   1. Copy the API key that you get from the results
 
   2. Add to the Fleet Settings
+```
 output.elasticsearch:
     hosts: ["https://172.17.60.40:9200"]
     api_key: "<API Key>"
+```

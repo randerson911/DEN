@@ -4,8 +4,14 @@ echo ""
 echo "Please provide sudo password to install apt dependency on the ansible server. This is the linux"
 echo "password in the VTA."
 echo ""
-sudo apt update
-sudo apt install unzip -y
+if [ ! -f linuxcreds.txt ]
+    sudo apt update
+    sudo apt install unzip -y
+else 
+    lpass=$(grep "linux_user_password:" ./ansible/group_vars/all/vars.yml | awk '{print $2}')
+    echo lpass | sudo -S apt update
+    echo lpass | sudo -S apt install unzip -y
+fi
 
 wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-windows-x86_64.zip -O ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip
 unzip ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip -d ansible/roles/windows/elastic-agent/files/
