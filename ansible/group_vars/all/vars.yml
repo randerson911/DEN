@@ -5,3 +5,5 @@ den_user: see_vta_for_user
 den_user_password: see_vta_for_pass
 red_user: see_vta_for_red_user
 red_user_password: see_vta_for_red_pass
+el_user: see_vta_for_elastic_user
+el_user_password: see_vta_for_elastic_user_password
