@@ -21,7 +21,7 @@ POST /_security/api_key
     {
         "name": "fleet_host001", 
         "role_descriptors": {
-            "filebeat_writer": { 
+            "beat_writer": { 
             "cluster": ["monitor", "read_ilm", "read_pipeline"],
             "index": [
             {
