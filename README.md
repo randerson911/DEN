@@ -16,7 +16,7 @@ Ansible Scripts for COBRA DEN configurations instructions.
 
 
 ### Use in the Kibana Dev Tools
-POST /_security/api_key
+`POST /_security/api_key
     {
         "name": "fleet_host001", 
         "role_descriptors": {
@@ -30,7 +30,7 @@ POST /_security/api_key
             ]
         }
     }
-}
+}`
 
   1. Copy the API key that you get from the results
 
