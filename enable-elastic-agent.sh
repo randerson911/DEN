@@ -5,6 +5,7 @@ echo "Please provide sudo password to install apt dependency on the ansible serv
 echo "password in the VTA."
 echo ""
 if [ ! -f linuxcreds.txt ]
+then
     sudo apt update
     sudo apt install unzip -y
 else 
