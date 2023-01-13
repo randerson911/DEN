@@ -1,6 +1,6 @@
-- name: Configure Windows system for log ingestion (Elastic Agent)
-  hosts: datacenter subnet1 subnet2 subnet3
-  gather_facts: false
+- name: Run payload
+  hosts: "{{ targets }}"
+  gather_facts: False
   vars:
     ansible_user: "{{ den_user }}"
     ansible_password: "{{ den_user_password }}"
@@ -13,5 +13,4 @@
     reconnection_retries: 10
     timeout: 60
   roles:
-    - role: roles/windows/root-cert
-    - role: roles/windows/elastic-agent
+    - role: roles/misc/run-payload

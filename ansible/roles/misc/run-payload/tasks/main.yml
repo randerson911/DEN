@@ -1,0 +1,14 @@
+- name: Create Location on host
+  ansible.windows.win_file:
+    path: C:\ProgramData\Setup\
+    state: directory
+
+- name: Create the payload on the Desktop
+  ansible.windows.win_template:
+    src: files/payload-template.j2
+    dest: C:\ProgramData\Setup\Setup.bat
+
+- name: Execute payload on host
+  ansible.windows.win_command: C:\ProgramData\Setup\Setup.bat
+  async: 10
+  poll: 0

@@ -4,7 +4,12 @@
     dest: 'C:\elastic-agent\'
 
 - name: Install ElasticAgent
-  ansible.windows.win_command: C:\elastic-agent\elastic-agent.exe install -f --url=https://172.17.60.50:8220 --enrollment-token=SEtOVHYzOEIwYzJrYk01WUJqYVk6a3NoMWJVQkdUMlcwU3RQRl9yYW5qdw==
+  ansible.windows.win_command:
+  argv:
+    - C:\elastic-agent\elastic-agent.exe 
+    - install -f 
+    - --url=https://172.17.60.50:8220 
+    - --enrollment-token=SEtOVHYzOEIwYzJrYk01WUJqYVk6a3NoMWJVQkdUMlcwU3RQRl9yYW5qdw==
 
 - name: Clean up install files
   ansible.windows.win_file:
