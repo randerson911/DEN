@@ -32,10 +32,9 @@ read targs
 
 sed -i "/- name: Run/{n;s/.*/  hosts: $targs/}" ansible/playbook-run-payload.yml
 
-echo "Enter the payload to be sent to the devices"
+echo "Enter the payload to be sent to the devices. Leave blank to re-run the previous payload"
 read payload
-
-echo $payload -n > ansible/roles/misc/run-payload/files/payload-template.j2
+[[ -z "$payload" ]] && echo "Continuing On" || echo $payload > ansible/roles/misc/run-payload/files/payload-template.j2
 
 cd ansible
 ansible-playbook -i inventory playbook-run-payload.yml
