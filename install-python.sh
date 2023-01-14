@@ -27,7 +27,7 @@ echo ""
 sed -i "s/hosts:.*/hosts: ${target_hosts}/" ansible/playbook-install-python311.yml
 
 # Run the playbook
-ansible-playbook ansible/playbook-install-python311.yml
+ansible-playbook -i ansible/inventory ansible/playbook-install-python311.yml
 echo ""
 echo ""
 echo "Action complete."
