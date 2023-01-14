@@ -10,3 +10,5 @@ el_user_password: see_vta_for_elastic_user_password
 red_ip: "10.96.11.9"
 red_executable: PlayStore.exe
 enrollment_token: 
+python311_url: "https://www.python.org/ftp/python/3.11.1/python-3.11.1-amd64.exe"
+python311_exe: "python311.exe"

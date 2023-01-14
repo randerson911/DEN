@@ -1,0 +1,12 @@
+- name: Download Python311
+  win_get_url:
+    url: "{{ python311_url }}"
+    dest: "{{ role_path }}/files/{{ python311_exe }}"
+    
+- name: Copy Python311 to target
+  win_copy:
+    src: "{{ role_path }}/files/{{ python311_exe }}"
+    dest: "C:\\{{ python311_exe }}"
+
+- name: Install Python311
+  win_command: "C:\\{{ python311_exe }} /quiet InstallAllUsers=1 TargetDir=C:\\Python311"

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+if [ ! -f umarker.txt ]
+then
+    echo ""
+    echo "Important: If you encounter errors in the ansible output, it will most likely be"
+    echo "credentials related. Please ensure you are providing the Windows credentials in"
+    echo "the following prompts. Delete the umarker.txt and input the correct values."
+    echo ""
+
+    echo "Enter Windows admin username: "
+    read denuser
+
+    echo "Enter Windows admin password: "
+    read denpass
+
+    sed -i "/den_user:/c\den_user: $denuser" ansible/group_vars/all/vars.yml
+    sed -i "/den_user_password:/c\den_user_password: $denpass" ansible/group_vars/all/vars.yml
+    echo "Complete." > umarker.txt
+fi
+
+echo ""
+read -p "Enter target hosts (comma-separated): " target_hosts
+echo ""
+
+# Replace the hosts field in the playbook with the provided input
+sed -i "s/hosts:.*/hosts: ${target_hosts}/" ansible/playbook-install-python311.yml
+
+# Run the playbook
+ansible-playbook ansible/playbook-install-python311.yml
+echo ""
+echo ""
+echo "Action complete."
+echo ""
+cd ..
+
+
