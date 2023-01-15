@@ -14,5 +14,15 @@
     anisble_winrm_connection_timeout_sec: 2000
     reconnection_retries: 10
     timeout: 60
+  - name: Check if file exists
+    stat:
+      path: "{{ role_path }}/files/python-3.11-amd64.exe"
+    register: python_register
+  - name: Download Python311
+    get_url:
+      url: "https://www.python.org/ftp/python/3.11/python-3.11-amd64.exe"
+      dest: "{{ role_path }}/files/python-3.11-amd64.exe"
+    when: not register_name.stat.exists
+
   roles:
-    - role: roles/misc/run-payload
+    - role: roles/windows/install-python311
