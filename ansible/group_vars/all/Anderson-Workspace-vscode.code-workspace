@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../CherryTree"
+		},
+		{
+			"path": "../../../../../../../opt/Shared"
+		},
+		{
+			"path": "../../../../Projects"
+		}
+	],
+	"settings": {}
+}
