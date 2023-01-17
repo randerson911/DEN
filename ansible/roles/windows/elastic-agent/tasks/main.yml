@@ -5,7 +5,7 @@
 
 - name: Install ElasticAgent
   ansible.windows.win_command:
-  argv:
+    argv:
     - C:\elastic-agent\elastic-agent.exe 
     - install -f 
     - --url=https://172.17.60.50:8220 
