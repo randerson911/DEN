@@ -4,10 +4,5 @@
     dest: "C:\\{{ python311_exe }}"
 
 - name: Install Python311
-  ansible.windows.win_command:
-    argv:
-    - C:\\{{ python311_exe }} 
-    - /quiet 
-    - InstallAllUsers=1 
-    - TargetDir=C:\\Tools\Python311" 
-    - PrependPath=1
+  ansible.windows.shell: |
+    C:\\{{ python311_exe }} /quiet InstallAllUsers=1 TargetDir=C:\\Tools\Python311" PrependPath=1
