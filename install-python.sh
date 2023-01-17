@@ -23,7 +23,7 @@ echo ""
 read -p "Enter target hosts (comma-separated): " target_hosts
 echo ""
 
-if [ ! -e ansible/roles/windows/install-python311/files/python311.exe]; then
+if [ ! -f ansible/roles/windows/install-python311/files/python311.exe ]; then
     wget https://www.python.org/ftp/python/3.11.1/python-3.11.1-amd64.exe -O ansible/roles/windows/install-python311/files/python311.exe
 fi
 
@@ -33,7 +33,6 @@ sed -i "s/hosts:.*/hosts: ${target_hosts}/" ansible/playbook-install-python311.y
 # Run the playbook
 cd ansible
 ansible-playbook -i inventory playbook-install-python311.yml
-cd ..
 echo ""
 echo ""
 echo "Action complete."
