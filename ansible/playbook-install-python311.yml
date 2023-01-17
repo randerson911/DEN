@@ -2,7 +2,6 @@
   hosts: " {{ $targets }} "
   gather_facts: false
   vars:
-    python311_exe: "python311.exe"
     ansible_user: "{{ den_user }}"
     ansible_password: "{{ den_user_password }}"
     ansible_connection: winrm
