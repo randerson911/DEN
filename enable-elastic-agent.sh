@@ -6,15 +6,19 @@ echo "password in the VTA."
 echo ""
 if [ ! -f linuxcreds.txt ]
 then
-    sudo apt update
-    sudo apt install unzip -y
+    read -p "What is the linux password? " lpass
+    sed -i "/linux_user:/c\linux_user: cobra" ansible/group_vars/all/vars.yml
+    sed -i "/linux_user_password:/c\linux_user_password: $lpass" ansible/group_vars/all/vars.yml
+    echo $lpass | sudo -S apt update
+    echo $lpass | sudo -S apt install unzip -y
+    echo "Complete." > linuxcreds.txt
 else 
     lpass=$(grep "linux_user_password:" ./ansible/group_vars/all/vars.yml | awk '{print $2}')
-    echo lpass | sudo -S apt update
-    echo lpass | sudo -S apt install unzip -y
+    echo $lpass | sudo -S apt update
+    echo $lpass | sudo -S apt install unzip -y
 fi
 
-if [ ! -e ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip]; then
+if [ ! -f ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip ]; then
     wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-windows-x86_64.zip -O ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip
     unzip ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip -d ansible/roles/windows/elastic-agent/files/
 fi

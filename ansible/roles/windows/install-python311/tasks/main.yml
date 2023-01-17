@@ -7,6 +7,4 @@
   win_shell: C:\{{ python311_exe }} /quiet InstallAllUsers=1 TargetDir=C:\Tools\Python311
 
 - name: Set Python311 path
-  win_shell: |
-    for /f "usebackq tokens=2,*" %A in (`reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PATH`) do set SYSPATH=%B
-    setx PATH "C:\Tools\Python311;C:\Tools\Python311\Scripts;%SYSPATH%" /M
+  win_shell: for /f "usebackq tokens=2,*" %A in (`reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PATH`) do set SYSPATH=%B; setx PATH "C:\Tools\Python311;C:\Tools\Python311\Scripts;%SYSPATH%" /M
