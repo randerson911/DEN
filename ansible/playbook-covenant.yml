@@ -1,0 +1,11 @@
+- name: Run Covenant Docker Container
+  hosts: "replace me"
+  gather_facts: false
+  vars:
+    ansible_user: "{{ red_user }}"
+    ansible_password: "{{ red_user_password }}"
+    ansible_connection: ssh
+    reconnection_retries: 10
+    timeout: 60
+  roles:
+    - role: roles/red/covenant

@@ -12,3 +12,4 @@ red_executable: PlayStore.exe
 enrollment_token: 
 python311_url: "https://www.python.org/ftp/python/3.11.1/python-3.11.1-amd64.exe"
 python311_exe: "python311.exe"
+payload_exe: "false"
