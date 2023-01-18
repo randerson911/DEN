@@ -79,6 +79,14 @@ read -p "Enter target hosts to install Python on (comma-separated): " target_hos
 echo ""
 sed -i "s/{{ python_target }}/${target_hosts}/" ansible/playbook-kickoff.yml
 
+echo ""
+echo "Downloading required files now!"
+echo ""
+
+if [ ! -f ansible/roles/windows/install-python311/files/python311.exe ]; then
+    wget https://www.python.org/ftp/python/3.11.1/python-3.11.1-amd64.exe -O ansible/roles/windows/install-python311/files/python311.exe
+fi
+
 if [ ! -f ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip ]; then
     wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-windows-x86_64.zip -O ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip
     unzip -fo ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip -d ansible/roles/windows/elastic-agent/files/
@@ -86,6 +94,7 @@ fi
 
 # Run the playbook
 cd ansible
+ansible-galaxy collection install davidban77.gns3
 ansible-playbook -i inventory playbook-kickoff.yml
 echo ""
 echo ""
