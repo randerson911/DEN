@@ -13,4 +13,4 @@
     reconnection_retries: 10
     timeout: 60
   roles:
-    - role: roles/misc/run-payload
+    - role: roles/red/run-payload
