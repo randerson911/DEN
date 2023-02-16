@@ -19,16 +19,29 @@ then
     echo "Complete." > umarker.txt
 fi
 
+# Download and move latest version of Python for Windows
+if [ ! -f ansible/roles/windows/install-python311/files/python311.exe ]; then
+  curl -o ansible/roles/windows/install-python311/files/python311.exe https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe
+fi
+
+# Download and move latest version of Python for Linux
+if [ ! -f ansible/roles/linux/install-python311/files/python311.tar.gz]; then
+  curl -o ansible/roles/linux/install-python311/files/python311.tar.gz https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tar.xz
+fi
+
 echo ""
 read -p "Enter target hosts (comma-separated): " target_hosts
 echo ""
+read -p "Enter target hosts (comma-separated): " targets
 
-if [ ! -f ansible/roles/windows/install-python311/files/python311.exe ]; then
-    wget https://www.python.org/ftp/python/3.11.1/python-3.11.1-amd64.exe -O ansible/roles/windows/install-python311/files/python311.exe
+# Check if targets exist in inventory file
+if grep -qwE "^($targets)\b" ansible/inventory; then
+  # Modify playbook file with new targets
+  sed -i "s/hosts: .*/hosts: \"$targets\"/" ansible/playbook-install-python311.yaml
+  echo "Targets updated in playbook file"
+else
+  echo "Invalid target hosts"
 fi
-
-# Replace the hosts field in the playbook with the provided input
-sed -i "s/hosts:.*/hosts: ${target_hosts}/" ansible/playbook-install-python311.yml
 
 # Run the playbook
 cd ansible
