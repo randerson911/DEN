@@ -103,8 +103,14 @@ echo ""
 echo "Downloading required files now!"
 echo ""
 
+# Download and move latest version of Python for Windows
 if [ ! -f ansible/roles/windows/install-python311/files/python311.exe ]; then
-    wget https://www.python.org/ftp/python/3.11.1/python-3.11.1-amd64.exe -O ansible/roles/windows/install-python311/files/python311.exe
+    curl -o ansible/roles/windows/install-python311/files/python311.exe https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe
+fi
+
+# Download and move latest version of Python for Linux
+if [ ! -f ansible/roles/linux/install-python311/files/python311.tar.gz]; then
+    curl -o ansible/roles/linux/install-python311/files/python311.tar.gz https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
 fi
 
 if [ ! -f ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip ]; then
