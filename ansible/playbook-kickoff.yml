@@ -1,6 +1,8 @@
 - name: Download and install Python311 on Windows
   hosts: {{ python_target }}
   gather_facts: false
+  vars_files:
+    - cobra.vault
   vars:
     ansible_user: "{{ den_user }}"
     ansible_password: "{{ den_user_password }}"
@@ -18,6 +20,8 @@
 - name: Configure Windows system for log ingestion (Elastic Agent)
   hosts: datacenter subnet1 subnet2 subnet3
   gather_facts: false
+  vars_files:
+    - cobra.vault
   vars:
     ansible_user: "{{ den_user }}"
     ansible_password: "{{ den_user_password }}"
@@ -37,6 +41,8 @@
   hosts: gns3
   gather_facts: no
   become: true
+  vars_files:
+    - cobra.vault
   vars:
     ansible_user: "{{ linux_user }}"
     ansible_password: "{{ linux_user_password }}"

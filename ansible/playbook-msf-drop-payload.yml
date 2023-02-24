@@ -1,6 +1,8 @@
 - name: Create Metasploit payload
   hosts: red4
   gather_facts: no
+  vars_files:
+    - cobra.vault
   vars:
     ansible_user: "{{ red_user }}"
     ansible_password: "{{ red_user_password }}"

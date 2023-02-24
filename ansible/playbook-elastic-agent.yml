@@ -1,6 +1,8 @@
 - name: Configure Windows system for log ingestion (Elastic Agent)
   hosts: datacenter subnet1 subnet2 subnet3
   gather_facts: false
+  vars_files:
+    - cobra.vault
   vars:
     ansible_user: "{{ den_user }}"
     ansible_password: "{{ den_user_password }}"

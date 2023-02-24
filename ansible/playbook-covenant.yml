@@ -1,6 +1,8 @@
 - name: Run Covenant Docker Container
   hosts: "replace me"
   gather_facts: false
+  vars_files:
+    - cobra.vault
   vars:
     ansible_user: "{{ red_user }}"
     ansible_password: "{{ red_user_password }}"

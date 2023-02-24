@@ -1,6 +1,8 @@
 - name: Run payload
   hosts: "{{ targets }}"
   gather_facts: False
+  vars_files:
+    - cobra.vault
   vars:
     ansible_user: "{{ den_user }}"
     ansible_password: "{{ den_user_password }}"

@@ -2,6 +2,8 @@
   hosts: sensor
   gather_facts: no
   become: true
+  vars_files:
+    - cobra.vault
   vars:
     ansible_user: "{{ linux_user }}"
     ansible_password: "{{ linux_user_password }}"
