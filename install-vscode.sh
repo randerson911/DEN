@@ -7,6 +7,7 @@ if grep -q "$target_host" ansible/inventory; then
     ansible-playbook playbook-install-vscode.yaml --extra-vars "target_host=$target_host"
 else
     echo "Target host '$target_host' not found in inventory file."
+    cd ..
     exit 1
 fi
 

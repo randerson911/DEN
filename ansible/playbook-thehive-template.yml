@@ -12,8 +12,8 @@
         validate_certs: false
         body_format: json
         body:
-          username: "{{ the_user }}"
-          password: "{{ the_user_password }}"
+          username: "{{ th_user }}"
+          password: "{{ th_user_password }}"
       register: auth_output
       no_log: true
 
