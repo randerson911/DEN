@@ -1,0 +1,22 @@
+---
+- name: Install VS Code latest for Windows
+  win_package:
+    path: "{{ role_path }}/files/vscode-latest.exe"
+    arguments: /verysilent /mergetasks=!runcode
+    state: present
+
+- name: Install Chocolatey if not already installed
+  win_shell: |
+    if (!(Test-Path 'C:\ProgramData\chocolatey\bin\choco.exe')) {
+      Set-ExecutionPolicy Bypass -Scope Process -Force;
+      iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    }
+
+- name: Install VS Code extensions
+  win_chocolatey:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - ms-python.python
+    - other.extension1
+    - other.extension2

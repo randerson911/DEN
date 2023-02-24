@@ -1,0 +1,13 @@
+- name: Install VS Code on Windows target
+  hosts: "{{ target_host }}"
+  gather_facts: true
+  become: true
+  vars:
+    vs_code_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
+  roles:
+    - roles/windows/vscode
+  tasks:
+    - name: Download VS Code latest for Windows
+      get_url:
+        url: "{{ vs_code_url }}"
+        dest: roles/windows/vscode/files/vscode-latest.exe
