@@ -1,42 +1,44 @@
 #! /bin/bash
 
-if [ ! -f rmarker.txt ]
-then
-    echo ""
-    echo "Important: If you encounter errors in the ansible output, it will most likely be"
-    echo "credentials related. Please ensure you are providing the Kali Red credentials in"
-    echo "the following prompts. Delete the rmarker.txt and input the correct values."
-    echo ""
+## There is a large comment block here, as capabilities have moved to an encrypted ansible vault.
 
-    echo "Enter Kali username: "
-    read reduser
+# if [ ! -f rmarker.txt ]
+# then
+#     echo ""
+#     echo "Important: If you encounter errors in the ansible output, it will most likely be"
+#     echo "credentials related. Please ensure you are providing the Kali Red credentials in"
+#     echo "the following prompts. Delete the rmarker.txt and input the correct values."
+#     echo ""
 
-    echo "Enter Kali password: "
-    read redpass
+#     echo "Enter Kali username: "
+#     read reduser
 
-    sed -i "/red_user:/c\red_user: $reduser" ansible/group_vars/all/vars.yml
-    sed -i "/red_user_password:/c\red_user_password: $redpass" ansible/group_vars/all/vars.yml
-    echo "Complete." > rmarker.txt
-fi
+#     echo "Enter Kali password: "
+#     read redpass
 
-if [ ! -f umarker.txt ]
-then
-    echo ""
-    echo "Important: If you encounter errors in the ansible output, it will most likely be"
-    echo "credentials related. Please ensure you are providing the Windows credentials in"
-    echo "the following prompts. Delete the umarker.txt and input the correct values."
-    echo ""
+#     sed -i "/red_user:/c\red_user: $reduser" ansible/group_vars/all/vars.yml
+#     sed -i "/red_user_password:/c\red_user_password: $redpass" ansible/group_vars/all/vars.yml
+#     echo "Complete." > rmarker.txt
+# fi
 
-    echo "Enter Windows admin username: "
-    read denuser
+# if [ ! -f umarker.txt ]
+# then
+#     echo ""
+#     echo "Important: If you encounter errors in the ansible output, it will most likely be"
+#     echo "credentials related. Please ensure you are providing the Windows credentials in"
+#     echo "the following prompts. Delete the umarker.txt and input the correct values."
+#     echo ""
 
-    echo "Enter Windows admin password: "
-    read denpass
+#     echo "Enter Windows admin username: "
+#     read denuser
 
-    sed -i "/den_user:/c\den_user: $denuser" ansible/group_vars/all/vars.yml
-    sed -i "/den_user_password:/c\den_user_password: $denpass" ansible/group_vars/all/vars.yml
-    echo "Complete." > umarker.txt
-fi
+#     echo "Enter Windows admin password: "
+#     read denpass
+
+#     sed -i "/den_user:/c\den_user: $denuser" ansible/group_vars/all/vars.yml
+#     sed -i "/den_user_password:/c\den_user_password: $denpass" ansible/group_vars/all/vars.yml
+#     echo "Complete." > umarker.txt
+# fi
 
 if [ ! -f elmarker.txt ]
 then
