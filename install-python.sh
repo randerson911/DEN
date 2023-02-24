@@ -26,7 +26,7 @@ fi
 
 # Download and move latest version of Python for Linux
 if [ ! -f ansible/roles/linux/install-python311/files/python311.tar.gz]; then
-  curl -o ansible/roles/linux/install-python311/files/python311.tar.gz https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tar.xz
+  curl -o ansible/roles/linux/install-python311/files/python311.tar.gz https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
 fi
 
 echo ""
