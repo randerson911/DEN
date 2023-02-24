@@ -30,12 +30,10 @@ if [ ! -f ansible/roles/linux/install-python311/files/python311.tar.gz]; then
 fi
 
 echo ""
-read -p "Enter target hosts (comma-separated): " target_hosts
-echo ""
 read -p "Enter target hosts (comma-separated): " targets
 
 # Check if targets exist in inventory file
-if grep -qwE "^($targets)\b" ansible/inventory; then
+if grep -qE "$targets" ansible/inventory; then
   # Modify playbook file with new targets
   sed -i "s/hosts: .*/hosts: \"$targets\"/" ansible/playbook-install-python311.yaml
   echo "Targets updated in playbook file"

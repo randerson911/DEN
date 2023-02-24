@@ -40,6 +40,20 @@
 #     echo "Complete." > umarker.txt
 # fi
 
+# lpass=""
+# if [ ! -f linuxcreds.txt ]
+# then
+#     echo "What is the linux password?"
+#     read lpass
+#     sed -i "/linux_user:/c\linux_user: cobra" ansible/group_vars/all/vars.yml
+#     sed -i "/linux_user_password:/c\linux_user_password: $lpass" ansible/group_vars/all/vars.yml
+#     echo "Complete." > linuxcreds.txt
+# else 
+#     lpass=$(grep "linux_user_password:" ./ansible/group_vars/all/vars.yml | awk '{print $2}')
+# fi
+# echo $lpass | sudo -S apt update
+# echo $lpass | sudo -S apt install unzip -y
+
 if [ ! -f elmarker.txt ]
 then
     echo "Enter elastic username: "
@@ -60,26 +74,30 @@ then
     echo $elasticuser:$elasticpass > elmarker.txt
 fi
 
-lpass=""
-if [ ! -f linuxcreds.txt ]
-then
-    echo "What is the linux password?"
-    read lpass
-    sed -i "/linux_user:/c\linux_user: cobra" ansible/group_vars/all/vars.yml
-    sed -i "/linux_user_password:/c\linux_user_password: $lpass" ansible/group_vars/all/vars.yml
-    echo "Complete." > linuxcreds.txt
-else 
-    lpass=$(grep "linux_user_password:" ./ansible/group_vars/all/vars.yml | awk '{print $2}')
+# Prompt for the vault password
+echo "Enter the cobra vault password: "
+read -s vault_pass
+
+# Read the value of my_secret from my_vault
+cd ansible
+lpass=$(ansible-vault view --vault-password-file <(echo "$vault_pass") cobra.vault | grep linux_uder_password | cut -d ' ' -f 2)
+cd ..
+
+# Print the value of my_secret
+echo "The linux password is: $lpass"
+
+echo ""
+read -p "Enter target hosts (comma-separated): " targets
+
+# Check if targets exist in inventory file
+if grep -qE "$targets" ansible/inventory; then
+    # Modify playbook file with new targets
+    sed -i "s/hosts: .*/hosts: \"$targets\"/" ansible/playbook-install-python311.yaml
+    echo "Targets updated in playbook file"
+else
+    echo "Invalid target hosts"
 fi
 
-
-echo $lpass | sudo -S apt update
-echo $lpass | sudo -S apt install unzip -y
-
-echo ""
-read -p "Enter target hosts to install Python on (comma-separated): " target_hosts
-echo ""
-sed -i "s/{{ python_target }}/${target_hosts}/" ansible/playbook-kickoff.yml
 
 echo ""
 echo "Downloading required files now!"
