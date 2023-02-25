@@ -1,12 +1,12 @@
 - name: Install VS Code on Windows target
-  hosts: "{{ target_host }}"
-  gather_facts: true
+  hosts: " {{ target_host }} "
+  gather_facts: no
   become: true
   vars_files:
     - cobra.vault
   vars:
-    ansible_user: "{{ den_user }}"
-    ansible_password: "{{ den_user_password }}"
+    ansible_user: "{{ vault_den_user }}"
+    ansible_password: "{{ vault_den_user_password }}"
     vs_code_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
   roles:
     - roles/windows/vscode

@@ -1,90 +1,18 @@
-- name: Download and install Python311 on Windows
-  hosts: {{ python_target }}
-  gather_facts: false
-  vars_files:
-    - cobra.vault
-  vars:
-    ansible_user: "{{ vault_den_user }}"
-    ansible_password: "{{ vault_den_user_password }}"
-    ansible_connection: winrm
-    ansible_winrm_transport: credssp
-    ansible_winrm_server_cert_validation: ignore
-    ansible_winrm_operation_timeout_sec: 1000
-    ansible_winrm_read_timeout_sec: 3200
-    anisble_winrm_connection_timeout_sec: 2000
-    reconnection_retries: 10
-    timeout: 60
-  roles:
-    - role: roles/windows/install-python311
-
-- name: Configure Windows system for log ingestion (Elastic Agent)
-  hosts: datacenter subnet1 subnet2 subnet3
-  gather_facts: false
-  vars_files:
-    - cobra.vault
-  vars:
-    ansible_user: "{{ vault_den_user }}"
-    ansible_password: "{{ vault_den_user_password }}"
-    ansible_connection: winrm
-    ansible_winrm_transport: credssp
-    ansible_winrm_server_cert_validation: ignore
-    ansible_winrm_operation_timeout_sec: 1000
-    ansible_winrm_read_timeout_sec: 3200
-    anisble_winrm_connection_timeout_sec: 2000
-    reconnection_retries: 10
-    timeout: 60
-  roles:
-    - role: roles/windows/root-cert
-    - role: roles/windows/elastic-agent
-
-- name: Auto connect collector
-  hosts: gns3
+- name: Kickoff Playbook
+  hosts: localhost
   gather_facts: no
-  become: true
-  vars_files:
-    - cobra.vault
-  vars:
-    ansible_user: "{{ vault_linux_user }}"
-    ansible_password: "{{ vault_linux_user_password }}"
-    ansible_become_password: "{{ vault_linux_user_password }}"
-    ansible_connection: ssh
-    reconnection_retries: 10
-    timeout: 60
-    gns3_server: "http://10.255.255.100"
-    gns3_project: "COBRA DEN"
-    node_links:
-      - ["collector", "Ethernet1", "External", "eth7"]
-      - ["collector", "Ethernet2", "DMZ", "eth7"]
-      - ["collector", "Ethernet3", "Internal", "eth7"]
-      - ["collector", "Ethernet4", "CN-RTR-1", "eth7"]
-      - ["collector", "Ethernet5", "CN-RTR-2", "eth7"]
-      - ["collector", "Ethernet6", "CN-RTR-3", "eth7"]
-      - ["collector", "Ethernet7", "CN-RTR-4", "eth7"]
-  collections:
-    - davidban77.gns3
   tasks:
-    - name: Auto-tap routers
-      gns3_project:
-        url: "{{ gns3_server }}"
-        project_name: "{{ gns3_project }}"
-        links_spec: "{{ node_links }}"
-        state: present
+    - name: Starting Elastic Agent Install
+      ansible.builtin.import_playbook: ./playbook-elastic-agent.yml
 
-- name: Login random users to client workstations
-  hosts: user1 user2 user3 user4 user5 user6 user7 user8 user9 user10 user11 user12 user13 user14 user15 user16 user17 user18 user19 user20  user21 user22 user23 user24 user25 user26 user27 user28 user29 user30
-  gather_facts: no
-  vars:
-    ansible_user: "{{ vault_den_user }}"
-    ansible_password: "{{ vault_den_user_password }}"
-    ansible_connection: winrm
-    ansible_winrm_transport: credssp
-    ansible_winrm_server_cert_validation: ignore
-    ansible_winrm_operation_timeout_sec: 1000
-    ansible_winrm_read_timeout_sec: 3200
-    anisble_winrm_connection_timeout_sec: 2000
-    reconnection_retries: 10
-    timeout: 60
-    username: "{{ uname }}"
-  roles:
-    - role: roles/windows/gpupdate
-    - role: roles/windows/login-random-users
+    - name: Starting Python Install
+      ansible.builtin.import_playbook: ./playbook-install-python311.yml
+
+    - name: Starting Tap Collector
+      ansible.builtin.import_playbook: ./playbook-tap-collector.yml
+
+    - name: Starting VSCode Setup
+      ansible.builtin.import_playbook: ./playbook-install-vscode.yml
+
+    - name: Starting Random Users
+      ansible.builtin.import_playbook: ./playbook-login-random-users.yml

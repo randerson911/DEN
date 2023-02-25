@@ -124,6 +124,7 @@ read -p "Enter target hosts to install Python 3.11 (comma-separated): " targets
 if grep -qE "$targets" ansible/inventory; then
     # Modify playbook file with new targets
     sed -i "s/hosts: .*/hosts: \"$targets\"/" ansible/playbook-install-python311.yaml
+    sed -i "s/hosts: .*/hosts: \"$targets\"/" ansible/playbook-install-vscode.yaml
     echo "Targets updated in playbook file"
 else
     echo "Invalid target hosts"
