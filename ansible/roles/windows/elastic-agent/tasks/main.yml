@@ -3,13 +3,21 @@
     src: ./elastic-agent-7.17.4-windows-x86_64/
     dest: 'C:\elastic-agent\'
 
-- name: Install ElasticAgent
-  ansible.windows.win_command:
-    argv:
-    - C:\elastic-agent\elastic-agent.exe 
-    - install -f 
-    - --url=https://172.17.60.50:8220 
-    - --enrollment-token=SEtOVHYzOEIwYzJrYk01WUJqYVk6a3NoMWJVQkdUMlcwU3RQRl9yYW5qdw==
+- name: Install Elastic Agent
+  ansible.windows.win_package:
+    path: "C:\\elastic-agent\\elastic-agent.exe"
+    name: Elastic Agent
+    state: present
+    args:
+      - "--url=https://172.17.60.50:8220"
+      - "--enrollment-token=SEtOVHYzOEIwYzJrYk01WUJqYVk6a3NoMWJVQkdUMlcwU3RQRl9yYW5qdw=="
+  register: result
+
+
+- name: Check if Elastic Agent was installed successfully
+  debug:
+    msg: "Elastic Agent installed successfully."
+  when: result.changed
 
 - name: Clean up install files
   ansible.windows.win_file:

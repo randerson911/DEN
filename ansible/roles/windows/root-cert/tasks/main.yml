@@ -4,7 +4,10 @@
     dest: 'C:\ca.crt'
 
 - name: Install CA certificate in Trusted Root CA Store
-  ansible.windows.win_command: certutil -addstore "Root" "C:\ca.crt"
+  ansible.windows.win_certificate_store:
+    path: C:\ca.crt
+    store_name: Root
+    state: present
 
 - name: Clean up install files
   ansible.windows.win_file:

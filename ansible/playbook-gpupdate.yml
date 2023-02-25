@@ -14,5 +14,6 @@
     anisble_winrm_connection_timeout_sec: 2000
     reconnection_retries: 10
     timeout: 60
-  roles:
-    - role: roles/windows/gpupdate
+  tasks:
+    - name: Refresh Group Policy
+      ansible.windows.win_command: gpupdate /force /boot

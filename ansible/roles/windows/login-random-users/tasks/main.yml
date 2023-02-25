@@ -3,7 +3,7 @@
     timeout: 900
 
 - name: Execute Set-Autologon.ps1
-  script: files/Set-Autologon.ps1 -username "{{ username }}" -password "ComtechAzure123" -domain "basex"
+  script: files/Set-Autologon.ps1 -username "{{ username }}" -password "{{ win_user_pass }}" -domain "basex"
 
 - name: Reboot after autologon change
   ansible.windows.win_reboot:
