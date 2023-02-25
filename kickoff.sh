@@ -123,8 +123,6 @@ read -p "Enter target hosts to install Python 3.11 (comma-separated): " targets
 # Check if targets exist in inventory file
 if grep -qE "$targets" ansible/inventory ; then
     # Modify playbook file with new targets
-    sed -i "s/hosts: .*/hosts: \"$targets\"/" ansible/playbook-install-python311.yaml
-    sed -i "s/hosts: .*/hosts: \"$targets\"/" ansible/playbook-install-vscode.yaml
     echo "Targets updated in playbook file"
 else
     echo "Invalid target hosts"
@@ -133,7 +131,7 @@ fi
 # Run the playbook
 cd ansible
 ansible-galaxy collection install davidban77.gns3
-ansible-playbook -i inventory --vault-password-file ./.vault_pass playbook-kickoff.yml
+ansible-playbook -i inventory --vault-password-file ./.vault_pass --extra-vars "target_host=$targets" playbook-kickoff.yml
 echo ""
 echo ""
 echo "Action complete."
