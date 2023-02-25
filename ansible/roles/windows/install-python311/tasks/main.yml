@@ -1,10 +1,22 @@
+- name: Check if Python 3 is already installed
+  win_shell: python --version
+  register: python_version_output
+  ignore_errors: true
+
+- name: Check if pip packages are already installed
+  win_command: C:\Tools\Python311\Scripts\pip3.exe list --format=columns | findstr /ix "requests pyyaml thehive4py python-magic-dev libmagic elasticsearch7 kubernetes keycloak"
+  register: pip_packages_output
+  ignore_errors: true
+
 - name: Copy Python311 to target
   win_copy:
     src: "{{ role_path }}/files/{{ python311_exe }}"
     dest: "C:\\{{ python311_exe }}"
+  when: python_version_output.rc != 0
 
 - name: Install Python311
   win_shell: C:\{{ python311_exe }} /quiet InstallAllUsers=1 TargetDir=C:\Tools\Python311 PrependPath=1
+  when: python_version_output.rc != 0
 
 - name: Set Python311 path
   win_environment:
@@ -12,10 +24,10 @@
     value: C:\Tools\Python311;C:\Tools\Python311\Scripts
     state: present
     level: machine
-  when: install_path == "true"
+  when: python_version_output.rc != 0 or pip_packages_output.rc != 0
 
 - name: Install requests and pyyaml with pip3
-  ansible.builtin.win_pip:
+  win_pip:
     name:
       - requests
       - pyyaml
@@ -27,3 +39,5 @@
       - keycloak
     state: latest
     executable: C:\Tools\Python311\Scripts\pip3.exe
+  when: python_version_output.rc == 0 and pip_packages_output.rc != 0
+
