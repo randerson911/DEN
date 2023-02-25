@@ -143,3 +143,9 @@
       ansible.builtin.get_url:
         url: "{{ vs_code_url }}"
         dest: roles/windows/vscode/files/vscode-latest.exe
+      register: download_result
+      ignore_errors: true
+    - name: Print error message if download failed
+      debug:
+        msg: "Error downloading VS Code: {{ download_result.msg }}"
+      when: download_result is failed

@@ -7,12 +7,15 @@
   win_shell: C:\{{ python311_exe }} /quiet InstallAllUsers=1 TargetDir=C:\Tools\Python311 PrependPath=1
 
 - name: Set Python311 path
-  win_shell: for /f "usebackq tokens=2,*" %A in (`reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PATH`) do set SYSPATH=%B; setx PATH "C:\Tools\Python311;C:\Tools\Python311\Scripts;%SYSPATH%" /M
+  win_environment:
+    name: PATH
+    value: C:\Tools\Python311;C:\Tools\Python311\Scripts
+    state: present
+    level: machine
   when: install_path == "true"
-  ignore_errors: true
 
-- name: Install requests and pyyaml
-  pip:
+- name: Install requests and pyyaml with pip3
+  ansible.builtin.win_pip:
     name:
       - requests
       - pyyaml
@@ -23,3 +26,4 @@
       - kubernetes
       - keycloak
     state: latest
+    executable: C:\Tools\Python311\Scripts\pip3.exe
