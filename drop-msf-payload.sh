@@ -1,41 +1,12 @@
 #!/bin/bash
 
-if [ ! -f rmarker.txt ]
+if [ ! -f ansible/.vault_pass ]
 then
-    echo ""
-    echo "Important: If you encounter errors in the ansible output, it will most likely be"
-    echo "credentials related. Please ensure you are providing the Kali Red credentials in"
-    echo "the following prompts. Delete the rmarker.txt and input the correct values."
-    echo ""
+    echo "Please enter the vault password: "
+    read vault_pass
 
-    echo "Enter Kali username: "
-    read reduser
-
-    echo "Enter Kali password: "
-    read redpass
-
-    sed -i "/red_user:/c\red_user: $reduser" ansible/group_vars/all/vars.yml
-    sed -i "/red_user_password:/c\red_user_password: $redpass" ansible/group_vars/all/vars.yml
-    echo "Complete." > rmarker.txt
-fi
-
-if [ ! -f umarker.txt ]
-then
-    echo ""
-    echo "Important: If you encounter errors in the ansible output, it will most likely be"
-    echo "credentials related. Please ensure you are providing the Windows credentials in"
-    echo "the following prompts. Delete the umarker.txt and input the correct values."
-    echo ""
-
-    echo "Enter Windows admin username: "
-    read denuser
-
-    echo "Enter Windows admin password: "
-    read denpass
-
-    sed -i "/den_user:/c\den_user: $denuser" ansible/group_vars/all/vars.yml
-    sed -i "/den_user_password:/c\den_user_password: $denpass" ansible/group_vars/all/vars.yml
-    echo "Complete." > umarker.txt
+    echo $vault_pass > ansible/.vault_pass
+    chmod 0600 /ansible/.vault_pass
 fi
 
 echo ""
