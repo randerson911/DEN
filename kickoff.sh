@@ -83,8 +83,11 @@ cd ansible
 lpass=$(ansible-vault view --vault-password-file <(echo "$vault_pass") cobra.vault | grep linux_uder_password | cut -d ' ' -f 2)
 cd ..
 
+echo $lpass | sudo -S apt update
+echo $lpass | sudo -S apt install unzip -y
+
 # Print the value of my_secret
-echo "The linux password is: $lpass"
+#echo "The linux password is: $lpass"
 
 echo ""
 read -p "Enter target hosts (comma-separated): " targets
