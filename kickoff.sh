@@ -54,6 +54,15 @@
 # echo $lpass | sudo -S apt update
 # echo $lpass | sudo -S apt install unzip -y
 
+if [ ! -f ansible/.vault_pass ]
+then
+    echo "Please enter the vault password: "
+    read vault_pass
+
+    echo $vault_pass > ansible/.vault_pass
+    chmod 0600 /ansible/.vault_pass
+fi
+
 if [ ! -f elmarker.txt ]
 then
     echo "Enter elastic username: "

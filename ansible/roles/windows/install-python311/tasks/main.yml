@@ -10,3 +10,16 @@
   win_shell: for /f "usebackq tokens=2,*" %A in (`reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PATH`) do set SYSPATH=%B; setx PATH "C:\Tools\Python311;C:\Tools\Python311\Scripts;%SYSPATH%" /M
   when: install_path == "true"
   ignore_errors: true
+
+- name: Install requests and pyyaml
+  pip:
+    name:
+      - requests
+      - pyyaml
+      - thehive4py
+      - python-magic-dev
+      - libmagic
+      - elasticsearch7
+      - kubernetes
+      - keycloak
+    state: latest

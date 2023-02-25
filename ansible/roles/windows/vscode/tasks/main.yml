@@ -18,5 +18,5 @@
     state: present
   with_items:
     - ms-python.python
-    - other.extension1
-    - other.extension2
+    - donjayamanne.python-extension-pack
+    - ms-toolsai.jupyter
