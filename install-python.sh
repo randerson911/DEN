@@ -41,7 +41,7 @@ if [ ! -f ansible/roles/linux/install-python311/files/python311.tar.gz]; then
 fi
 
 echo ""
-read -p "Enter target hosts (comma-separated): " targets
+read -p "Enter target hosts to install Python 3.11 (comma-separated): " targets
 
 # Check if targets exist in inventory file
 if grep -qE "$targets" ansible/inventory; then
