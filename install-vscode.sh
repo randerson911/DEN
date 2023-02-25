@@ -20,7 +20,7 @@ if grep -qE "$target_host" ansible/inventory; then
     sed -i "s/hosts: .*/hosts: \"$target_host\"/" ansible/playbook-install-vscode.yaml
     echo "Targets updated in playbook file"
     cd ansible
-    ansible-playbook -i inventory playbook-install-vscode.yml
+    ansible-playbook -i inventory --vault-password-file ./.vault_pass playbook-install-vscode.yml
     cd ..
 else
     echo "Target host '$target_host' not found in inventory file."

@@ -39,7 +39,7 @@ read payload
 [[ -z "$payload" ]] && echo "Continuing On" || echo $payload > ansible/roles/red/run-payload/files/payload-template.j2
 
 cd ansible
-ansible-playbook -i inventory playbook-run-payload.yml
+ansible-playbook -i inventory --vault-password-file ./.vault_pass playbook-run-payload.yml
 echo ""
 echo ""
 echo "Action complete."

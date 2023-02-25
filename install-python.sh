@@ -54,7 +54,7 @@ fi
 
 # Run the playbook
 cd ansible
-ansible-playbook -i inventory playbook-install-python311.yml
+ansible-playbook -i inventory --vault-password-file ./.vault_pass playbook-install-python311.yml
 echo ""
 echo ""
 echo "Action complete."

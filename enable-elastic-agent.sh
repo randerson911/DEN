@@ -43,7 +43,7 @@ then
 fi
 
 cd ansible
-ansible-playbook -i inventory playbook-elastic-agent.yml
+ansible-playbook -i inventory --vault-password-file ./.vault_pass playbook-elastic-agent.yml
 
 echo ""
 echo ""
