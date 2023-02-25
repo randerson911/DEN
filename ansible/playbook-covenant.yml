@@ -4,8 +4,8 @@
   vars_files:
     - cobra.vault
   vars:
-    ansible_user: "{{ red_user }}"
-    ansible_password: "{{ red_user_password }}"
+    ansible_user: "{{ vault_red_user }}"
+    ansible_password: "{{ vault_red_user_password }}"
     ansible_connection: ssh
     reconnection_retries: 10
     timeout: 60
