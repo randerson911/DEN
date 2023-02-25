@@ -99,21 +99,13 @@ echo $lpass | sudo -S apt install unzip -y
 #echo "The linux password is: $lpass"
 
 echo ""
-read -p "Enter target hosts (comma-separated): " targets
-
-# Check if targets exist in inventory file
-if grep -qE "$targets" ansible/inventory; then
-    # Modify playbook file with new targets
-    sed -i "s/hosts: .*/hosts: \"$targets\"/" ansible/playbook-install-python311.yaml
-    echo "Targets updated in playbook file"
-else
-    echo "Invalid target hosts"
-fi
-
-
-echo ""
 echo "Downloading required files now!"
 echo ""
+
+if [ ! -f ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip ]; then
+    wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-windows-x86_64.zip -O ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip
+    unzip ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip -d ansible/roles/windows/elastic-agent/files/
+fi
 
 # Download and move latest version of Python for Windows
 if [ ! -f ansible/roles/windows/install-python311/files/python311.exe ]; then
@@ -125,9 +117,16 @@ if [ ! -f ansible/roles/linux/install-python311/files/python311.tar.gz]; then
     curl -o ansible/roles/linux/install-python311/files/python311.tar.gz https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
 fi
 
-if [ ! -f ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip ]; then
-    wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-windows-x86_64.zip -O ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip
-    unzip ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip -d ansible/roles/windows/elastic-agent/files/
+echo ""
+read -p "Enter target hosts to install Python 3.11 (comma-separated): " targets
+
+# Check if targets exist in inventory file
+if grep -qE "$targets" ansible/inventory; then
+    # Modify playbook file with new targets
+    sed -i "s/hosts: .*/hosts: \"$targets\"/" ansible/playbook-install-python311.yaml
+    echo "Targets updated in playbook file"
+else
+    echo "Invalid target hosts"
 fi
 
 # Run the playbook
