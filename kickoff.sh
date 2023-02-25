@@ -57,10 +57,10 @@
 if [ ! -f ansible/.vault_pass ]
 then
     echo "Please enter the vault password: "
-    read vault_pass
+    read -s vault_pass
 
-    echo $vault_pass > ansible/.vault_pass
-    chmod 0600 /ansible/.vault_pass
+    echo $vault_pass > ./ansible/.vault_pass
+    chmod 0600 ./ansible/.vault_pass
 fi
 
 if [ ! -f elmarker.txt ]
@@ -89,7 +89,7 @@ read -s vault_pass
 
 # Read the value of my_secret from my_vault
 cd ansible
-lpass=$(ansible-vault view --vault-password-file <(echo "$vault_pass") cobra.vault | grep linux_uder_password | cut -d ' ' -f 2)
+lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | grep linux_uder_password | cut -d ' ' -f 2)
 cd ..
 
 echo $lpass | sudo -S apt update
@@ -102,18 +102,18 @@ echo ""
 echo "Downloading required files now!"
 echo ""
 
-if [ ! -f ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip ]; then
+if [ ! -f ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip ] ; then
     wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-windows-x86_64.zip -O ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip
     unzip ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip -d ansible/roles/windows/elastic-agent/files/
 fi
 
 # Download and move latest version of Python for Windows
-if [ ! -f ansible/roles/windows/install-python311/files/python311.exe ]; then
+if [ ! -f ansible/roles/windows/install-python311/files/python311.exe ] ; then
     curl -o ansible/roles/windows/install-python311/files/python311.exe https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe
 fi
 
 # Download and move latest version of Python for Linux
-if [ ! -f ansible/roles/linux/install-python311/files/python311.tar.gz]; then
+if [ ! -f ansible/roles/linux/install-python311/files/python311.tar.gz ] ; then
     curl -o ansible/roles/linux/install-python311/files/python311.tar.gz https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
 fi
 
@@ -121,7 +121,7 @@ echo ""
 read -p "Enter target hosts to install Python 3.11 (comma-separated): " targets
 
 # Check if targets exist in inventory file
-if grep -qE "$targets" ansible/inventory; then
+if grep -qE "$targets" ansible/inventory ; then
     # Modify playbook file with new targets
     sed -i "s/hosts: .*/hosts: \"$targets\"/" ansible/playbook-install-python311.yaml
     sed -i "s/hosts: .*/hosts: \"$targets\"/" ansible/playbook-install-vscode.yaml
