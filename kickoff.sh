@@ -89,7 +89,7 @@ read -s vault_pass
 
 # Read the value of my_secret from my_vault
 cd ansible
-lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | grep linux_uder_password | cut -d ' ' -f 2)
+lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | grep linux_user_password | cut -d ' ' -f 2)
 cd ..
 
 echo $lpass | sudo -S apt update

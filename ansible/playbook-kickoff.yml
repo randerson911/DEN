@@ -1,18 +1,37 @@
+# - name: Kickoff Playbook
+#   hosts: localhost
+#   gather_facts: no
+#   tasks:
+#     - name: Starting Elastic Agent Install
+#       ansible.builtin.import_playbook: ./playbook-elastic-agent.yml
+
+#     - name: Starting Python Install
+#       ansible.builtin.import_playbook: ./playbook-install-python311.yml
+
+#     - name: Starting Tap Collector
+#       ansible.builtin.import_playbook: ./playbook-tap-collector.yml
+
+#     - name: Starting VSCode Setup
+#       ansible.builtin.import_playbook: ./playbook-install-vscode.yml
+
+#     - name: Starting Random Users
+#       ansible.builtin.import_playbook: ./playbook-login-random-users.yml
+---
 - name: Kickoff Playbook
-  hosts: localhost
   gather_facts: no
   tasks:
     - name: Starting Elastic Agent Install
-      ansible.builtin.import_playbook: ./playbook-elastic-agent.yml
+      include: ./playbook-elastic-agent.yml
 
     - name: Starting Python Install
-      ansible.builtin.import_playbook: ./playbook-install-python311.yml
+      include: ./playbook-install-python311.yml
 
     - name: Starting Tap Collector
-      ansible.builtin.import_playbook: ./playbook-tap-collector.yml
+      include: ./playbook-tap-collector.yml
 
     - name: Starting VSCode Setup
-      ansible.builtin.import_playbook: ./playbook-install-vscode.yml
+      include: ./playbook-install-vscode.yml
 
     - name: Starting Random Users
-      ansible.builtin.import_playbook: ./playbook-login-random-users.yml
+      include: ./playbook-login-random-users.yml
+
