@@ -190,3 +190,8 @@ all:
             red6:
               hosts:
                 10.99.6.14
+        servers:
+          children:
+            dmz:
+              hosts:
+                172.17.10.253
