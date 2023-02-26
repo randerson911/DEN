@@ -15,11 +15,11 @@
 - name: Copy Python to target
   ansible.windows.win_copy:
     src: "{{ role_path }}/files/{{ python_name }}.exe"
-    dest: "{{ python_install_path }}/{{ python_name }}.exe"
+    dest: "{{ python_install_path }}\\{{ python_name }}.exe"
   when: python_version_output.rc != 0
 
 - name: Install Python
-  ansible.windows.win_shell: "{{ python_install_path }}/{{ python_name }}.exe /quiet InstallAllUsers=1 TargetDir={{ python_install_path }} PrependPath=1"
+  ansible.windows.win_shell: "{{ python_install_path }}\\{{ python_name }}.exe /quiet InstallAllUsers=1 TargetDir={{ python_install_path }} PrependPath=1"
   when: python_version_output.rc != 0
 
 - name: Set Python path
