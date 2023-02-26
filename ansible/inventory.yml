@@ -3,84 +3,50 @@ all:
   children:
     datacenter:
       hosts:
-        172.17.40.4:
-          hostname: dc1
-        172.17.40.5:
-          hostname: dc2
+        dc1: 172.17.40.4
+        dc2: 172.17.40.5
     subnet1:
       hosts:
-        172.17.10.4:
-          hostname: user1
-        172.17.10.5:
-          hostname: user2
-        172.17.10.6:
-          hostname: user3
-        172.17.10.7:
-          hostname: user4
-        172.17.10.8:
-          hostname: user5
-        172.17.10.9:
-          hostname: user6
-        172.17.10.10:
-          hostname: user7
-        172.17.10.11:
-          hostname: user8
-        172.17.10.12:
-          hostname: user9
-        172.17.10.13:
-          hostname: user10
+        user1: 172.17.10.4
+        user2: 172.17.10.5
+        user3: 172.17.10.6
+        user4: 172.17.10.7
+        user5: 172.17.10.8
+        user6: 172.17.10.9
+        user7: 172.17.10.10
+        user8: 172.17.10.11
+        user9: 172.17.10.12
+        user10: 172.17.10.13
     subnet2:
       hosts:
-        172.17.20.4:
-          hostname: user11
-        172.17.20.5:
-          hostname: user12
-        172.17.20.6:
-          hostname: user13
-        172.17.20.7:
-          hostname: user14
-        172.17.20.8:
-          hostname: user15
-        172.17.20.9:
-          hostname: user16
-        172.17.20.10:
-          hostname: user17
-        172.17.20.11:
-          hostname: user18
-        172.17.20.12:
-          hostname: user19
-        172.17.20.13:
-          hostname: user20
+        user11: 172.17.20.4
+        user12: 172.17.20.5
+        user13: 172.17.20.6
+        user14: 172.17.20.7
+        user15: 172.17.20.8
+        user16: 172.17.20.9
+        user17: 172.17.20.10
+        user18: 172.17.20.11
+        user19: 172.17.20.12
+        user20: 172.17.20.13
     subnet3:
       hosts:
-        172.17.30.4:
-          hostname: user21
-        172.17.30.5:
-          hostname: user22
-        172.17.30.6:
-          hostname: user23
-        172.17.30.7:
-          hostname: user24
-        172.17.30.8:
-          hostname: user25
-        172.17.30.9:
-          hostname: user26
-        172.17.30.10:
-          hostname: user27
-        172.17.30.11:
-          hostname: user28
-        172.17.30.12:
-          hostname: user29
-        172.17.30.13:
-          hostname: user30
+        user21: 172.17.30.4
+        user22: 172.17.30.5
+        user23: 172.17.30.6
+        user24: 172.17.30.7
+        user25: 172.17.30.8
+        user26: 172.17.30.9
+        user27: 172.17.30.10
+        user28: 172.17.30.11
+        user29: 172.17.30.12
+        user30: 172.17.30.13
     gns3:
       hosts:
-        10.255.255.100:
-          hostname: gns3
+        gns3: 10.255.255.100
     sensor:
       hosts:
-        172.17.60.50:
-          hostname: sensor
+        sensor: 172.17.60.50
     operators:
       vars:
         python_version: 3.11.2
@@ -96,41 +62,23 @@ all:
           - keycloak
         pip_executable: C:\Tools\Python311\Scripts\pip3.exe
       hosts:
-        172.17.60.101:
-          hostname: blue1
-        172.17.60.102:
-          hostname: blue2
-        172.17.60.103:
-          hostname: blue3
-        172.17.60.104:
-          hostname: blue4
-        172.17.60.105:
-          hostname: blue5
-        172.17.60.106:
-          hostname: blue6
-        172.17.60.107:
-          hostname: blue7
-        172.17.60.108:
-          hostname: blue8
-        172.17.60.109:
-          hostname: blue9
-        172.17.60.110:
-          hostname: blue10
-        172.17.60.111:
-          hostname: blue11
-        172.17.60.112:
-          hostname: blue12
-        172.17.60.113:
-          hostname: blue13
-        172.17.60.114:
-          hostname: blue14
-        172.17.60.115:
-          hostname: blue15
+        blue1: 172.17.60.101
+        blue2: 172.17.60.102
+        blue3: 172.17.60.103
+        blue4: 172.17.60.104
+        blue5: 172.17.60.105
+        blue6: 172.17.60.106
+        blue7: 172.17.60.107
+        blue8: 172.17.60.108
+        blue9: 172.17.60.109
+        blue10: 172.17.60.111
+        blue11: 172.17.60.110
+        blue12: 172.17.60.113
+        blue13: 172.17.60.112
+        blue14: 172.17.60.115
+        blue15: 172.17.60.114
     red:
       hosts:
-        10.96.11.9:
-          hostname: red4
-        10.97.3.24:
-          hostname: red5
-        10.99.6.14:
-          hostname: red6
+        red4: 10.96.11.9
+        red5: 10.97.3.24
+        red6: 10.99.6.14
