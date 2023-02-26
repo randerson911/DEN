@@ -4,6 +4,9 @@
     path: "{{ role_path }}/files/vscode-latest.exe"
     arguments: /verysilent /mergetasks=!runcode
     state: present
+  become_method: runas
+  become_user: "{{ vault_den_user }}"
+
 
 - name: Install Chocolatey if not already installed
   win_shell: |
