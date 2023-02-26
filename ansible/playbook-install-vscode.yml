@@ -1,5 +1,5 @@
 - name: Install VS Code on Windows target
-  hosts: " {{ target_host }} "
+  hosts: "{{ target_host }}"
   gather_facts: no
   become: true
   vars_files:
