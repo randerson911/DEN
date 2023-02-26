@@ -173,21 +173,21 @@ all:
             blue15:
               hosts:
                 172.17.60.115
-    # linux:
-    #   children:
-    #     red:
-    #       children:
-    #         red4:
-    #           hosts:
-    #             10.96.11.9
-    #         red5:
-    #           hosts:
-    #             10.97.3.24
-    #         red6:
-    #           hosts:
-    #             10.99.6.14
-    #     servers:
-    #       children:
-    #         dmz:
-    #           hosts:
-    #             172.17.10.253
+    linux:
+      children:
+        red:
+          children:
+            red4:
+              hosts:
+                10.96.11.9
+            red5:
+              hosts:
+                10.97.3.24
+            red6:
+              hosts:
+                10.99.6.14
+        servers:
+          children:
+            dmz:
+              hosts:
+                172.17.10.253
