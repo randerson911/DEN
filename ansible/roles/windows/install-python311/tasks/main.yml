@@ -26,8 +26,8 @@
     level: machine
   when: python_version_output.rc != 0 or pip_packages_output.rc != 0
 
-- name: Install requests and pyyaml with pip3
-  community.windows.win_pip:
+- name: Install required pip packages
+  ansible.builtin.pip:
     name:
       - requests
       - pyyaml
