@@ -38,10 +38,10 @@ fi
 if [ ! -f lmarker.txt ]
 then
 
-    if grep -q "user1:vars" ansible/inventory
+    if grep -q "user1:vars" ansible/inventory.yml
     then
-        lnr=$(sed -n '/##marker/=' ansible/inventory)
-        sed -i "1, $lnr ! d" ansible/inventory
+        lnr=$(sed -n '/##marker/=' ansible/inventory.yml)
+        sed -i "1, $lnr ! d" ansible/inventory.yml
     fi
 
     echo ""
@@ -55,9 +55,9 @@ then
     cat users.txt | while read line
     do
         let c=c+1
-        echo "" >> ansible/inventory
-        echo [$var1$c$var2] >> ansible/inventory
-        echo $varname$line >> ansible/inventory
+        echo "" >> ansible/inventory.yml
+        echo [$var1$c$var2] >> ansible/inventory.yml
+        echo $varname$line >> ansible/inventory.yml
     done
     echo "Complete." > lmarker.txt
 fi

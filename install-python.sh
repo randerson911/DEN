@@ -28,7 +28,7 @@ echo ""
 read -p "Enter target hosts to install Python 3.11 (comma-separated): " python_targets
 
 # Check if targets exist in inventory file
-if grep -qE "$python_targets" ansible/inventory; then
+if grep -qE "$python_targets" ansible/inventory.yml; then
   # Modify playbook file with new targets
   #sed -i "s/hosts: .*/hosts: \"$targets\"/" ansible/playbook-install-python311.yaml
   echo "Targets updated in playbook file"
