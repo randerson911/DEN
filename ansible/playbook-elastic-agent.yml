@@ -1,5 +1,5 @@
 - name: "Configure Windows system for log ingestion (Elastic Agent)"
-  hosts: " {{ elastic_targets }} "
+  hosts: "{{ elastic_targets }}"
   gather_facts: no
   vars_files:
     - cobra.vault
