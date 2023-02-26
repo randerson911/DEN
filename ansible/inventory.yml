@@ -2,8 +2,8 @@ all:
   children:
     datacenter:
       hosts:
-        db1: 172.17.40.4
-        db2: 172.17.40.5
+        dc1: 172.17.40.4
+        dc2: 172.17.40.5
     subnet:
       children:
         subnet1:
