@@ -128,7 +128,7 @@ all:
           hostname: blue15
     red4:
       hosts:
-        "{{red_ip}}":
+        10.96.11.9:
           hostname: red4
     red5:
       hosts:
