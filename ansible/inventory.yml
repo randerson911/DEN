@@ -24,159 +24,159 @@ all:
             dc2:
               hosts:
                 172.17.40.5
-        subnet1:
-          children:
-            user1:
-              hosts:
-                172.17.10.4
-            user2:
-              hosts:
-                172.17.10.5
-            user3:
-              hosts:
-                172.17.10.6
-            user4:
-              hosts:
-                172.17.10.7
-            user5:
-              hosts:
-                172.17.10.8
-            user6:
-              hosts:
-                172.17.10.9
-            user7:
-              hosts:
-                172.17.10.10
-            user8:
-              hosts:
-                172.17.10.11
-            user9:
-              hosts:
-                172.17.10.12
-            user10:
-              hosts:
-                172.17.10.13
-        subnet2:
-          children:
-            user11:
-              hosts:
-                172.17.20.4
-            user12:
-              hosts:
-                172.17.20.5
-            user13:
-              hosts:
-                172.17.20.6
-            user14:
-              hosts:
-                172.17.20.7
-            user15:
-              hosts:
-                172.17.20.8
-            user16:
-              hosts:
-                172.17.20.9
-            user17:
-              hosts:
-                172.17.20.10
-            user18:
-              hosts:
-                172.17.20.11
-            user19:
-              hosts:
-                172.17.20.12
-            user20:
-              hosts:
-                172.17.20.13
-        subnet3:
-          children:
-            user21:
-              hosts:
-                172.17.30.4
-            user22:
-              hosts:
-                172.17.30.5
-            user23:
-              hosts:
-                172.17.30.6
-            user24:
-              hosts:
-                172.17.30.7
-            user25:
-              hosts:
-                172.17.30.8
-            user26:
-              hosts:
-                172.17.30.9
-            user27:
-              hosts:
-                172.17.30.10
-            user28:
-              hosts:
-                172.17.30.11
-            user29:
-              hosts:
-                172.17.30.12
-            user30:
-              hosts:
-                172.17.30.13
-        gns3:
-          children:
-            gns3:
-              hosts:
-                10.255.255.100
-        sensor:
-          children:
-            sensor:
-              hosts:
-                172.17.60.50
-        operators:
-          children:
-            blue1:
-              hosts:
-                172.17.60.101
-            blue2:
-              hosts:
-                172.17.60.102
-            blue3:
-              hosts:
-                172.17.60.103
-            blue4:
-              hosts:
-                172.17.60.104
-            blue5:
-              hosts:
-                172.17.60.105
-            blue6:
-              hosts:
-                172.17.60.106
-            blue7:
-              hosts:
-                172.17.60.107
-            blue8:
-              hosts:
-                172.17.60.108
-            blue9:
-              hosts:
-                172.17.60.109
-            blue10:
-              hosts:
-                172.17.60.110
-            blue11:
-              hosts:
-                172.17.60.111
-            blue12:
-              hosts:
-                172.17.60.112
-            blue13:
-              hosts:
-                172.17.60.113
-            blue14:
-              hosts:
-                172.17.60.114
-            blue15:
-              hosts:
-                172.17.60.115
+        # subnet1:
+        #   children:
+        #     user1:
+        #       hosts:
+        #         172.17.10.4
+        #     user2:
+        #       hosts:
+        #         172.17.10.5
+        #     user3:
+        #       hosts:
+        #         172.17.10.6
+        #     user4:
+        #       hosts:
+        #         172.17.10.7
+        #     user5:
+        #       hosts:
+        #         172.17.10.8
+        #     user6:
+        #       hosts:
+        #         172.17.10.9
+        #     user7:
+        #       hosts:
+        #         172.17.10.10
+        #     user8:
+        #       hosts:
+        #         172.17.10.11
+        #     user9:
+        #       hosts:
+        #         172.17.10.12
+        #     user10:
+        #       hosts:
+        #         172.17.10.13
+        # subnet2:
+        #   children:
+        #     user11:
+        #       hosts:
+        #         172.17.20.4
+        #     user12:
+        #       hosts:
+        #         172.17.20.5
+        #     user13:
+        #       hosts:
+        #         172.17.20.6
+        #     user14:
+        #       hosts:
+        #         172.17.20.7
+        #     user15:
+        #       hosts:
+        #         172.17.20.8
+        #     user16:
+        #       hosts:
+        #         172.17.20.9
+        #     user17:
+        #       hosts:
+        #         172.17.20.10
+        #     user18:
+        #       hosts:
+        #         172.17.20.11
+        #     user19:
+        #       hosts:
+        #         172.17.20.12
+        #     user20:
+        #       hosts:
+        #         172.17.20.13
+        # subnet3:
+        #   children:
+        #     user21:
+        #       hosts:
+        #         172.17.30.4
+        #     user22:
+        #       hosts:
+        #         172.17.30.5
+        #     user23:
+        #       hosts:
+        #         172.17.30.6
+        #     user24:
+        #       hosts:
+        #         172.17.30.7
+        #     user25:
+        #       hosts:
+        #         172.17.30.8
+        #     user26:
+        #       hosts:
+        #         172.17.30.9
+        #     user27:
+        #       hosts:
+        #         172.17.30.10
+        #     user28:
+        #       hosts:
+        #         172.17.30.11
+        #     user29:
+        #       hosts:
+        #         172.17.30.12
+        #     user30:
+        #       hosts:
+        #         172.17.30.13
+        # gns3:
+        #   children:
+        #     gns3:
+        #       hosts:
+        #         10.255.255.100
+        # sensor:
+        #   children:
+        #     sensor:
+        #       hosts:
+        #         172.17.60.50
+        # operators:
+        #   children:
+        #     blue1:
+        #       hosts:
+        #         172.17.60.101
+        #     blue2:
+        #       hosts:
+        #         172.17.60.102
+        #     blue3:
+        #       hosts:
+        #         172.17.60.103
+        #     blue4:
+        #       hosts:
+        #         172.17.60.104
+        #     blue5:
+        #       hosts:
+        #         172.17.60.105
+        #     blue6:
+        #       hosts:
+        #         172.17.60.106
+        #     blue7:
+        #       hosts:
+        #         172.17.60.107
+        #     blue8:
+        #       hosts:
+        #         172.17.60.108
+        #     blue9:
+        #       hosts:
+        #         172.17.60.109
+        #     blue10:
+        #       hosts:
+        #         172.17.60.110
+        #     blue11:
+        #       hosts:
+        #         172.17.60.111
+        #     blue12:
+        #       hosts:
+        #         172.17.60.112
+        #     blue13:
+        #       hosts:
+        #         172.17.60.113
+        #     blue14:
+        #       hosts:
+        #         172.17.60.114
+        #     blue15:
+        #       hosts:
+        #         172.17.60.115
     # linux:
     #   children:
     #     red:
