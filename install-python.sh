@@ -26,21 +26,10 @@ ansible-galaxy collection install ansible.posix
 
 echo ""
 read -p "Enter target hosts to install Python 3.11 (comma-separated): " python_targets
-
-# Check if targets exist in inventory file
-if grep -qE "$python_targets" ansible/inventory.yml; then
-  # Modify playbook file with new targets
-  #sed -i "s/hosts: .*/hosts: \"$targets\"/" ansible/playbook-install-python311.yaml
-  echo "Targets updated in playbook file"
-  # Run the playbook
-  cd ansible
-  ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass -e "python_targets=$python_targets" playbook-install-python311.yml
-  cd ..
-  echo ""
-  echo ""
-  echo "Action complete."
-else
-  echo "Invalid target hosts"
-fi
-
+cd ansible
+ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass -e "python_targets=$python_targets" playbook-install-python311.yml
+cd ..
+echo ""
+echo ""
+echo "Action complete."
 echo ""
