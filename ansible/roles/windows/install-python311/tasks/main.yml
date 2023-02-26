@@ -1,17 +1,17 @@
-- name: Check if Python 3 is already installed
-  vars:
-    ansible_shell_type: cmd
-  ansible.windows.win_shell: python --version
-  register: python_version_output
-  ignore_errors: true
+# - name: Check if Python 3 is already installed
+#   vars:
+#     ansible_shell_type: cmd
+#   ansible.windows.win_shell: python --version
+#   register: python_version_output
+#   ignore_errors: true
 
-- name: Check if pip packages are already installed
-  vars:
-    ansible_shell_type: cmd
-  ansible.windows.win_command: "{{ pip_executable }} list --format=columns | findstr /ix '{{ pip_packages }}'"
-  register: pip_packages_output
-  ignore_errors: true
-
+# - name: Check if pip packages are already installed
+#   vars:
+#     ansible_shell_type: cmd
+#   ansible.windows.win_command: "{{ pip_executable }} list --format=columns | findstr /ix '{{ pip_packages }}'"
+#   register: pip_packages_output
+#   ignore_errors: true
+---
 - name: Copy Python to target
   ansible.windows.win_copy:
     src: "{{ role_path }}/files/{{ python_name }}.exe"
