@@ -126,53 +126,53 @@ all:
         sensor:
           hosts:
             172.17.60.50
-        # operators:
-        #   children:
-        #     blue1:
-        #       hosts:
-        #         172.17.60.101
-        #     blue2:
-        #       hosts:
-        #         172.17.60.102
-        #     blue3:
-        #       hosts:
-        #         172.17.60.103
-        #     blue4:
-        #       hosts:
-        #         172.17.60.104
-        #     blue5:
-        #       hosts:
-        #         172.17.60.105
-        #     blue6:
-        #       hosts:
-        #         172.17.60.106
-        #     blue7:
-        #       hosts:
-        #         172.17.60.107
-        #     blue8:
-        #       hosts:
-        #         172.17.60.108
-        #     blue9:
-        #       hosts:
-        #         172.17.60.109
-        #     blue10:
-        #       hosts:
-        #         172.17.60.110
-        #     blue11:
-        #       hosts:
-        #         172.17.60.111
-        #     blue12:
-        #       hosts:
-        #         172.17.60.112
-        #     blue13:
-        #       hosts:
-        #         172.17.60.113
-        #     blue14:
-        #       hosts:
-        #         172.17.60.114
-        #     blue15:
-        #       hosts:
-        #         172.17.60.115
+        operators:
+          children:
+            blue1:
+              hosts:
+                172.17.60.101
+            blue2:
+              hosts:
+                172.17.60.102
+            blue3:
+              hosts:
+                172.17.60.103
+            blue4:
+              hosts:
+                172.17.60.104
+            blue5:
+              hosts:
+                172.17.60.105
+            blue6:
+              hosts:
+                172.17.60.106
+            blue7:
+              hosts:
+                172.17.60.107
+            blue8:
+              hosts:
+                172.17.60.108
+            blue9:
+              hosts:
+                172.17.60.109
+            blue10:
+              hosts:
+                172.17.60.110
+            blue11:
+              hosts:
+                172.17.60.111
+            blue12:
+              hosts:
+                172.17.60.112
+            blue13:
+              hosts:
+                172.17.60.113
+            blue14:
+              hosts:
+                172.17.60.114
+            blue15:
+              hosts:
+                172.17.60.115
     # linux:
     #   children:
     #     red:
