@@ -1,3 +1,11 @@
+- name: Check WSMan Trust clients setting
+  win_shell: 'winrm get winrm/config/client | findstr "TrustedHosts"'
+  register: trusted_hosts_output
+
+- name: Update WSMan Trust clients setting
+  win_shell: 'winrm set winrm/config/client @{TrustedHosts="*"}'
+  when: '"*"' not in trusted_hosts_output.stdout_lines[0]
+
 - name: Check if Python 3 is already installed
   win_shell: python --version
   register: python_version_output
