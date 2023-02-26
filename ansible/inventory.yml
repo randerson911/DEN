@@ -10,25 +10,20 @@ subnet:
   children:
     subnet1:
       hosts:
-        172.17.10.[4:13]:
-          ansible_host: "{{ item }}"
+        user[1:10]:
+          ansible_host: "172.17.10.{{ item }}"
           ansible_user: admin
           ansible_password: password
-        # Alternatively, if you prefer the user1, user2, ... naming:
-        # user[1:10]:
-        #   ansible_host: "172.17.10.{{ item }}"
-        #   ansible_user: admin
-        #   ansible_password: password
     subnet2:
-      hosts:
-        172.17.20.[4:13]:
-          ansible_host: "{{ item }}"
+      hosts:        
+        user[11:20]:
+          ansible_host: "172.17.10.{{ item }}"
           ansible_user: admin
           ansible_password: password
     subnet3:
-      hosts:
-        172.17.30.[4:13]:
-          ansible_host: "{{ item }}"
+      hosts:        
+        user[21:30]:
+          ansible_host: "172.17.10.{{ item }}"
           ansible_user: admin
           ansible_password: password
 
@@ -43,9 +38,9 @@ sensor:
       ansible_host: 172.17.60.50
 
 operators:
-  hosts:
-    172.17.60.[101:115]:
-      ansible_host: "{{ item }}"
+  hosts:        
+    blue[1:15]:
+      ansible_host: "172.17.60.{{ item + 100 }}"
       ansible_user: admin
       ansible_password: password
 
