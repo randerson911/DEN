@@ -20,19 +20,8 @@ if [ ! -f ansible/roles/linux/install-python311/files/python311.tar.gz ]; then
   curl -o ansible/roles/linux/install-python311/files/python311.tar.gz https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
 fi
 
-#!/bin/bash
-
-# Check if ansible.windows collection is installed
-if ! ansible-galaxy collection list | grep -q "ansible.windows"; then
-  echo "ansible.windows collection not found, installing..."
-  ansible-galaxy collection install ansible.windows
-fi
-
-# Check if ansible.posix collection is installed
-if ! ansible-galaxy collection list | grep -q "ansible.posix"; then
-  echo "ansible.posix collection not found, installing..."
-  ansible-galaxy collection install ansible.posix
-fi
+ansible-galaxy collection install ansible.windows
+ansible-galaxy collection install ansible.posix
 
 
 echo ""

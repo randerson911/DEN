@@ -10,20 +10,8 @@ then
     chmod 0600 /ansible/.vault_pass
 fi
 
-#!/bin/bash
-
-# Check if ansible.windows collection is installed
-if ! ansible-galaxy collection list | grep -q "ansible.windows"; then
-  echo "ansible.windows collection not found, installing..."
-  ansible-galaxy collection install ansible.windows
-fi
-
-# Check if ansible.posix collection is installed
-if ! ansible-galaxy collection list | grep -q "ansible.posix"; then
-  echo "ansible.posix collection not found, installing..."
-  ansible-galaxy collection install ansible.posix
-fi
-
+ansible-galaxy collection install ansible.windows
+ansible-galaxy collection install ansible.posix
 
 read -p "Enter target host to install VS Code on: " target_host
 
