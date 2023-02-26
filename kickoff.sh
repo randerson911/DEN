@@ -128,10 +128,21 @@ fi
 
 # Run the playbook
 cd ansible
-ansible-galaxy collection install davidban77.gns3
-ansible-galaxy collection install ansible.windows
-ansible-galaxy collection install ansible.posix
-ansible-playbook -i inventory --vault-password-file ./.vault_pass --extra-vars "target_host=$targets" playbook-kickoff.yml
+ansible-galaxy collection install davidban77.gns3#!/bin/bash
+
+# Check if ansible.windows collection is installed
+if ! ansible-galaxy collection list | grep -q "ansible.windows"; then
+  echo "ansible.windows collection not found, installing..."
+  ansible-galaxy collection install ansible.windows
+fi
+
+# Check if ansible.posix collection is installed
+if ! ansible-galaxy collection list | grep -q "ansible.posix"; then
+  echo "ansible.posix collection not found, installing..."
+  ansible-galaxy collection install ansible.posix
+fi
+
+ansible-playbook -i inventory --vault-password-file ./.vault_pass -e "target_host=$targets" -e "elastic_targets=datacenter,subnet1,subnet2,subnet3" playbook-kickoff.yml
 echo ""
 echo ""
 echo "Action complete."
