@@ -120,16 +120,12 @@ all:
             user30:
               hosts:
                 172.17.30.13
-        # gns3:
-        #   children:
-        #     gns3:
-        #       hosts:
-        #         10.255.255.100
-        # sensor:
-        #   children:
-        #     sensor:
-        #       hosts:
-        #         172.17.60.50
+        gns3:
+          hosts:
+            10.255.255.100
+        sensor:
+          hosts:
+            172.17.60.50
         # operators:
         #   children:
         #     blue1:
