@@ -6,13 +6,11 @@
 - name: Install Elastic Agent
   ansible.windows.win_package:
     path: "C:\\elastic-agent\\elastic-agent.exe"
-    name: Elastic Agent
     state: present
-    args:
+    arguments:
       - "--url=https://172.17.60.50:8220"
-      - "--enrollment-token={{vault_elastic_enrollment_token}}"
+      - "--enrollment-token=SEtOVHYzOEIwYzJrYk01WUJqYVk6a3NoMWJVQkdUMlcwU3RQRl9yYW5qdw=="
   register: result
-
 
 - name: Check if Elastic Agent was installed successfully
   debug:
