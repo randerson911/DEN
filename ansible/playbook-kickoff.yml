@@ -36,7 +36,7 @@
 #       include: ./playbook-login-random-users.yml
 ---
 - name: Configure Windows system for log ingestion (Elastic Agent)
-  hosts: datacenter subnet1 subnet2 subnet3
+  hosts: "{{ elastic_targets }}"
   gather_facts: false
   vars_files:
     - cobra.vault
@@ -48,7 +48,7 @@
     ansible_winrm_server_cert_validation: ignore
     ansible_winrm_operation_timeout_sec: 1000
     ansible_winrm_read_timeout_sec: 3200
-    anisble_winrm_connection_timeout_sec: 2000
+    ansible_winrm_connection_timeout_sec: 2000
     reconnection_retries: 10
     timeout: 60
   roles:

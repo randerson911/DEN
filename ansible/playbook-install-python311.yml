@@ -1,5 +1,5 @@
-- name: Download and install Python311 on Windows
-  hosts: " {{ $targets }} "
+- name: "Download and install Python311 on Windows"
+  hosts: " {{ python_targets }} "
   gather_facts: false
   vars_files:
     - cobra.vault

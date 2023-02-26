@@ -9,10 +9,6 @@ then
     chmod 0600 /ansible/.vault_pass
 fi
 
-# Prompt for the vault password
-echo "Enter the cobra vault password: "
-read -s vault_pass
-
 # Read the value of my_secret from my_vault
 cd ansible
 lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | grep linux_user_password | cut -d ' ' -f 2)
@@ -27,7 +23,7 @@ if [ ! -f ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows
 fi
 
 cd ansible
-ansible-playbook -i inventory --vault-password-file ./.vault_pass playbook-elastic-agent.yml
+ansible-playbook -i inventory --vault-password-file ./.vault_pass -e "elastic_targets=datacenter,subnet1,subnet2,subnet3" playbook-elastic-agent.yml
 
 echo ""
 echo ""
