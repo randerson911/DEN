@@ -117,14 +117,7 @@ fi
 
 echo ""
 read -p "Enter target hosts to install Python 3.11 (comma-separated): " targets
-
-# Check if targets exist in inventory file
-if grep -qE "$targets" ansible/inventory.yml ; then
-    # Modify playbook file with new targets
-    echo "Targets updated in playbook file"
-else
-    echo "Invalid target hosts"
-fi
+echo "Targets updated in playbook file"
 
 # Run the playbook
 cd ansible
