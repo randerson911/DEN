@@ -4,10 +4,10 @@
 if [ ! -f ansible/.vault_pass ]
 then
     echo "Please enter the vault password: "
-    read vault_pass
+    read -s vault_pass
 
-    echo $vault_pass > ansible/.vault_pass
-    chmod 0600 /ansible/.vault_pass
+    echo $vault_pass > ./ansible/.vault_pass
+    chmod 0600 ./ansible/.vault_pass
 fi
 
 ansible-galaxy collection install ansible.windows
