@@ -27,7 +27,7 @@
   when: python_version_output.rc != 0 or pip_packages_output.rc != 0
 
 - name: Install required pip packages
-  ansible.builtin.pip:
+  pip:
     name:
       - requests
       - pyyaml
