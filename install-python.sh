@@ -34,7 +34,7 @@ if grep -qE "$python_targets" ansible/inventory; then
   echo "Targets updated in playbook file"
   # Run the playbook
   cd ansible
-  ansible-playbook -i inventory --vault-password-file ./.vault_pass -e "python_targets=$python_targets" playbook-install-python311.yml
+  ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass -e "python_targets=$python_targets" playbook-install-python311.yml
   cd ..
   echo ""
   echo ""

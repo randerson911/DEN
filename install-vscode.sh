@@ -20,7 +20,7 @@ read -p "Enter target host to install VS Code on: " target_host
 if grep -qE "$target_host" ansible/inventory; then
     # Modify playbook file with new targets
     cd ansible
-    ansible-playbook -i inventory --vault-password-file ./.vault_pass -e "target_hosts=$target_host" playbook-install-vscode.yml
+    ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass -e "target_hosts=$target_host" playbook-install-vscode.yml
     cd ..
 else
     echo "Target host '$target_host' not found in inventory file."

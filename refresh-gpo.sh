@@ -10,7 +10,7 @@ then
 fi
 
 cd ansible
-ansible-playbook -i inventory --vault-password-file ./.vault_pass playbook-gpupdate.yml
+ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass playbook-gpupdate.yml
 echo ""
 echo ""
 echo "Action complete."

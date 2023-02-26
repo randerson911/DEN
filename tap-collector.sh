@@ -12,7 +12,7 @@ fi
 
 cd ansible
 ansible-galaxy collection install davidban77.gns3
-ansible-playbook -i inventory --vault-password-file ./.vault_pass playbook-tap-collector.yml
+ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass playbook-tap-collector.yml
 echo ""
 echo ""
 echo "Action complete."

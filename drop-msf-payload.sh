@@ -32,7 +32,7 @@ read targs
 sed -i "/- name: Drop/{n;s/.*/  hosts: $targs/}" ansible/playbook-msf-drop-payload.yml
 
 cd ansible
-ansible-playbook -i inventory --vault-password-file ./.vault_pass playbook-msf-drop-payload.yml
+ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass playbook-msf-drop-payload.yml
 echo ""
 echo ""
 echo "Action complete."

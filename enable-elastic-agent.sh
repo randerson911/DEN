@@ -23,7 +23,7 @@ if [ ! -f ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows
 fi
 
 cd ansible
-ansible-playbook -i inventory --vault-password-file ./.vault_pass -e "elastic_targets=datacenter,subnet1,subnet2,subnet3" playbook-elastic-agent.yml
+ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass -e "elastic_targets=datacenter,subnet1,subnet2,subnet3" playbook-elastic-agent.yml
 
 echo ""
 echo ""
