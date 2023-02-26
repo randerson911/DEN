@@ -1,51 +1,36 @@
-- name: Check WSMan Trust clients setting
-  win_shell: 'winrm get winrm/config/client | findstr "TrustedHosts"'
-  register: trusted_hosts_output
-
-- name: Update WSMan Trust clients setting
-  win_shell: 'winrm set winrm/config/client @{TrustedHosts="*"}'
-  when: "'*'' not in trusted_hosts_output.stdout_lines[0]"
-
 - name: Check if Python 3 is already installed
-  win_shell: python --version
+  vars:
+    ansible_shell_type: cmd
+  ansible.windows.win_shell: python --version
   register: python_version_output
   ignore_errors: true
 
 - name: Check if pip packages are already installed
-  win_command: C:\Tools\Python311\Scripts\pip3.exe list --format=columns | findstr /ix "requests pyyaml thehive4py python-magic-dev libmagic elasticsearch7 kubernetes keycloak"
+  vars:
+    ansible_shell_type: cmd
+  ansible.windows.win_command: "{{ pip_executable }} list --format=columns | findstr /ix '{{ pip_packages }}'"
   register: pip_packages_output
   ignore_errors: true
 
-- name: Copy Python311 to target
-  win_copy:
-    src: "{{ role_path }}/files/{{ python311_exe }}"
-    dest: "C:\\{{ python311_exe }}"
+- name: Copy Python to target
+  ansible.windows.win_copy:
+    src: "{{ role_path }}/files/{{ python_version }}.exe"
+    dest: "{{ python_install_path }}/{{ python_version }}.exe"
   when: python_version_output.rc != 0
 
-- name: Install Python311
-  win_shell: C:\{{ python311_exe }} /quiet InstallAllUsers=1 TargetDir=C:\Tools\Python311 PrependPath=1
+- name: Install Python
+  ansible.windows.win_shell: "{{ python_install_path }}/{{ python_version }}.exe /quiet InstallAllUsers=1 TargetDir={{ python_install_path }} PrependPath=1"
   when: python_version_output.rc != 0
 
-- name: Set Python311 path
-  win_environment:
+- name: Set Python path
+  ansible.windows.win_environment:
     name: PATH
-    value: C:\Tools\Python311;C:\Tools\Python311\Scripts
+    value: "{{ python_install_path }};{{ python_install_path }}\\Scripts"
     state: present
     level: machine
   when: python_version_output.rc != 0 or pip_packages_output.rc != 0
 
 - name: Install required pip packages
-  pip:
-    name:
-      - requests
-      - pyyaml
-      - thehive4py
-      - python-magic-dev
-      - libmagic
-      - elasticsearch7
-      - kubernetes
-      - keycloak
-    state: latest
-    executable: C:\Tools\Python311\Scripts\pip3.exe
-
-
+  ansible.builtin.pip:
+    name: "{{ pip_packages.split() }}"
+    executable: "{{ pip_executable }}"
