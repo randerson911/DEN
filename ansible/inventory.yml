@@ -1,81 +1,64 @@
-all:
-  children:
-    datacenter:
-      hosts:
-        dc1: 172.17.40.4
-        dc2: 172.17.40.5
-    subnet:
-      children:
-        subnet1:
-          hosts:
-            user1: 172.17.10.4
-            user2: 172.17.10.5
-            user3: 172.17.10.6
-            user4: 172.17.10.7
-            user5: 172.17.10.8
-            user6: 172.17.10.9
-            user7: 172.17.10.10
-            user8: 172.17.10.11
-            user9: 172.17.10.12
-            user10: 172.17.10.13
-        subnet2:
-          hosts:
-            user11: 172.17.20.4
-            user12: 172.17.20.5
-            user13: 172.17.20.6
-            user14: 172.17.20.7
-            user15: 172.17.20.8
-            user16: 172.17.20.9
-            user17: 172.17.20.10
-            user18: 172.17.20.11
-            user19: 172.17.20.12
-            user20: 172.17.20.13
-        subnet3:
-          hosts:
-            user21: 172.17.30.4
-            user22: 172.17.30.5
-            user23: 172.17.30.6
-            user24: 172.17.30.7
-            user25: 172.17.30.8
-            user26: 172.17.30.9
-            user27: 172.17.30.10
-            user28: 172.17.30.11
-            user29: 172.17.30.12
-            user30: 172.17.30.13
-    gns3:
-      hosts:
-        host1: 10.255.255.100
-    sensor:
-      hosts:
-        host1: 172.17.60.50
-    operators:
-      hosts: 
-        blue1: 172.17.60.101
-        blue2: 172.17.60.102
-        blue3: 172.17.60.103
-        blue4: 172.17.60.104
-        blue5: 172.17.60.105
-        blue6: 172.17.60.106
-        blue7: 172.17.60.107
-        blue8: 172.17.60.108
-        blue9: 172.17.60.109
-        blue10: 172.17.60.110
-        blue11: 172.17.60.111
-        blue12: 172.17.60.112
-        blue13: 172.17.60.113
-        blue14: 172.17.60.114
-        blue15: 172.17.60.115
+---
+datacenter:
+  hosts:
+    dc1:
+      ansible_host: 172.17.40.4
+    dc2:
+      ansible_host: 172.17.40.5
 
-  vars:
-    python_version: 3.11.2
-    python_install_path: C:\Tools\Python311
-    pip_packages:
-      - requests
-      - pyyaml
-      - thehive4py
-      - python-magic-dev
-      - libmagic
-      - elasticsearch7
-      - kubernetes
-      - keycloak
-    pip_executable: C:\Tools\Python311\Scripts\pip3.exe
+subnet:
+  children:
+    subnet1:
+      hosts:
+        172.17.10.[4:13]:
+          ansible_host: "{{ item }}"
+          ansible_user: admin
+          ansible_password: password
+        # Alternatively, if you prefer the user1, user2, ... naming:
+        # user[1:10]:
+        #   ansible_host: "172.17.10.{{ item }}"
+        #   ansible_user: admin
+        #   ansible_password: password
+    subnet2:
+      hosts:
+        172.17.20.[4:13]:
+          ansible_host: "{{ item }}"
+          ansible_user: admin
+          ansible_password: password
+    subnet3:
+      hosts:
+        172.17.30.[4:13]:
+          ansible_host: "{{ item }}"
+          ansible_user: admin
+          ansible_password: password
+
+gns3:
+  hosts:
+    host1:
+      ansible_host: 10.255.255.100
+
+sensor:
+  hosts:
+    host1:
+      ansible_host: 172.17.60.50
+
+operators:
+  hosts:
+    172.17.60.[101:115]:
+      ansible_host: "{{ item }}"
+      ansible_user: admin
+      ansible_password: password
+
+operators:vars:
+  python_version: 3.11.2
+  python_install_path: C:\Tools\Python311
+  pip_packages:
+    - requests
+    - pyyaml
+    - thehive4py
+    - python-magic-dev
+    - libmagic
+    - elasticsearch7
+    - kubernetes
+    - keycloak
+  pip_executable: C:\Tools\Python311\Scripts\pip3.exe
