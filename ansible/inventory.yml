@@ -172,6 +172,19 @@ windows:
           hosts:
             172.17.60.115
 linux:
+  vars:
+    python_version: 3.11.2
+    python_install_path: opt/tools/python311
+    pip_packages:
+      - requests
+      - pyyaml
+      - thehive4py
+      - python-magic-dev
+      - libmagic
+      - elasticsearch7
+      - kubernetes
+      - keycloak
+    pip_executable: /opt/tools/python311/bin/pip
   children:
     red:
       children:
