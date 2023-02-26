@@ -38,22 +38,21 @@ sensor:
       ansible_host: 172.17.60.50
 
 operators:
+  vars:
+    python_version: 3.11.2
+    python_install_path: C:\Tools\Python311
+    pip_packages:
+      - requests
+      - pyyaml
+      - thehive4py
+      - python-magic-dev
+      - libmagic
+      - elasticsearch7
+      - kubernetes
+      - keycloak
+    pip_executable: C:\Tools\Python311\Scripts\pip3.exe
   hosts:        
     blue[1:15]:
       ansible_host: "172.17.60.{{ item + 100 }}"
       ansible_user: admin
       ansible_password: password
-
-operators:vars:
-  python_version: 3.11.2
-  python_install_path: C:\Tools\Python311
-  pip_packages:
-    - requests
-    - pyyaml
-    - thehive4py
-    - python-magic-dev
-    - libmagic
-    - elasticsearch7
-    - kubernetes
-    - keycloak
-  pip_executable: C:\Tools\Python311\Scripts\pip3.exe
