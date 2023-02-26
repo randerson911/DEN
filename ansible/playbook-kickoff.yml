@@ -56,7 +56,7 @@
     - role: roles/windows/elastic-agent
 
 - name: Download and install Python311 on Windows
-  hosts: " {{ target_host }} "
+  hosts: "{{ target_host }}"
   gather_facts: false
   vars_files:
     - cobra.vault
@@ -127,7 +127,7 @@
     - role: roles/windows/login-random-users
 
 - name: Install VS Code on Windows target
-  hosts: " {{ target_host }} "
+  hosts: "{{ target_host }}"
   gather_facts: no
   become: true
   vars_files:
