@@ -27,7 +27,7 @@
   when: python_version_output.rc != 0 or pip_packages_output.rc != 0
 
 - name: Install requests and pyyaml with pip3
-  win_pip:
+  community.windows.win_pip:
     name:
       - requests
       - pyyaml
@@ -39,5 +39,5 @@
       - keycloak
     state: latest
     executable: C:\Tools\Python311\Scripts\pip3.exe
-  when: python_version_output.rc == 0 and pip_packages_output.rc != 0
+
 

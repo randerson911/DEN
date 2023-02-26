@@ -129,6 +129,8 @@ fi
 # Run the playbook
 cd ansible
 ansible-galaxy collection install davidban77.gns3
+ansible-galaxy collection install ansible.windows
+ansible-galaxy collection install ansible.posix
 ansible-playbook -i inventory --vault-password-file ./.vault_pass --extra-vars "target_host=$targets" playbook-kickoff.yml
 echo ""
 echo ""
