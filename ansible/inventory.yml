@@ -126,15 +126,11 @@ all:
           hostname: blue14
         172.17.60.115:
           hostname: blue15
-    red4:
+    red:
       hosts:
         10.96.11.9:
           hostname: red4
-    red5:
-      hosts:
         10.97.3.24:
           hostname: red5
-    red6:
-      hosts:
         10.99.6.14:
           hostname: red6
