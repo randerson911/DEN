@@ -5,7 +5,7 @@
 
 - name: Install Elastic Agent
   ansible.windows.win_package:
-    path: "C:\\elastic-agent\\elastic-agent.exe"
+    path: "C:\elastic-agent\elastic-agent.exe"
     state: present
     arguments:
       - "--url=https://172.17.60.50:8220"
