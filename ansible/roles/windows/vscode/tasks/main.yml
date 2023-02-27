@@ -1,16 +1,19 @@
 ---
 - name: Ensure VSCode install directory exists
+  ignore_errors: true
   ansible.windows.win_file:
     path: "C:\\Tools\\VSCode"
     state: directory
 
 - name: Download VS Code installer
+  ignore_errors: true
   ansible.windows.win_get_url:
     url: "{{ vs_code_url }}"
     dest: "C:\\Tools\\VSCode\\vscode-latest.exe"
     validate_certs: no
 
 - name: Install Visual Studio Code
+  ignore_errors: true
   ansible.windows.win_package:
     path: "{{ role_path }}/files/vscode-latest.exe"
     product_id: "Microsoft.VisualStudioCode"
@@ -25,6 +28,7 @@
     }
 
 - name: Install VS Code extensions
+  ignore_errors: true
   win_chocolatey:
     name: "{{ item }}"
     state: present
