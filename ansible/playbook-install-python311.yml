@@ -6,7 +6,7 @@
     python_windows_dest: ansible/roles/windows/install-python311/files/python311.exe
     python_linux_url: https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
     python_linux_dest: ansible/roles/linux/install-python311/files/python311.tar.gz
-  task:
+  tasks:
   - name: Download Python for Windows
     get_url:
       url: "{{ python_windows_url }}"
