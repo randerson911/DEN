@@ -29,7 +29,17 @@
       Set-ExecutionPolicy Bypass -Scope Process -Force;
       iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
     }
+  async: 900
+  poll: 10
   register: chocolatey_result
+
+- name: Wait for Chocolatey installation to complete
+  async_status:
+    jid: "{{ chocolatey_result.ansible_job_id }}"
+  register: job_result
+  until: job_result.finished
+  retries: 90
+  delay: 10
 
 - name: Install VS Code extensions
   ignore_errors: true
