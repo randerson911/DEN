@@ -45,7 +45,7 @@ if [ ! -f lmarker.txt ]; then
 
 pip3 install pyyaml
 
-python3 login-random-users.py ./ansible/inventory.yml users.txt
+python3 ./login-random-users.py ./ansible/inventory.yml users.txt
 
 fi
 
