@@ -1,3 +1,4 @@
+---
 - name: Install VS Code on Windows target
   hosts: "{{ target_host }}"
   gather_facts: false
