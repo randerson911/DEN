@@ -6,7 +6,7 @@
 
 - name: Download VS Code installer
   ansible.windows.win_get_url:
-    url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
+    url: "{{ vs_code_url }}"
     dest: "C:\\Tools\\VSCode\\vscode-latest.exe"
     validate_certs: no
   become: true
