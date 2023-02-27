@@ -17,7 +17,7 @@
   ansible.windows.win_package:
     path: "{{ role_path }}/files/vscode-latest.exe"
     product_id: "Microsoft.VisualStudioCode"
-    arguments: "--addMicrosoft.VisualStudioCode.ProductFamilyName=VSCode --addMicrosoft.VisualStudioCode.AppUserModelId=Microsoft.VisualStudioCode --addMicrosoft.VisualStudioCode.InstallLocation=C:\Tools\VSCode --force"
+    arguments: "--addMicrosoft.VisualStudioCode.ProductFamilyName=VSCode --addMicrosoft.VisualStudioCode.AppUserModelId=Microsoft.VisualStudioCode --addMicrosoft.VisualStudioCode.InstallLocation=C:\\Tools\\VSCode --force"
     state: present
 
 - name: Install Chocolatey if not already installed
