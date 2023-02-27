@@ -41,6 +41,9 @@
     - vscode-python
     - vscode-pylance
     - vscode-jupyter
+    - vscode-powershell
+    - vscode-prettier
+    - vscode-yaml
   register: extension_result
 
 - name: Redirect error messages to log file
