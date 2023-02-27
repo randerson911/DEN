@@ -43,7 +43,7 @@ if [ ! -f lmarker.txt ]; then
   lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | grep linux_user_password | cut -d ' ' -f 2)
   cd ..
 
-pip install pyyaml
+pip3 install pyyaml
 
 python3 modify_inventory.py ./ansible/inventory.yml users.txt
 
