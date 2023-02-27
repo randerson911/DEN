@@ -1,10 +1,10 @@
 ---
-- name: Ensure Python install directory exists
+- name: Ensure VSCode install directory exists
   ansible.windows.win_file:
     path: "C:\\Tools\\VSCode"
     state: directory
 
-- name: Copy Python to target
+- name: Copy VSCode to target
   ansible.windows.win_copy:
     src: "{{ role_path }}/files/vscode-latest.exe"
     dest: "C:\\Tools\\vscode-latest.exe"
