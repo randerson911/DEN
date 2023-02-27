@@ -39,7 +39,7 @@
   with_items:
     - vscode-python
     - vscode-pylance
-    - ms-toolsai.jupyter
+    - vscode-jupyter
   register: extension_result
 
 - name: Redirect error messages to log file
