@@ -74,7 +74,7 @@ lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | gre
 cd ..
 
 echo $lpass | sudo -S apt update
-echo $lpass | sudo -S apt install unzip -y
+echo $lpass | sudo -S apt install unzip jq -y
 
 # Print the value of my_secret
 #echo "The linux password is: $lpass"
