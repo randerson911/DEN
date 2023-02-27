@@ -10,9 +10,9 @@
     url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
     dest: "C:\\Tools\\VSCode\\vscode-latest.exe"
     validate_certs: no
-  become: yes
+  become: true
   become_method: runas
-  become_user: "{{ admin_username }}"
+  become_user: "{{ vault_den_user }}"
 
 - name: Install VS Code latest for Windows
   ansible.windows.win_shell: "C:\\Tools\\VSCode\vscode-latest.exe /verysilent /mergetasks=!runcode"
