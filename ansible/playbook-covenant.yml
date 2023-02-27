@@ -1,3 +1,4 @@
+---
 - name: Run Covenant Docker Container
   hosts: "replace me"
   gather_facts: false
