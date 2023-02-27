@@ -55,25 +55,6 @@
     - role: roles/windows/root-cert
     - role: roles/windows/elastic-agent
 
-- name: Download and install Python311 on Windows
-  hosts: "{{ target_host }}"
-  gather_facts: false
-  vars_files:
-    - cobra.vault
-  vars:
-    ansible_user: "{{ vault_den_user }}"
-    ansible_password: "{{ vault_den_user_password }}"
-    ansible_connection: winrm
-    ansible_winrm_transport: credssp
-    ansible_winrm_server_cert_validation: ignore
-    ansible_winrm_operation_timeout_sec: 1000
-    ansible_winrm_read_timeout_sec: 3200
-    anisble_winrm_connection_timeout_sec: 2000
-    reconnection_retries: 10
-    timeout: 60
-  roles:
-    - role: roles/windows/install-python311
-
 - name: Auto connect collector
   hosts: gns3
   gather_facts: no
@@ -125,6 +106,25 @@
   roles:
     - role: roles/windows/gpupdate
     - role: roles/windows/login-random-users
+
+- name: Download and install Python311 on Windows
+  hosts: "{{ target_host }}"
+  gather_facts: false
+  vars_files:
+    - cobra.vault
+  vars:
+    ansible_user: "{{ vault_den_user }}"
+    ansible_password: "{{ vault_den_user_password }}"
+    ansible_connection: winrm
+    ansible_winrm_transport: credssp
+    ansible_winrm_server_cert_validation: ignore
+    ansible_winrm_operation_timeout_sec: 1000
+    ansible_winrm_read_timeout_sec: 3200
+    anisble_winrm_connection_timeout_sec: 2000
+    reconnection_retries: 10
+    timeout: 60
+  roles:
+    - role: roles/windows/install-python311
 
 - name: Install VS Code on Windows target
   hosts: "{{ target_host }}"
