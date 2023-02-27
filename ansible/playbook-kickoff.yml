@@ -1,4 +1,38 @@
 ---
+- name: Download the required vars_files
+  hosts: localhost
+  vars:
+    windows_zip_url: https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-windows-x86_64.zip
+    windows_zip_dest: ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip
+    python_windows_url: https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe
+    python_windows_dest: ansible/roles/windows/install-python311/files/python311.exe
+    python_linux_url: https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
+    python_linux_dest: ansible/roles/linux/install-python311/files/python311.tar.gz
+  tasks:
+  - name: Download and extract Elastic Agent for Windows
+    get_url:
+      url: "{{ windows_zip_url }}"
+      dest: "{{ windows_zip_dest }}"
+    when: not (ansible_check_mode | bool) and not (lookup('file', windows_zip_dest, errors='ignore') is defined)
+
+  - name: Extract Elastic Agent for Windows
+    unarchive:
+      src: "{{ windows_zip_dest }}"
+      dest: "{{ windows_zip_dest | dirname }}"
+
+  - name: Download Python for Windows
+    get_url:
+      url: "{{ python_windows_url }}"
+      dest: "{{ python_windows_dest }}"
+    when: not (ansible_check_mode | bool) and not (lookup('file', python_windows_dest, errors='ignore') is defined)
+
+  - name: Download Python for Linux
+    get_url:
+      url: "{{ python_linux_url }}"
+      dest: "{{ python_linux_dest }}"
+    when: not (ansible_check_mode | bool) and not (lookup('file', python_linux_dest, errors='ignore') is defined)
+
+
 - name: Configure Windows system for log ingestion (Elastic Agent)
   hosts: "{{ elastic_targets }}"
   gather_facts: false
