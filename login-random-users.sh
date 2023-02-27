@@ -44,8 +44,7 @@ if [ ! -f lmarker.txt ]; then
   echo " Installing the required application to modify the yaml file"
   echo ""
   echo ""
-  echo $lpass | sudo -S apt update
-  echo $lpass | sudo -S apt install yq -y
+  pip install yq
 
   echo ""
   echo "Modify inventory file and integrate selected users."
