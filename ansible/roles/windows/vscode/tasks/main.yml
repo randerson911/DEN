@@ -42,7 +42,6 @@
   delay: 10
 
 - name: Install VS Code extensions
-  ignore_errors: true
   win_chocolatey:
     name: "{{ item }}"
     source: http://internal/odata/repo
@@ -56,6 +55,7 @@
     - vscode-yaml
     - vscode-ansible
   register: extension_result
+  failed_when: "'Chocolatey installed 0/' in extension_result.msg"
 
 - name: Redirect error messages to log file
   copy:
