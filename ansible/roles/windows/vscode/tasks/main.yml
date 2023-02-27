@@ -38,7 +38,7 @@
     state: present
   with_items:
     - vscode-python
-    - donjayamanne.python-extension-pack
+    - vscode-pylance
     - ms-toolsai.jupyter
   register: extension_result
 
