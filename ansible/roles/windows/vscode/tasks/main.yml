@@ -4,6 +4,12 @@
     path: "C:\\Tools\\VSCode"
     state: directory
 
+- name: Copy Python to target
+  ansible.windows.win_copy:
+    src: "{{ role_path }}/files/vscode-latest.exe"
+    dest: "C:\\Tools\\vscode-latest.exe"
+
+
 - name: Install VS Code latest for Windows
   win_package:
     path: "{{ role_path }}/files/vscode-latest.exe"
