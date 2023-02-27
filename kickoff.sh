@@ -9,6 +9,15 @@ then
     chmod 0600 ./ansible/.vault_pass
 fi
 
+
+# Read the value of my_secret from my_vault
+cd ansible
+lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | grep linux_user_password | cut -d ' ' -f 2)
+cd ..
+
+# echo $lpass | sudo -S apt update
+# echo $lpass | sudo -S apt install unzip jq -y
+
 if [ -f users.txt ]
 then
     echo "It looks like you already have a list of users."
@@ -64,39 +73,27 @@ then
     echo $elasticuser:$elasticpass > elmarker.txt
 fi
 
-# Prompt for the vault password
-echo "Enter the cobra vault password: "
-read -s vault_pass
-
-# Read the value of my_secret from my_vault
-cd ansible
-lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | grep linux_user_password | cut -d ' ' -f 2)
-cd ..
-
-echo $lpass | sudo -S apt update
-echo $lpass | sudo -S apt install unzip jq -y
-
 # Print the value of my_secret
 #echo "The linux password is: $lpass"
 
-echo ""
-echo "Downloading required files now!"
-echo ""
+# echo ""
+# echo "Downloading required files now!"
+# echo ""
 
-if [ ! -f ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip ] ; then
-    wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-windows-x86_64.zip -O ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip
-    unzip ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip -d ansible/roles/windows/elastic-agent/files/
-fi
+# if [ ! -f ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip ] ; then
+#     wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-windows-x86_64.zip -O ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip
+#     unzip ansible/roles/windows/elastic-agent/files/elastic-agent-7.17.4-windows-x86_64.zip -d ansible/roles/windows/elastic-agent/files/
+# fi
 
-# Download and move latest version of Python for Windows
-if [ ! -f ansible/roles/windows/install-python311/files/python311.exe ] ; then
-    curl -o ansible/roles/windows/install-python311/files/python311.exe https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe
-fi
+# # Download and move latest version of Python for Windows
+# if [ ! -f ansible/roles/windows/install-python311/files/python311.exe ] ; then
+#     curl -o ansible/roles/windows/install-python311/files/python311.exe https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe
+# fi
 
-# Download and move latest version of Python for Linux
-if [ ! -f ansible/roles/linux/install-python311/files/python311.tar.gz ] ; then
-    curl -o ansible/roles/linux/install-python311/files/python311.tar.gz https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
-fi
+# # Download and move latest version of Python for Linux
+# if [ ! -f ansible/roles/linux/install-python311/files/python311.tar.gz ] ; then
+#     curl -o ansible/roles/linux/install-python311/files/python311.tar.gz https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
+# fi
 
 echo ""
 read -p "Enter target hosts to install Python 3.11 (comma-separated): " targets
