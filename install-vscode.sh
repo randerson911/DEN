@@ -13,6 +13,11 @@ fi
 ansible-galaxy collection install ansible.windows
 ansible-galaxy collection install ansible.posix
 
+# Download and move latest version of Python for Windows
+if [ ! -f ansible/roles/windows/vscode/files/vscode-latest.exe ]; then
+  curl -o ansible/roles/windows/vscode/files/vscode-latest.exe https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe
+fi
+
 read -p "Enter target host to install VS Code on: " target_host
 
 cd ansible
