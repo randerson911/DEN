@@ -35,32 +35,63 @@ then
     cat users.txt
 fi
 
-if [ ! -f lmarker.txt ]
-then
 
-    if grep -q "user1:vars" ansible/inventory.yml
-    then
-        lnr=$(sed -n '/##marker/=' ansible/inventory.yml)
-        sed -i "1, $lnr ! d" ansible/inventory.yml
+if [ ! -f lmarker.txt ]; then
+  cd ansible
+  lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | grep linux_user_password | cut -d ' ' -f 2)
+  cd ..
+
+  echo $lpass | sudo -S apt update
+  echo $lpass | sudo -S apt install yq -y
+
+  echo ""
+  echo "Modify inventory file and integrate selected users."
+
+  # loop over users and set variable and subnet
+  c=0
+  while IFS= read -r line; do
+    let c=c+1
+    section=".windows.children."
+    if [ $c -le 10 ]; then
+      section+="subnet1.children.user$c.vars"
+    elif [ $c -le 20 ]; then
+      section+="subnet2.children.user$c.vars"
+    else
+      section+="subnet3.children.user$c.vars"
     fi
+    yq eval "$section.uname = \"$line\"" -i ansible/inventory.yml
+  done < users.txt
 
-    echo ""
-    echo "Modify inventory file and integrate selected users."
-
-    c=0
-    var1="user"
-    var2=":vars"
-    varname="uname="
-
-    cat users.txt | while read line
-    do
-        let c=c+1
-        echo "" >> ansible/inventory.yml
-        echo [$var1$c$var2] >> ansible/inventory.yml
-        echo $varname$line >> ansible/inventory.yml
-    done
-    echo "Complete." > lmarker.txt
+  echo "Complete." > lmarker.txt
 fi
+
+
+# if [ ! -f lmarker.txt ]
+# then
+
+#     if grep -q "user1:vars" ansible/inventory.yml
+#     then
+#         lnr=$(sed -n '/##marker/=' ansible/inventory.yml)
+#         sed -i "1, $lnr ! d" ansible/inventory.yml
+#     fi
+
+#     echo ""
+#     echo "Modify inventory file and integrate selected users."
+
+#     c=0
+#     var1="user"
+#     var2=":vars"
+#     varname="uname="
+
+#     cat users.txt | while read line
+#     do
+#         let c=c+1
+#         echo "" >> ansible/inventory.yml
+#         echo [$var1$c$var2] >> ansible/inventory.yml
+#         echo $varname$line >> ansible/inventory.yml
+#     done
+#     echo "Complete." > lmarker.txt
+# fi
 
 cd ansible
 ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass playbook-login-random-users.yml
