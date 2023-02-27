@@ -1,4 +1,9 @@
 ---
+- name: Ensure Python install directory exists
+  ansible.windows.win_file:
+    path: "C:\\Tools\\VSCode"
+    state: directory
+
 - name: Install VS Code latest for Windows
   win_package:
     path: "{{ role_path }}/files/vscode-latest.exe"
