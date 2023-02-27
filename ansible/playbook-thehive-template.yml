@@ -20,7 +20,7 @@
 
     - name: Create TheHive Case Template
       ansible.builtin.uri:
-        url: https://172.17.40.15/api/case/template
+        url: https://172.17.40.15:9000/api/case/template
         method: POST
         validate_certs: false
         headers:
