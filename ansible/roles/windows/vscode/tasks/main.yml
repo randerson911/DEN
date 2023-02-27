@@ -9,9 +9,6 @@
     url: "{{ vs_code_url }}"
     dest: "C:\\Tools\\VSCode\\vscode-latest.exe"
     validate_certs: no
-  become: true
-  become_method: runas
-  become_user: "{{ vault_den_user }}"
 
 - name: Install Visual Studio Code
   ansible.windows.win_package:
