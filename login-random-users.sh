@@ -44,7 +44,7 @@ if [ ! -f lmarker.txt ]; then
   echo " Installing the required application to modify the yaml file"
   echo ""
   echo ""
-  pip install yq
+  pip install yq 2>/dev/null
 
   echo ""
   echo "Modify inventory file and integrate selected users."
