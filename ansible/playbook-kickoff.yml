@@ -129,23 +129,21 @@
 - name: Install VS Code on Windows target
   hosts: "{{ target_host }}"
   gather_facts: no
-  become: true
   vars_files:
     - cobra.vault
   vars:
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
+    ansible_connection: winrm
+    ansible_winrm_transport: credssp
+    ansible_winrm_server_cert_validation: ignore
+    ansible_winrm_operation_timeout_sec: 1000
+    ansible_winrm_read_timeout_sec: 3200
+    anisble_winrm_connection_timeout_sec: 2000
+    reconnection_retries: 10
+    log_file_path: "./ansible-errors.log"
+    timeout: 60
     vs_code_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
   roles:
     - roles/windows/vscode
-  tasks:
-    - name: Download VS Code latest for Windows
-      ansible.builtin.get_url:
-        url: "{{ vs_code_url }}"
-        dest: roles/windows/vscode/files/vscode-latest.exe
-      register: download_result
-      ignore_errors: true
-    - name: Print error message if download failed
-      debug:
-        msg: "Error downloading VS Code: {{ download_result.msg }}"
-      when: download_result is failed
+
