@@ -34,31 +34,14 @@ then
     cat users.txt
 fi
 
-if [ ! -f lmarker.txt ]
-then
+if [ ! -f lmarker.txt ]; then
+  pip3 install pyyaml
+  
+  python3 ./login-random-users.py ./ansible/inventory.yml users.txt
 
-    if grep -q "user1:vars" ansible/inventory.yml
-    then
-        lnr=$(sed -n '/##marker/=' ansible/inventory.yml)
-        sed -i "1, $lnr ! d" ansible/inventory.yml
-    fi
+  echo "Inventory has been updated to include uname: username vars now."
+  echo "Complete!" > lmarker.txt
 
-    echo ""
-    echo "Modify inventory file and integrate selected users."
-
-    c=0
-    var1="user"
-    var2=":vars"
-    varname="uname="
-
-    cat users.txt | while read line
-    do
-        let c=c+1
-        echo "" >> ansible/inventory.yml
-        echo [$var1$c$var2] >> ansible/inventory.yml
-        echo $varname$line >> ansible/inventory.yml
-    done
-    echo "Complete." > lmarker.txt
 fi
 
 if [ ! -f elmarker.txt ]
