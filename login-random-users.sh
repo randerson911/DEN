@@ -37,50 +37,41 @@ fi
 
 
 if [ ! -f lmarker.txt ]; then
-  # check that ansible-vault command and password file exist
-  if ! which ansible-vault >/dev/null || ! test -f ansible/.vault_pass; then
-    echo "Error: ansible-vault command or password file not found."
-    exit 1
-  fi
-
-  # get linux user password from vault
   cd ansible
   lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | grep linux_user_password | cut -d ' ' -f 2)
   cd ..
 
-  # install yq if not already installed
-  if ! pip show yq >/dev/null; then
-    echo "Installing the required application [yq] to modify the yaml file"
-    pip install yq 2>/dev/null
-    if ! pip show yq >/dev/null; then
-      echo "Error: yq installation failed."
-      exit 1
-    fi
-  fi
-
-  echo ""
   echo "Modify inventory file and integrate selected users."
+  
+  # Check if the inventory file is still readable by ansible-inventory
+  if ! ansible-inventory -i ansible/inventory.yml --list >/dev/null 2>&1; then
+    echo "Error: inventory file is not readable by ansible-inventory"
+    exit 1
+  fi
 
   # loop over users and set variable and subnet
   c=0
   while IFS= read -r line; do
     let c=c+1
-    section=".windows.children."
     if [ $c -le 10 ]; then
-      section+="subnet1.children.user$c.vars"
+      subnet="subnet1"
     elif [ $c -le 20 ]; then
-      section+="subnet2.children.user$c.vars"
+      subnet="subnet2"
     else
-      section+="subnet3.children.user$c.vars"
+      subnet="subnet3"
     fi
-    if ! yq eval "$section.\"uname\" = \"$line\"" -i ansible/inventory.yml; then
-      echo "Error: Failed to update inventory file."
-      exit 1
-    fi
+    host="user$c"
+    varname="uname"
+    varvalue="$line"
+    awk -v subnet="$subnet" -v host="$host" -v varname="$varname" -v varvalue="$varvalue" '
+      # Check if we are in the right section
+      $1 == "[" && $2 == host "]"{ found = 1 }
+      $1 == "[" && $2 != host "{ found = 0 }
+      # If we are in the right section, set the variable
+      found && $1 == varname"{ $2 = varvalue }
+      1 # Print the line
+    ' ansible/inventory.yml > tmpfile && mv tmpfile ansible/inventory.yml
   done < users.txt
-
-  echo "Inventory file updated successfully."
-  echo "Complete." > lmarker.txt
 fi
 
 
