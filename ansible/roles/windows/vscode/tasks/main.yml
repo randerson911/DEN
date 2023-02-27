@@ -4,11 +4,15 @@
     path: "C:\\Tools\\VSCode"
     state: directory
 
-- name: Copy VSCode to target
-  ansible.windows.win_copy:
-    src: "{{ role_path }}/files/vscode-latest.exe"
-    dest: "C:\\Tools\\VSCode\\vscode-latest.exe"
 
+- name: Download VS Code installer
+  ansible.windows.win_get_url:
+    url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
+    dest: "C:\\Tools\\VSCode\\vscode-latest.exe"
+    validate_certs: no
+  become: yes
+  become_method: runas
+  become_user: "{{ admin_username }}"
 
 - name: Install VS Code latest for Windows
   ansible.windows.win_shell: "C:\\Tools\\VSCode\vscode-latest.exe /verysilent /mergetasks=!runcode"
