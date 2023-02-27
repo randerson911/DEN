@@ -4,6 +4,7 @@
   ansible.windows.win_file:
     path: "C:\\Tools\\VSCode"
     state: directory
+  register: dir_result
 
 - name: Download VS Code installer
   ignore_errors: true
@@ -11,6 +12,7 @@
     url: "{{ vs_code_url }}"
     dest: "C:\\Tools\\VSCode\\vscode-latest.exe"
     validate_certs: no
+  register: url_result
 
 - name: Install Visual Studio Code
   ignore_errors: true
@@ -19,6 +21,7 @@
     product_id: "Microsoft.VisualStudioCode"
     arguments: "--addMicrosoft.VisualStudioCode.ProductFamilyName=VSCode --addMicrosoft.VisualStudioCode.AppUserModelId=Microsoft.VisualStudioCode --addMicrosoft.VisualStudioCode.InstallLocation=C:\\Tools\\VSCode --force"
     state: present
+  register: package_result
 
 - name: Install Chocolatey if not already installed
   ansible.windows.win_shell: |
@@ -26,6 +29,7 @@
       Set-ExecutionPolicy Bypass -Scope Process -Force;
       iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
     }
+  register: chocolatey_result
 
 - name: Install VS Code extensions
   ignore_errors: true
@@ -36,3 +40,17 @@
     - ms-python.python
     - donjayamanne.python-extension-pack
     - ms-toolsai.jupyter
+  register: extension_result
+
+- name: Redirect error messages to log file
+  copy:
+    content: "{{ item.msg }}"
+    dest: "{{ log_file_path }}"
+    mode: 'a'
+  with_items:
+    - "{{ dir_result.results }}"
+    - "{{ url_result.results }}"
+    - "{{ package_result.results }}"
+    - "{{ chocolatey_result.results }}"
+    - "{{ extension_result.results }}"
+  when: item is failed
