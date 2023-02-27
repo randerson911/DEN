@@ -1,3 +1,4 @@
+---
 - name: Run payload
   hosts: "{{ targets }}"
   gather_facts: False
