@@ -37,7 +37,7 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - ms-python.python
+    - vscode-python
     - donjayamanne.python-extension-pack
     - ms-toolsai.jupyter
   register: extension_result
