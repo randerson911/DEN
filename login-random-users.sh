@@ -45,7 +45,7 @@ if [ ! -f lmarker.txt ]; then
 
 pip install pyyaml
 
-python modify_inventory.py ./ansible/inventory.yml users.txt
+python3 modify_inventory.py ./ansible/inventory.yml users.txt
 
 fi
 
