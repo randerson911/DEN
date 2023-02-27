@@ -17,8 +17,3 @@
     vs_code_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
   roles:
     - roles/windows/vscode
-  tasks:
-    - name: Download VS Code latest for Windows
-      ansible.builtin.get_url:
-        url: "{{ vs_code_url }}"
-        dest: roles/windows/vscode/files/vscode-latest.exe
