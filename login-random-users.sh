@@ -61,10 +61,8 @@ if [ ! -f lmarker.txt ]; then
     else
       section+="subnet3.children.user$c.vars"
     fi
-    yq eval "$section.uname = \"$line\"" -i ansible/inventory.yml
+    yq eval "$section.\"uname\" = \"$line\"" -i ansible/inventory.yml
   done < users.txt
-
-  echo "Complete." > lmarker.txt
 fi
 
 
