@@ -1,3 +1,4 @@
+---
 - name: Auto connect collector
   hosts: sensor
   gather_facts: false
