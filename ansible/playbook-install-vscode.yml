@@ -13,7 +13,7 @@
     ansible_winrm_read_timeout_sec: 3200
     anisble_winrm_connection_timeout_sec: 2000
     reconnection_retries: 10
-    log_file_path: .\ansible-errors.log
+    log_file_path: "./ansible-errors.log"
     timeout: 60
     vs_code_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
   roles:
