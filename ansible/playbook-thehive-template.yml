@@ -1,3 +1,4 @@
+---
 - name: Create TheHive Case Template
   hosts: localhost
   connection: local
