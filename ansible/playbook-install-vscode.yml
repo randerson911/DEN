@@ -1,6 +1,6 @@
 - name: Install VS Code on Windows target
   hosts: "{{ target_host }}"
-  gather_facts: no
+  gather_facts: false
   become: true
   vars_files:
     - cobra.vault
