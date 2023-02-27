@@ -1,6 +1,6 @@
 - name: Configure Windows system for log ingestion (Winlogbeat/sysmon64)
   hosts: datacenter,subnet1,subnet2,subnet3
-  gather_facts: no
+  gather_facts: false
   vars_files:
     - cobra.vault
   vars:

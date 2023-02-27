@@ -1,6 +1,6 @@
 - name: Auto connect collector
   hosts: gns3
-  gather_facts: no
+  gather_facts: false
   become: true
   vars_files:
     - cobra.vault

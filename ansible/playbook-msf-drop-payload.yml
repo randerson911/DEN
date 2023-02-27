@@ -1,6 +1,6 @@
 - name: Create Metasploit payload
   hosts: red4
-  gather_facts: no
+  gather_facts: false
   vars_files:
     - cobra.vault
   vars:
@@ -14,7 +14,7 @@
 
 - name: Drop Metasploit payload
   hosts: "{{ msf_targets }}"
-  gather_facts: no
+  gather_facts: false
   vars:
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
