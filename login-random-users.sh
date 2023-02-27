@@ -36,43 +36,51 @@ then
 fi
 
 
+#!/bin/bash
+
 if [ ! -f lmarker.txt ]; then
   cd ansible
   lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | grep linux_user_password | cut -d ' ' -f 2)
   cd ..
 
-  echo "Modify inventory file and integrate selected users."
-  
-  # Check if the inventory file is still readable by ansible-inventory
-  if ! ansible-inventory -i ansible/inventory.yml --list >/dev/null 2>&1; then
-    echo "Error: inventory file is not readable by ansible-inventory"
-    exit 1
-  fi
+  echo "Installing the required application [yq] to modify the yaml file"
+  echo ""
+  echo ""
+  pip install yq 2>/dev/null
 
-  # loop over users and set variable and subnet
-  c=0
-  while IFS= read -r line; do
-    let c=c+1
-    if [ $c -le 10 ]; then
-      subnet="subnet1"
-    elif [ $c -le 20 ]; then
-      subnet="subnet2"
-    else
-      subnet="subnet3"
-    fi
-    host="user$c"
-    varname="uname"
-    varvalue="$line"
-    awk -v subnet="$subnet" -v host="$host" -v varname="$varname" -v varvalue="$varvalue" '
-      # Check if we are in the right section
-      $1 == "[" && $2 == host "]"{ found = 1 }
-      $1 == "[" && $2 != host "{ found = 0 }
-      # If we are in the right section, set the variable
-      found && $1 == varname"{ $2 = varvalue }
-      1 # Print the line
-    ' ansible/inventory.yml > tmpfile && mv tmpfile ansible/inventory.yml
-  done < users.txt
+  echo ""
+  echo "Modify inventory file and integrate selected users."
+
+  awk -v users_file="users.txt" '
+  BEGIN {
+    FS = ":";
+    print_error = 0;
+    print "ansible-inventory -i ansible/inventory.yml --list >/dev/null 2>&1";
+    if (system("ansible-inventory -i ansible/inventory.yml --list >/dev/null 2>&1") != 0) {
+      print "Error: Failed to read inventory file";
+      print_error = 1;
+    }
+  }
+  { 
+    if ($1 ~ /^user[0-9]+$/) {
+      getline username < users_file;
+      subnet = (NR <= 10) ? "subnet1" : ((NR <= 20) ? "subnet2" : "subnet3");
+      print "      " $1 ":\n        hosts:\n          " $2 "\n        vars:\n          uname: \"" username "\"\n";
+    } else {
+      print $0;
+    }
+  }
+  END {
+    if (print_error == 0) {
+      system("mv ansible/inventory.yml ansible/inventory.yml.bak && mv ansible/inventory-new.yml ansible/inventory.yml");
+    }
+  }' ansible/inventory.yml > ansible/inventory-new.yml
+
+  if [ -f ansible/inventory-new.yml ]; then
+    echo "Successfully modified inventory file."
+  fi
 fi
+
 
 
 # if [ ! -f lmarker.txt ]
