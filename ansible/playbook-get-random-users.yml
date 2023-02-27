@@ -1,3 +1,4 @@
+---
 - name: Get 30 random users and reset password to ComtechAzure123!
   hosts: dc1
   gather_facts: false
