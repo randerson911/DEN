@@ -1,4 +1,33 @@
 ---
+- name: Download Required Files to Localhost
+  hosts: localhost
+  vars:
+    windows_agent_file: "elastic-agent-7.17.4-windows-x86_64.zip"
+    windows_agent_url: "https://artifacts.elastic.co/downloads/beats/elastic-agent/{{ windows_agent_file }}"
+  tasks:
+  - name: Download and extract Elastic Agent for Windows
+    get_url:
+      url: "{{ windows_agent_url }}"
+      dest: "ansible/roles/windows/elastic-agent/files/{{ windows_agent_file }}"
+    when: not (ansible_check_mode | bool) and not (file_exists.stat.exists)
+    vars:
+      file_exists: "{{ lookup('file', windows_agent_file, wantlist=True) }}"
+
+  - name: Extract Elastic Agent for Windows
+    archive:
+      src: "ansible/roles/windows/elastic-agent/files/{{ windows_agent_file }}"
+      dest: "ansible/roles/windows/elastic-agent/files/"
+      format: zip
+    when: not (ansible_check_mode | bool) and not (file_exists.stat.exists)
+    vars:
+      file_exists: "{{ lookup('file', windows_agent_file, wantlist=True) }}"
+ 
+  - name: Verify Elastic Agent for Windows exists
+    assert:
+      that:
+        - lookup('file', windows_agent_file, wantlist=True)
+      quiet: yes
+
 - name: "Configure Windows system for log ingestion (Elastic Agent)"
   hosts: "{{ elastic_targets }}"
   gather_facts: false
