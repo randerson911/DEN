@@ -41,7 +41,7 @@ if [ ! -f lmarker.txt ]; then
   lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | grep linux_user_password | cut -d ' ' -f 2)
   cd ..
 
-  echo " Installing the required application to modify the yaml file"
+  echo "Installing the required application [yq] to modify the yaml file"
   echo ""
   echo ""
   pip install yq 2>/dev/null
