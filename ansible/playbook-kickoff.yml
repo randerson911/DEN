@@ -15,7 +15,7 @@
       dest: "ansible/roles/windows/elastic-agent/files/{{ windows_agent_file }}"
     when: not (ansible_check_mode | bool) and not (file_exists.stat.exists)
     vars:
-      file_exists: "{{ lookup('file', windows_agent_file, wantlist=True) }}"
+      file_exists: "{{ stat('ansible/roles/windows/elastic-agent/files/' + windows_agent_file) | default(undefined, true) }}"
 
   - name: Extract Elastic Agent for Windows
     archive:
@@ -24,7 +24,7 @@
       format: zip
     when: not (ansible_check_mode | bool) and not (file_exists.stat.exists)
     vars:
-      file_exists: "{{ lookup('file', windows_agent_file, wantlist=True) }}"
+      file_exists: "{{ stat('ansible/roles/windows/elastic-agent/files/' + windows_agent_file) | default(undefined, true) }}"
 
   - name: Download Python for Windows
     get_url:
@@ -32,7 +32,7 @@
       dest: "ansible/roles/windows/install-python311/files/{{ python_windows_file }}"
     when: not (ansible_check_mode | bool) and not (file_exists.stat.exists)
     vars:
-      file_exists: "{{ lookup('file', python_windows_file) }}"
+      file_exists: "{{ stat('ansible/roles/windows/install-python311/files/' + python_windows_file) | default(undefined, true) }}"
 
   - name: Download Python for Linux
     get_url:
@@ -40,29 +40,31 @@
       dest: "ansible/roles/linux/install-python311/files/{{ python_linux_file }}"
     when: not (ansible_check_mode | bool) and not (file_exists.stat.exists)
     vars:
-      file_exists: "{{ lookup('file', python_linux_file) }}"
+      file_exists: "{{ stat('ansible/roles/linux/install-python311/files/' + python_linux_file) | default(undefined, true) }}"
 
   - name: Verify Elastic Agent for Windows exists
     assert:
       that:
-        - lookup('file', windows_agent_file, wantlist=True)
-      quiet: yes
+        - file_exists.stat.exists
+      msg: "Elastic Agent for Windows could not be downloaded or does not exist"
+    vars:
+      file_exists: "{{ stat('ansible/roles/windows/elastic-agent/files/' + windows_agent_file) | default(undefined, true) }}"
 
   - name: Verify Python for Windows exists
     assert:
       that:
         - file_exists.stat.exists
-      quiet: yes
+      msg: "Python for Windows could not be downloaded or does not exist"
     vars:
-      file_exists: "{{ lookup('file', python_windows_file) }}"
+      file_exists: "{{ stat('ansible/roles/windows/install-python311/files/' + python_windows_file) | default(undefined, true) }}"
 
   - name: Verify Python for Linux exists
     assert:
       that:
         - file_exists.stat.exists
-      quiet: yes
+      msg: "Python for Linux could not be downloaded or does not exist"
     vars:
-      file_exists: "{{ lookup('file', python_linux_file) }}"
+      file_exists: "{{ stat('ansible/roles/linux/install-python311/files/' + python_linux_file) | default(undefined, true) }}"
 
 - name: Configure Windows system for log ingestion (Elastic Agent)
   hosts: "{{ elastic_targets }}"

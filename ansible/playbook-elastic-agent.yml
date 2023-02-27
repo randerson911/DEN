@@ -6,14 +6,14 @@
     windows_agent_dir: "ansible/roles/windows/elastic-agent/files"
     windows_agent_name: "elastic-agent-7.17.4-windows-x86_64"
     windows_agent_url: "https://artifacts.elastic.co/downloads/beats/elastic-agent/{{ windows_agent_file }}"
-  tasks:
+  tasks:  
   - name: Download and extract Elastic Agent for Windows
     get_url:
       url: "{{ windows_agent_url }}"
-      dest: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
+      dest: "ansible/roles/windows/elastic-agent/files/{{ windows_agent_file }}"
     when: not (ansible_check_mode | bool) and not (file_exists.stat.exists)
     vars:
-      file_exists: "{{ lookup('file', {{ windows_agent_dir }}/{{ windows_agent_name }}/{{ windows_agent_name }}.exe, wantlist=True) }}"
+      file_exists: "{{ stat('ansible/roles/windows/elastic-agent/files/' + windows_agent_file) | default(undefined, true) }}"
 
   - name: Extract Elastic Agent for Windows
     archive:
@@ -22,13 +22,15 @@
       format: zip
     when: not (ansible_check_mode | bool) and not (file_exists.stat.exists)
     vars:
-      file_exists: "{{ lookup('file', windows_agent_file, wantlist=True) }}"
- 
+      file_exists: "{{ stat('ansible/roles/windows/elastic-agent/files/' + windows_agent_file) | default(undefined, true) }}"
+
   - name: Verify Elastic Agent for Windows exists
     assert:
       that:
-        - lookup('file', windows_agent_file, wantlist=True)
-      quiet: yes
+        - file_exists.stat.exists
+      msg: "Elastic Agent for Windows could not be downloaded or does not exist"
+    vars:
+      file_exists: "{{ stat('ansible/roles/windows/elastic-agent/files/' + windows_agent_file) | default(undefined, true) }}"
 
 - name: "Configure Windows system for log ingestion (Elastic Agent)"
   hosts: "{{ elastic_targets }}"
