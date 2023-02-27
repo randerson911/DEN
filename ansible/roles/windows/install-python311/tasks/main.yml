@@ -31,6 +31,8 @@
     value: "{{ python_install_path }};{{ python_install_path }}\\Scripts"
     state: present
     level: machine
+    path: "{{ ansible_env.PATH }}"
+
 
 - name: Install required pip packages
   ansible.builtin.pip:
