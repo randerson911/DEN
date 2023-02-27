@@ -44,6 +44,7 @@
     - vscode-powershell
     - vscode-prettier
     - vscode-yaml
+    - vscode-ansible
   register: extension_result
 
 - name: Redirect error messages to log file
