@@ -2,17 +2,22 @@
 - name: Ensure VSCode install directory exists
   ignore_errors: true
   ansible.windows.win_file:
-    path: "C:\\Tools\\VSCode"
+    path: "C:\\Tools\\VSCode\\Install"
     state: directory
   register: dir_result
 
-- name: Download latest VS Code for Windows
-  shell: wget -O role/windows/vscode/files/vscode-latest.exe "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
+- name: Download VS Code installer
+  ignore_errors: true
+  ansible.windows.win_get_url:
+    url: "{{ vs_code_url }}"
+    dest: "C:\\Tools\\VSCode\\Install\\vscode-latest.exe"
+    validate_certs: no
+  register: url_result
 
 - name: Install Visual Studio Code
   ignore_errors: true
   ansible.windows.win_package:
-    path: "{{ role_path }}/files/vscode-latest.exe"
+    path: "C:\\Tools\\VScode\\Install\\vscode-latest.exe"
     product_id: "Microsoft.VisualStudioCode"
     arguments: "--addMicrosoft.VisualStudioCode.ProductFamilyName=VSCode --addMicrosoft.VisualStudioCode.AppUserModelId=Microsoft.VisualStudioCode --addMicrosoft.VisualStudioCode.InstallLocation=C:\\Tools\\VSCode --force"
     state: present
