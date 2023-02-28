@@ -3,4 +3,10 @@
   hosts: localhost
   become: true
   tasks:
-    - import_tasks: tasks/pip.yml
+    - name: Install Python packages
+      pip:
+        name:
+          - package1
+          - package2
+          - package3
+        state: present
