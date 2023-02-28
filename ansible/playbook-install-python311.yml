@@ -38,7 +38,7 @@
   roles:
     - role: roles/windows/install-python311
 
-- name: "Install Python311 on Windows"
+- name: "Install Pip Modules on Windows"
   hosts: "{{ python_targets }}"
   gather_facts: false
   vars_files:
