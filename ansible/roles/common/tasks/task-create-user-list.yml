@@ -1,12 +1,5 @@
 ---
 - name: Create user list
-  hosts: localhost
-  gather_facts: false
-  vars:
-    vault_pass_path: "./.vault_pass"
-    inventory_path: "./ansible/inventory.yml"
-    playbook_path: "./ansible/playbook-get-random-users.yml"
-    users_file_path: "./users.txt"
   tasks:
     - name: Check if users file exists
       stat:
@@ -16,13 +9,13 @@
     - name: Prompt to generate new users file if it exists
       block:
         - name: Prompt to generate new users file
-          pause:
-            prompt: "Do you wish to generate a new users file?"
+          ansible.builtin.pause:
+            prompt: "Do you wish to generate a new users file? [Yes/No]"
             echo: true
           register: generate_new_file
 
         - name: Remove existing users file
-          file:
+          ansible.builtin.file:
             path: "{{ users_file_path }}"
             state: absent
           when: generate_new_file.user_input == 'Yes'
