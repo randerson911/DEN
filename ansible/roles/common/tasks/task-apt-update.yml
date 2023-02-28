@@ -6,7 +6,6 @@
 - name: Install packages
   apt:
     name:
-      - package1
-      - package2
-      - package3
+      - jq
+      - unzip
     state: present
