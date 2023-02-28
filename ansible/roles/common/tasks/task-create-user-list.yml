@@ -1,3 +1,4 @@
+---
 - name: Create user list
   tasks:
     - name: Check if users file exists
