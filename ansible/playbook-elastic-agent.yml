@@ -8,9 +8,12 @@
       register: galaxy_list
       changed_when: false
 
-    - name: Install community.general collection
-      community.general.collection:
-        name: community.general
+    - name: Install collections
+      include_role:
+        name: ansible-galaxy
+      vars:
+        galaxy_install_collections:
+          - community.general
       when: "'community.general' not in galaxy_list.stdout"
 
 - name: Download Required Files to Localhost
