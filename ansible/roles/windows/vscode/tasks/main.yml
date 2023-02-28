@@ -2,7 +2,7 @@
 - name: Ensure VSCode install directory exists
   ignore_errors: true
   ansible.windows.win_file:
-    path: "C:\\Tools\\VSCode\\Install"
+    path: "C:\\Tools\\VSCode\\Install\\"
     state: directory
   register: dir_result
 
@@ -17,7 +17,7 @@
 - name: Copy ElasticAgent installation file to host
   ansible.windows.win_copy:
     src: {{ win_agent_dir }}
-    dest: 'C:\\Tools\\VSCode\\Install'
+    dest: 'C:\\Tools\\VSCode\\Install\\'
 
 - name: Install Visual Studio Code
   ignore_errors: true
