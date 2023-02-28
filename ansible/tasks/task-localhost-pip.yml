@@ -1,12 +1,8 @@
 ---
-- name: Install Python packages with pip
-  hosts: localhost
-  become: true
-  tasks:
-    - name: Install Python packages
-      pip:
-        name:
-          - package1
-          - package2
-          - package3
-        state: present
+- name: Install Python packages
+  pip:
+    name:
+      - package4
+      - package5
+      - package6
+    state: present
