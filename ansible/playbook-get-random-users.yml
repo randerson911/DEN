@@ -9,6 +9,8 @@
     inventory_path: "./ansible/inventory/production/inventory.yml"
     playbook_path: "./ansible/playbook/production/playbook-get-random-users.yml"
     users_file_path: "./files/users.txt"
+  tasks:
+    - ansible.builtin.import_tasks: ./common/tasks/task-create-user-list.yml
 
 
 - name: Get 30 random users and reset password to ComtechAzure123!
@@ -27,7 +29,5 @@
     anisble_winrm_connection_timeout_sec: 2000
     reconnection_retries: 10
     timeout: 60
-  tasks:
-    - ansible.builtin.import_tasks: ./common/tasks/task-create-user-list.yml
   roles:
     - role: roles/windows/get-random-users
