@@ -10,7 +10,7 @@
   - name: Download Python for Windows
     get_url:
       url: "{{ python_windows_url }}"
-      dest: "ansible/roles/windows/install-python311/files/{{ python_windows_file }}"
+      dest: "roles/windows/install-python311/files/{{ python_windows_file }}"
     when: not (ansible_check_mode | bool) and not (file_exists.stat.exists)
     vars:
       file_exists: "{{ lookup('file', python_windows_file) }}"
