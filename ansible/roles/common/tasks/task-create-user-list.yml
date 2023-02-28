@@ -8,13 +8,13 @@
     - name: Prompt to generate new users file if it exists
       block:
         - name: Prompt to generate new users file
-          pause:
-            prompt: "Do you wish to generate a new users file?"
+          ansible.builtin.pause:
+            prompt: "Do you wish to generate a new users file? [Yes/No]"
             echo: true
           register: generate_new_file
 
         - name: Remove existing users file
-          file:
+          ansible.builtin.file:
             path: "{{ users_file_path }}"
             state: absent
           when: generate_new_file.user_input == 'Yes'
