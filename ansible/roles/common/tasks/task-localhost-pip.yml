@@ -2,7 +2,7 @@
 - name: Install Python packages
   ansible.builtin.pip:
     name:
-      - pyyml
+      - ansible
       - yq
-      - jq
+      - pyyaml
     state: present
