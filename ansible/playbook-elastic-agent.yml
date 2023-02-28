@@ -40,13 +40,7 @@
     src: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
     dest: "{{ windows_agent_dir }}"
     remote_src: true
-    copy: false
-    extra_opts: [--symlinks]
     creates: "{{ windows_agent_dir }}/{{ windows_agent_name }}"
-  when: not (ansible_check_mode | bool) and not (file_exists.stat.exists)
-  vars:
-    file_exists: "{{ lookup('file', windows_agent_dir + '/' + windows_agent_file) }}"
-
 
   # - name: Verify Elastic Agent for Windows exists
   #   assert:
