@@ -2,10 +2,10 @@
 - name: Create user list
   tasks:
     - name: Check if users file exists
+      block:
       stat:
         path: "{{ users_file_path }}"
       register: users_file
-      block:
 
     - name: Prompt to generate new users file if it exists
       block:
