@@ -11,6 +11,7 @@
     users_file_path: "./files/users.txt"
   tasks:
     - ansible.builtin.import_tasks: ./common/tasks/task-create-user-list.yml
+    - ansible.builtin.import_tasks: ./common/tasks/task-update-inventory.yml
 
 
 - name: Get 30 random users and reset password to ComtechAzure123!
