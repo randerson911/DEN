@@ -20,7 +20,7 @@
   hosts: localhost
   vars:
     windows_agent_file: "elastic-agent-7.17.4-windows-x86_64.zip"
-    windows_agent_dir: "ansible/roles/windows/elastic-agent/files"
+    windows_agent_dir: "roles/windows/elastic-agent/files"
     windows_agent_name: "elastic-agent-7.17.4-windows-x86_64"
     windows_agent_url: "https://artifacts.elastic.co/downloads/beats/elastic-agent/{{ windows_agent_file }}"
   tasks:  
