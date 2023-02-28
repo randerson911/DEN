@@ -10,9 +10,6 @@ then
     chmod 0600 ./ansible/.vault_pass
 fi
 
-ansible-galaxy collection install ansible.windows
-ansible-galaxy collection install ansible.posix
-
 # # Download and move latest version of Python for Windows
 # if [ ! -f ansible/roles/windows/vscode/files/vscode-latest.exe ]; then
 #   curl -o ansible/roles/windows/vscode/files/vscode-latest.exe "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
