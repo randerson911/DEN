@@ -1,6 +1,6 @@
 ---
 - name: Install Python packages
-  pip:
+  ansible.builtin.pip:
     name:
       - package4
       - package5
