@@ -10,13 +10,11 @@
     python_linux_file: python311
   tasks:
   - name: Download Python for Windows
-    ignore_errors: true
     get_url:
       url: "{{ python_windows_url }}"
       dest: "roles/windows/install-python311/files/{{ python_windows_file }}"
 
   - name: Download Python for Linux
-    ignore_errors: true
     get_url:
       url: "{{ python_linux_url }}"
       dest: "roles/linux/install-python311/files/{{ python_linux_file }}"
