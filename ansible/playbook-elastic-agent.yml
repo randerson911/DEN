@@ -30,11 +30,11 @@
     register: file_exists
     ignore_errors: true
 
-- name: Unarchive the downloaded Elastic
-  community.general.unarchive:
-    src: {{ windows_agent_url }}
-    dest: /usr/local/bin
-    remote_src: yes
+  - name: Unarchive the downloaded Elastic
+    ansible.builtin.unarchive:
+      src: {{ windows_agent_url }}
+      dest: /usr/local/bin
+      remote_src: yes
 
   # - name: Verify Elastic Agent for Windows exists
   #   assert:
