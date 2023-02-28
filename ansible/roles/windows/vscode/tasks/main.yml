@@ -16,7 +16,7 @@
 
 - name: Copy ElasticAgent installation file to host
   ansible.windows.win_copy:
-    src: {{ win_agent_dir }}
+    src: "roles/windows/vscode/files"
     dest: 'C:\\Tools\\VSCode\\Install\\'
 
 - name: Install Visual Studio Code
