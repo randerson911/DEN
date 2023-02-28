@@ -39,7 +39,6 @@
   ansible.builtin.unarchive:
     src: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
     dest: "{{ windows_agent_dir }}"
-    remote_src: true
     creates: "{{ windows_agent_dir }}/{{ windows_agent_name }}"
 
   # - name: Verify Elastic Agent for Windows exists
