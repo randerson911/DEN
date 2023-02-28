@@ -6,13 +6,8 @@
     state: directory
   register: dir_result
 
-- name: Download VS Code installer
-  ignore_errors: true
-  ansible.windows.win_get_url:
-    url: "{{ vs_code_url }}"
-    dest: "C:\\Tools\\VSCode\\vscode-latest.exe"
-    validate_certs: no
-  register: url_result
+- name: Download latest VS Code for Windows
+  shell: wget -O role/windows/vscode/files/vscode-latest.exe "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
 
 - name: Install Visual Studio Code
   ignore_errors: true
