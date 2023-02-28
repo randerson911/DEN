@@ -32,8 +32,8 @@
 
   - name: Unarchive the downloaded Elastic
     ansible.builtin.unarchive:
-      src: {{ windows_agent_url }}
-      dest: /usr/local/bin
+      src: "{{ windows_agent_url }}"
+      dest: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
       remote_src: yes
 
   # - name: Verify Elastic Agent for Windows exists
