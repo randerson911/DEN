@@ -36,13 +36,9 @@
       dest: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
 
 - name: Extract Elastic Agent for Windows
-  ansible.builtin.unarchive:
+  ansible.builtin.unzip:
     src: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
-    dest: "{{ windows_agent_dir }}"
-    remote_src: true
-    copy: false
-    extra_opts: [--symlinks]
-    creates: "{{ windows_agent_dir }}/{{ windows_agent_name }}"
+    dest: "{{ windows_agent_dir }}/"
 
   # - name: Verify Elastic Agent for Windows exists
   #   assert:
