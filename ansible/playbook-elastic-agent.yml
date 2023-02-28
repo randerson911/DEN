@@ -9,7 +9,7 @@
       changed_when: false
 
     - name: Install community.general collection
-      collection:
+      community.general.collection:
         name: community.general
       when: "'community.general' not in galaxy_list.stdout"
 
