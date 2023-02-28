@@ -1,0 +1,6 @@
+---
+- name: Install Python packages with pip
+  hosts: localhost
+  become: true
+  tasks:
+    - import_tasks: tasks/pip.yml
