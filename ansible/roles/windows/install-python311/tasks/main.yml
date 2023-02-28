@@ -32,8 +32,3 @@
 #     state: present
 #     level: machine
 #     path: "{{ ansible_env.PATH }}"
-
-- name: Install required pip packages
-  ansible.builtin.pip:
-    name: "{{ pip_packages | join(' ') }}"
-    executable: "{{ pip_executable }}"
