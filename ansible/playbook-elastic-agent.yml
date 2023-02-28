@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: false
   tasks:
-    ansible.builtin.import_tasks: ./common/tasks/task-ansible-collection.yml
+    - ansible.builtin.import_tasks: ./common/tasks/task-ansible-collection.yml
 
 - name: Download Required Files to Localhost
   hosts: localhost
