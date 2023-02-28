@@ -20,11 +20,10 @@
     dest: 'C:\\Tools\\VSCode\\Install\\'
 
 - name: Install Visual Studio Code
-  ignore_errors: true
   ansible.windows.win_package:
     path: "C:\\Tools\\VScode\\Install\\vscode-latest.exe"
     product_id: "Microsoft.VisualStudioCode"
-    arguments: "--addMicrosoft.VisualStudioCode.ProductFamilyName=VSCode --addMicrosoft.VisualStudioCode.AppUserModelId=Microsoft.VisualStudioCode --addMicrosoft.VisualStudioCode.InstallLocation=C:\\Tools\\VSCode --force"
+    arguments: "--addMicrosoft.VisualStudioCode.ProductFamilyName=VSCode --addMicrosoft.VisualStudioCode.AppUserModelId=Microsoft.VisualStudioCode --addMicrosoft.VisualStudioCode.InstallLocation=C:\\Tools\\VSCode --force /VERYSILENT /NORESTART"
     state: present
   register: package_result
 
