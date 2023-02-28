@@ -30,12 +30,13 @@
     register: file_exists
     ignore_errors: true
 
-  - name: Unarchive the downloaded Elastic
-    ansible.builtin.unarchive:
-      src: "{{ windows_agent_url }}"
-      dest: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
-      remote_src: yes
-      creates: "{{ windows_agent_dir }}/{{ windows_agent_file }}/{{ win_agent_name }}.exe"
+- name: Unarchive the downloaded Elastic
+  ansible.builtin.unarchive:
+    src: "{{ windows_agent_url }}"
+    dest: "{{ windows_agent_dir }}"
+    remote_src: yes
+    creates: "{{ windows_agent_dir }}/{{ windows_agent_name }}/elastic-agent.exe"
+
 
   # - name: Verify Elastic Agent for Windows exists
   #   assert:
