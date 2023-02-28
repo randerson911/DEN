@@ -1,0 +1,39 @@
+# - name: Check if Python 3 is already installed
+#   vars:
+#     ansible_shell_type: cmd
+#   ansible.windows.win_shell: python --version
+#   register: python_version_output
+#   ignore_errors: true
+
+# - name: Check if pip packages are already installed
+#   vars:
+#     ansible_shell_type: cmd
+#   ansible.windows.win_command: "{{ pip_executable }} list --format=columns | findstr /ix '{{ pip_packages }}'"
+#   register: pip_packages_output
+#   ignore_errors: true
+---
+- name: Ensure Python install directory exists
+  ansible.windows.win_file:
+    path: "C:\\Tools\\Python311"
+    state: directory
+
+- name: Copy Python to target
+  ansible.windows.win_copy:
+    src: "{{ role_path }}/files/{{ python_name }}.exe"
+    dest: "{{ python_install_path }}\\{{ python_name }}.exe"
+
+- name: Install Python
+  ansible.windows.win_shell: "{{ python_install_path }}\\{{ python_name }}.exe /quiet InstallAllUsers=1 TargetDir={{ python_install_path }} PrependPath=1"
+
+# - name: Set Python path
+#   ansible.windows.win_environment:
+#     name: PATH
+#     value: "{{ python_install_path }};{{ python_install_path }}\\Scripts"
+#     state: present
+#     level: machine
+#     path: "{{ ansible_env.PATH }}"
+
+- name: Install required pip packages
+  ansible.builtin.pip:
+    name: "{{ pip_packages | join(' ') }}"
+    executable: "{{ pip_executable }}"
