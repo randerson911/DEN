@@ -6,13 +6,18 @@
     state: directory
   register: dir_result
 
-- name: Download VS Code installer
-  ignore_errors: true
-  ansible.windows.win_get_url:
-    url: "{{ vs_code_url }}"
-    dest: "C:\\Tools\\VSCode\\Install\\vscode-latest.exe"
-    validate_certs: no
-  register: url_result
+# - name: Download VS Code installer
+#   ignore_errors: true
+#   ansible.windows.win_get_url:
+#     url: "{{ vs_code_url }}"
+#     dest: "C:\\Tools\\VSCode\\Install\\vscode-latest.exe"
+#     validate_certs: no
+#   register: url_result
+
+- name: Copy ElasticAgent installation file to host
+  ansible.windows.win_copy:
+    src: {{ win_agent_dir }}
+    dest: 'C:\\Tools\\VSCode\\Install'
 
 - name: Install Visual Studio Code
   ignore_errors: true
