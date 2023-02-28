@@ -36,7 +36,7 @@
       dest: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
 
 - name: Extract Elastic Agent for Windows
-  ansible.builtin.unzip:
+  ansible.builtin.unarchive:
     src: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
     dest: "{{ windows_agent_dir }}/"
 
