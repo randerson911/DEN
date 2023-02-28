@@ -22,10 +22,12 @@
     windows_agent_file: "elastic-agent-7.17.4-windows-x86_64.zip"
     windows_agent_dir: "roles/windows/elastic-agent/files"
     windows_agent_name: "elastic-agent-7.17.4-windows-x86_64"
+    windows_agent_exe: "elastic-agent.exe"
     windows_agent_url: "https://artifacts.elastic.co/downloads/beats/elastic-agent/{{ windows_agent_file }}"
     linux_agent_url: "https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-linux-x86_64.tar.gz"
     linux_agent_name: "elastic-agent-7.17.4-linux-x86_64"
     linux_agent_dir: "roles/linux/elastic-agent/files"
+    linux_agent_file: "elastic-agent-7.17.4-linux-x86_64.zip"
   tasks:  
   - name: Check if Elastic Agent for Windows exists
     ansible.windows.win_stat:
@@ -38,7 +40,7 @@
       src: "{{ windows_agent_url }}"
       dest: "{{ windows_agent_dir }}"
       remote_src: yes
-      creates: "{{ windows_agent_dir }}/{{ windows_agent_name }}/elastic-agent.exe"
+      creates: "{{ windows_agent_dir }}/{{ windows_agent_name }}/{{ windows_agent_exe }}"
 
 
   # - name: Verify Elastic Agent for Windows exists
