@@ -31,8 +31,8 @@
     ignore_errors: true
 
 - name: Unarchive the downloaded Elastic
-   ansible.builtin.unarchive:
-     src: {{ windows_agent_url }}
+   community.general.unarchive:
+    src: {{ windows_agent_url }}
     dest: /usr/local/bin
     remote_src: yes
 
