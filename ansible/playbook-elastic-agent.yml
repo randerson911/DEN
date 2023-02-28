@@ -40,13 +40,12 @@
       src: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
       dest: "{{ windows_agent_dir }}/"
       format: zip
-    when: not (ansible_check_mode | bool) and not file_exists.stat.exists
 
-  - name: Verify Elastic Agent for Windows exists
-    assert:
-      that:
-        - file_exists.stat.exists
-      msg: "Elastic Agent for Windows could not be downloaded or does not exist"
+  # - name: Verify Elastic Agent for Windows exists
+  #   assert:
+  #     that:
+  #       - file_exists.stat.exists
+  #     msg: "Elastic Agent for Windows could not be downloaded or does not exist"
 
 - name: "Configure Windows system for log ingestion (Elastic Agent)"
   hosts: "{{ elastic_targets }}"
