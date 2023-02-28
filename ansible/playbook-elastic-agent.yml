@@ -30,16 +30,11 @@
     register: file_exists
     ignore_errors: true
 
-  - name: Download and extract Elastic Agent for Windows
-    get_url:
-      url: "{{ windows_agent_url }}"
-      dest: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
-
-- name: Extract Elastic Agent for Windows
-  ansible.builtin.unarchive:
-    src: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
-    dest: "{{ windows_agent_dir }}"
-    creates: "{{ windows_agent_dir }}/{{ windows_agent_name }}"
+- name: Unarchive the downloaded Elastic
+   ansible.builtin.unarchive:
+     src: {{ windows_agent_url }}
+    dest: /usr/local/bin
+    remote_src: yes
 
   # - name: Verify Elastic Agent for Windows exists
   #   assert:
