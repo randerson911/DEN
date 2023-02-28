@@ -20,10 +20,6 @@ fi
 #   curl -o ansible/roles/linux/install-python311/files/python311.tar.gz https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
 # fi
 
-ansible-galaxy collection install ansible.windows
-ansible-galaxy collection install ansible.posix
-
-
 echo ""
 read -p "Enter target hosts to install Python 3.11 (comma-separated): " python_targets
 cd ansible
