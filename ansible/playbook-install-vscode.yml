@@ -27,15 +27,10 @@
 - name: Download Required Files to Localhost
   hosts: localhost
   vars:
-    windows_agent_file: "elastic-agent-7.17.4-windows-x86_64.zip"
-    windows_agent_dir: "roles/windows/elastic-agent/files"
-    windows_agent_name: "elastic-agent-7.17.4-windows-x86_64"
-    windows_agent_exe: "elastic-agent.exe"
-    windows_agent_url: "https://artifacts.elastic.co/downloads/beats/elastic-agent/{{ windows_agent_file }}"
-    linux_agent_url: "https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-linux-x86_64.tar.gz"
-    linux_agent_name: "elastic-agent-7.17.4-linux-x86_64"
-    linux_agent_dir: "roles/linux/elastic-agent/files"
-    linux_agent_file: "elastic-agent-7.17.4-linux-x86_64.zip"
+    windows_agent_file: "vscode-latest.exe"
+    windows_agent_dir: "roles/windows/vscode/files"
+    windows_agent_name: "vscode-latest"
+    windows_agent_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
   tasks:  
   - name: Check if Elastic Agent for Windows exists
     ansible.windows.win_stat:
