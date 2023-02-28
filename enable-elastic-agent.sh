@@ -14,9 +14,6 @@ cd ansible
 lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | grep linux_user_password | cut -d ' ' -f 2)
 cd ..
 
-cd ansible
-ansible-galaxy collection install community.general
-cd ..
 # echo $lpass | sudo -S apt update
 # echo $lpass | sudo -S apt install unzip -y
 
