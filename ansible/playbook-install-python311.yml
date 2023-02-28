@@ -4,6 +4,7 @@
   vars:
     python_windows_url: https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe
     python_windows_dest: ansible/roles/windows/install-python311/files/python311.exe
+    python_windows_file: python311.exe
     python_linux_url: https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
     python_linux_dest: ansible/roles/linux/install-python311/files/python311.tar.gz
   tasks:
