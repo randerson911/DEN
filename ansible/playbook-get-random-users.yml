@@ -5,6 +5,10 @@
   vars_files:
     - cobra.vault
   vars:
+    vault_pass_path: "./.vault_pass"
+    inventory_path: "./ansible/inventory/production/inventory.yml"
+    playbook_path: "./ansible/playbook/production/playbook-get-random-users.yml"
+    users_file_path: "./files/users.txt"
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
     ansible_connection: winrm
