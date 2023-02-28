@@ -1,6 +1,6 @@
 ---
-- name: Get 30 random users and reset password to ComtechAzure123!
-  hosts: dc1
+- name: Create the User list
+  hosts: localhost
   gather_facts: false
   vars_files:
     - cobra.vault
@@ -9,6 +9,14 @@
     inventory_path: "./ansible/inventory/production/inventory.yml"
     playbook_path: "./ansible/playbook/production/playbook-get-random-users.yml"
     users_file_path: "./files/users.txt"
+
+
+- name: Get 30 random users and reset password to ComtechAzure123!
+  hosts: dc1
+  gather_facts: false
+  vars_files:
+    - cobra.vault
+  vars:
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
     ansible_connection: winrm
