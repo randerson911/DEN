@@ -1,4 +1,48 @@
 ---
+- name: Install community.general collection
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Check if community.general collection is already installed
+      command: ansible-galaxy collection list
+      register: galaxy_list
+      changed_when: false
+
+    - name: Install ansible-windows collections
+      include_role:
+        name: ansible-galaxy
+      vars:
+        galaxy_install_collections:
+          - ansible.windows
+      when: "'ansible.windows' not in galaxy_list.stdout"
+
+    - name: Install ansible-windows collections
+      include_role:
+        name: ansible-galaxy
+      vars:
+        galaxy_install_collections:
+          - ansible.posix
+      when: "'ansible.posix' not in galaxy_list.stdout"
+
+- name: Download Required Files to Localhost
+  hosts: localhost
+  vars:
+    windows_agent_file: "elastic-agent-7.17.4-windows-x86_64.zip"
+    windows_agent_dir: "roles/windows/elastic-agent/files"
+    windows_agent_name: "elastic-agent-7.17.4-windows-x86_64"
+    windows_agent_exe: "elastic-agent.exe"
+    windows_agent_url: "https://artifacts.elastic.co/downloads/beats/elastic-agent/{{ windows_agent_file }}"
+    linux_agent_url: "https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-linux-x86_64.tar.gz"
+    linux_agent_name: "elastic-agent-7.17.4-linux-x86_64"
+    linux_agent_dir: "roles/linux/elastic-agent/files"
+    linux_agent_file: "elastic-agent-7.17.4-linux-x86_64.zip"
+  tasks:  
+  - name: Check if Elastic Agent for Windows exists
+    ansible.windows.win_stat:
+      path: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
+    register: file_exists
+    ignore_errors: true
+
 - name: Install VS Code on Windows target
   hosts: "{{ target_host }}"
   gather_facts: false
