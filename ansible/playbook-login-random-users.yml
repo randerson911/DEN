@@ -6,7 +6,8 @@
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
     username: "{{ uname }}"
-  ansible.builtin.import_roles:
-    - file: "./roles/windows/gpupdate"
-  ansible.builtin.import_roles:
-    - file: "./roles/windows/login-random-users"
+  tasks:
+    ansible.builtin.import_roles:
+      - file: "./roles/windows/gpupdate"
+    ansible.builtin.import_roles:
+      - file: "./roles/windows/login-random-users"
