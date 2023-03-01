@@ -1,14 +1,4 @@
 ---
-- name: GPUpdate the Machines First
-  hosts: subnet1, subnet2, subnet3
-  gather_facts: false
-  vars:
-    ansible_user: "{{ vault_den_user }}"
-    ansible_password: "{{ vault_den_user_password }}"
-    username: "{{ uname }}"
-  roles:
-    - role: "windows/gpupdate"
-
 - name: Create the User List if Needed
   hosts: localhost
   vars:
@@ -19,6 +9,16 @@
   tasks:
     ansible.builtin.import_playbook:
       file: playbook-get-random-users.yml
+
+- name: GPUpdate the Machines First
+  hosts: subnet1, subnet2, subnet3
+  gather_facts: false
+  vars:
+    ansible_user: "{{ vault_den_user }}"
+    ansible_password: "{{ vault_den_user_password }}"
+    username: "{{ uname }}"
+  roles:
+    - role: "windows/gpupdate"
 
 - name: Login the Users
   hosts: subnet1, subnet2, subnet3
