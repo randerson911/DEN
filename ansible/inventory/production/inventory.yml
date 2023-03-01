@@ -1,18 +1,16 @@
 ---
 windows:
   vars:
-    python_name: python311
-    python_install_path: C:\Tools\Python311
-    pip_packages:
-      - requests
-      - pyyaml
-      - thehive4py
-      - python-magic-dev
-      - libmagic
-      - elasticsearch7
-      - kubernetes
-      - keycloak
-    pip_executable: C:\Tools\Python311\Scripts\pip3.exe
+    ansible_user: "{{ vault_den_user }}"
+    ansible_password: "{{ vault_den_user_password }}"
+    ansible_connection: winrm
+    ansible_winrm_transport: credssp
+    ansible_winrm_server_cert_validation: ignore
+    ansible_winrm_operation_timeout_sec: 1000
+    ansible_winrm_read_timeout_sec: 3200
+    ansible_winrm_connection_timeout_sec: 2000
+    reconnection_retries: 10
+    timeout: 60
   children:
     datacenter:
       children:
@@ -125,6 +123,19 @@ windows:
       hosts:
         172.17.60.50
     operators:
+      vars:
+        python_name: python311
+        python_install_path: C:\Tools\Python311
+        pip_packages:
+          - requests
+          - pyyaml
+          - thehive4py
+          - python-magic-dev
+          - libmagic
+          - elasticsearch7
+          - kubernetes
+          - keycloak
+        pip_executable: C:\Tools\Python311\Scripts\pip3.exe
       children:
         blue1:
           hosts:
