@@ -29,6 +29,7 @@
     anisble_winrm_connection_timeout_sec: 2000
     reconnection_retries: 10
     timeout: 60
+    users_file_path: "./files/users.txt"
   roles:
     - role: roles/windows/get-random-users
 
