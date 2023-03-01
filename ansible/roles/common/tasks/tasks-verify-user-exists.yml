@@ -1,4 +1,5 @@
 ---
+- name: Block Check
 - name: Check if users file exists
   stat:
     path: "{{ users_file_path }}"
