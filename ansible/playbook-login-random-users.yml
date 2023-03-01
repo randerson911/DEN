@@ -7,5 +7,5 @@
     ansible_password: "{{ vault_den_user_password }}"
     username: "{{ uname }}"
   roles:
-    - role: "roles/windows/gpupdate"
-    - role: "roles/windows/login-random-users"
+    - role: "windows/gpupdate"
+    - role: "windows/login-random-users"
