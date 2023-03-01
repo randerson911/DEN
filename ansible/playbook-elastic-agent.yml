@@ -22,13 +22,6 @@
     - ansible.builtin.import_tasks:
         - file: ./common/tasks/task-download-elastic-agent.yml
 
-
-  # - name: Verify Elastic Agent for Windows exists
-  #   assert:
-  #     that:
-  #       - file_exists.stat.exists
-  #     msg: "Elastic Agent for Windows could not be downloaded or does not exist"
-
 - name: "Configure Windows system for log ingestion (Elastic Agent)"
   hosts: "{{ elastic_targets }}"
   gather_facts: false
