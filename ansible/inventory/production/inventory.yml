@@ -1,9 +1,9 @@
 ---
 all:
   children:
-    vars_files:
-      ./cobra.vault
     windows:
+      vars_files:
+        ./cobra.vault
       vars:
         ansible_user: "{{ vault_den_user }}"
         ansible_password: "{{ vault_den_user_password }}"
@@ -187,6 +187,8 @@ all:
               hosts:
                 172.17.60.115
     linux:
+      vars_files:
+        ./cobra.vault
       vars:
         python_version: 3.11.2
         python_install_path: opt/tools/python311
