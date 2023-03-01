@@ -1,5 +1,10 @@
----
 - name: Create user list
+  vars:
+    vault_pass_path: "./.vault_pass"
+    inventory_path: "./ansible/inventory.yml"
+    playbook_path: "./ansible/playbook-get-random-users.yml"
+    users_file_path: "./users.txt"
+  
   tasks:
     - name: Check if users file exists
       stat:
@@ -7,20 +12,21 @@
       register: users_file
 
     - name: Prompt to generate new users file if it exists
+      when: users_file.stat.exists
       pause:
         prompt: "Do you wish to generate a new users file?"
         echo: true
       register: generate_new_file
-      when: users_file.stat.exists
 
     - name: Remove existing users file
+      when: generate_new_file.user_input == 'Yes' and users_file.stat.exists
       file:
         path: "{{ users_file_path }}"
         state: absent
-      when: generate_new_file.user_input == 'Yes' and users_file.stat.exists
 
-    - name: Run playbook to get random users
-      ansible.builtin.include_role:
+    - name: Generate new users file if it doesn't exist
+      when: not users_file.stat.exists
+      include_role:
         name: roles/windows/get-random-users
       vars:
         vault_password_file: "{{ vault_pass_path }}"
@@ -30,30 +36,26 @@
       become: true
       become_method: su
 
-    - name: Remove non-printable characters from users file
+    - name: Clean up the generated user file
       replace:
         path: "{{ users_file_path }}"
-        regexp: '[^[:print:]]'
+        regexp: '[^\x20-\x7E]'
         replace: ''
-
-    - name: Remove blank lines from users file
-      replace:
-        path: "{{ users_file_path }}"
-        regexp: '^\s*$\n'
-        replace: ''
+      with_items:
+        - '^\n'
+        - '^ \n'
+      when: users_file.stat.exists
 
     - name: Remove first line from users file
       lineinfile:
         path: "{{ users_file_path }}"
         state: absent
-        line: "{{ item }}"
-      with_first_found:
-        - "{{ lookup('file', users_file_path) | split('\n') | list | first }}"
-      when: item is defined
+        line: "{{ lookup('file', users_file_path) | regex_replace('^.*?\n', '') }}"
+      when: users_file.stat.exists
 
     - name: Remove whitespace from users file
       replace:
         path: "{{ users_file_path }}"
         regexp: '\s+'
         replace: ''
-  when: not users_file.stat.exists
+      when: users_file.stat.exists
