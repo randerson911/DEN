@@ -31,6 +31,17 @@
     timeout: 60
   roles:
     - role: roles/windows/get-random-users
+
+- name: Update Inventory List
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    ./cobra.vault
+  vars:
+    vault_pass_path: "./.vault_pass"
+    inventory_path: "./ansible/inventory/production/inventory.yml"
+    playbook_path: "./ansible/playbook/production/playbook-get-random-users.yml"
+    users_file_path: "./files/users.txt"
   tasks:
     - ansible.builtin.import_tasks:
       - file: "./common/tasks/tasks-update-inventory.yml" 
