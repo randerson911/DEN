@@ -1,7 +1,5 @@
 ---
 - name: Check if users file exists
-  vars:
-    users_file_path: "./files/users.txt"
   stat:
     path: "{{ users_file_path }}"
   register: users_file
@@ -14,8 +12,6 @@
   register: generate_new_file
 
 - name: Remove existing users file
-  vars:
-    users_file_path: "./files/users.txt"
   when: generate_new_file.user_input == 'Yes' and users_file.stat.exists
   file:
     path: "{{ users_file_path }}"
@@ -25,17 +21,10 @@
   when: not users_file.stat.exists
   include_role:
     name: roles/windows/get-random-users
-  vars:
-    vault_pass_path: "./.vault_pass"
-    inventory_path: "./ansible/inventory.yml"
-    playbook_path: "./ansible/playbook-get-random-users.yml"
-    users_file_path: "./files/users.txt"
   become: true
   become_method: su
 
 - name: Clean up the generated user file
-  vars:
-    users_file_path: "./files/users.txt"
   replace:
     path: "{{ users_file_path }}"
     regexp: '[^\x20-\x7E]'
@@ -46,8 +35,6 @@
   when: users_file.stat.exists
 
 - name: Remove first line from users file
-  vars:
-    users_file_path: "./files/users.txt"
   lineinfile:
     path: "{{ users_file_path }}"
     state: absent
@@ -55,8 +42,6 @@
   when: users_file.stat.exists
 
 - name: Remove whitespace from users file
-  vars:
-    users_file_path: "./files/users.txt"
   replace:
     path: "{{ users_file_path }}"
     regexp: '\s+'
