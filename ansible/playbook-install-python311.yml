@@ -22,8 +22,6 @@
 - name: "Install Python311 on Windows"
   hosts: "{{ python_targets }}"
   gather_facts: false
-  vars_files:
-    - cobra.vault
   vars:
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
@@ -33,8 +31,6 @@
 - name: "Install Pip Modules on Windows"
   hosts: "{{ python_targets }}"
   gather_facts: false
-  vars_files:
-    - cobra.vault
   vars:
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"

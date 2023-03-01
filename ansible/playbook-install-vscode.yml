@@ -46,8 +46,6 @@
 - name: Install VS Code on Windows target
   hosts: "{{ target_host }}"
   gather_facts: false
-  vars_files:
-    - cobra.vault
   vars:
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
