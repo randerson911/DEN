@@ -19,7 +19,7 @@
     linux_agent_file: "elastic-agent-7.17.4-linux-x86_64.zip"
   tasks:
     - ansible.builtin.import_tasks:
-        - ./common/tasks/task-elastic-agent-download.yml
+        - ./common/tasks/task-download-elastic-agent.yml
 
 
   # - name: Verify Elastic Agent for Windows exists
