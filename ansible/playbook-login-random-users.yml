@@ -8,4 +8,5 @@
     username: "{{ uname }}"
   ansible.builtin.import_roles:
     - file: "./roles/windows/gpupdate"
+  ansible.builtin.import_roles:
     - file: "./roles/windows/login-random-users"
