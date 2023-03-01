@@ -1,19 +1,20 @@
 ---
 - name: Block Check
-- name: Check if users file exists
-  stat:
-    path: "{{ users_file_path }}"
-  register: users_file
+  block:
+  - name: Check if users file exists
+    stat:
+      path: "{{ users_file_path }}"
+    register: users_file
 
-- name: Prompt to generate new users file if it exists
-  when: users_file.stat.exists
-  pause:
-    prompt: "Do you wish to generate a new users file?"
-    echo: true
-  register: generate_new_file
+  - name: Prompt to generate new users file if it exists
+    when: users_file.stat.exists
+    pause:
+      prompt: "Do you wish to generate a new users file?"
+      echo: true
+    register: generate_new_file
 
-- name: Remove existing users file
-  when: generate_new_file.user_input == 'Yes' and users_file.stat.exists
-  file:
-    path: "{{ users_file_path }}"
-    state: absent
+  - name: Remove existing users file
+    when: generate_new_file.user_input == 'Yes' and users_file.stat.exists
+    file:
+      path: "{{ users_file_path }}"
+      state: absent
