@@ -47,8 +47,6 @@
   hosts: "{{ target_host }}"
   gather_facts: false
   vars:
-    ansible_user: "{{ vault_den_user }}"
-    ansible_password: "{{ vault_den_user_password }}"
     vs_code_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
   roles:
     - roles/windows/vscode
