@@ -1,5 +1,5 @@
 ---
-- name: Login random users to client workstations
+- name: GPUpdate the Machines First
   hosts: subnet1, subnet2, subnet3
   gather_facts: false
   vars:
@@ -8,4 +8,24 @@
     username: "{{ uname }}"
   roles:
     - role: "windows/gpupdate"
+
+- name: Create the User List if Needed
+  hosts: localhost
+  vars:
+    vault_pass_path: "./.vault_pass"
+    inventory_path: "./ansible/inventory/production/inventory.yml"
+    playbook_path: "./ansible/playbook/production/playbook-get-random-users.yml"
+    users_file_path: "./files/users.txt"
+  tasks:
+    import_playbook:
+      file: playbook-get-random-users.yml
+
+- name: Login the Users
+  hosts: subnet1, subnet2, subnet3
+  gather_facts: false
+  vars:
+    ansible_user: "{{ vault_den_user }}"
+    ansible_password: "{{ vault_den_user_password }}"
+    username: "{{ uname }}"
+  roles:
     - role: "windows/login-random-users"
