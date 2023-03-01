@@ -17,7 +17,7 @@
     playbook_path: "./ansible/playbook/production/playbook-get-random-users.yml"
     users_file_path: "./files/users.txt"
   tasks:
-    import_playbook:
+    ansible.builtin.import_playbook:
       file: playbook-get-random-users.yml
 
 - name: Login the Users
