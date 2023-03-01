@@ -32,8 +32,6 @@
 - name: "Configure Windows system for log ingestion (Elastic Agent)"
   hosts: "{{ elastic_targets }}"
   gather_facts: false
-  vars_files:
-    - cobra.vault
   vars:
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
