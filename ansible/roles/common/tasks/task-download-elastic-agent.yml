@@ -1,15 +1,13 @@
 ---
-- name: Download Elastic Agent for Windows
-  tasks:  
-  - name: Check if Elastic Agent for Windows exists
-    ansible.windows.win_stat:
-      path: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
-    register: file_exists
-    ignore_errors: true
+- name: Check if Elastic Agent for Windows exists
+  ansible.windows.win_stat:
+    path: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
+  register: file_exists
+  ignore_errors: true
 
-  - name: Unarchive the downloaded Elastic
-    ansible.builtin.unarchive:
-      src: "{{ windows_agent_url }}"
-      dest: "{{ windows_agent_dir }}"
-      remote_src: yes
-      creates: "{{ windows_agent_dir }}/{{ windows_agent_name }}/{{ windows_agent_exe }}"
+- name: Unarchive the downloaded Elastic
+  ansible.builtin.unarchive:
+    src: "{{ windows_agent_url }}"
+    dest: "{{ windows_agent_dir }}"
+    remote_src: yes
+    creates: "{{ windows_agent_dir }}/{{ windows_agent_name }}/{{ windows_agent_exe }}"
