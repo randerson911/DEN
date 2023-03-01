@@ -9,7 +9,7 @@
     reconnection_retries: 10
     timeout: 60
   roles:
-    - role: roles/misc/msf-create-payload
+    - role: roles/red/msf-create-payload
 
 - name: Drop Metasploit payload
   hosts: "{{ msf_targets }}"
@@ -18,4 +18,4 @@
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
   roles:
-    - role: roles/misc/msf-drop-payload
+    - role: roles/red/msf-drop-payload
