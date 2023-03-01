@@ -17,19 +17,9 @@
     linux_agent_name: "elastic-agent-7.17.4-linux-x86_64"
     linux_agent_dir: "roles/linux/elastic-agent/files"
     linux_agent_file: "elastic-agent-7.17.4-linux-x86_64.zip"
-  tasks:  
-  - name: Check if Elastic Agent for Windows exists
-    ansible.windows.win_stat:
-      path: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
-    register: file_exists
-    ignore_errors: true
-
-  - name: Unarchive the downloaded Elastic
-    ansible.builtin.unarchive:
-      src: "{{ windows_agent_url }}"
-      dest: "{{ windows_agent_dir }}"
-      remote_src: yes
-      creates: "{{ windows_agent_dir }}/{{ windows_agent_name }}/{{ windows_agent_exe }}"
+  tasks:
+    - ansible.builtin.import_tasks:
+        - ./common/tasks/task-elastic-agent-download.yml
 
 
   # - name: Verify Elastic Agent for Windows exists
