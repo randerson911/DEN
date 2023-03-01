@@ -1,10 +1,10 @@
+---
 - name: Create user list
   vars:
     vault_pass_path: "./.vault_pass"
     inventory_path: "./ansible/inventory.yml"
     playbook_path: "./ansible/playbook-get-random-users.yml"
     users_file_path: "./users.txt"
-  
   tasks:
     - name: Check if users file exists
       stat:
