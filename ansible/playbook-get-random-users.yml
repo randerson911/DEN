@@ -11,7 +11,7 @@
     users_file_path: "./files/users.txt"
   tasks:
     - ansible.builtin.import_tasks: 
-      -file: ./common/tasks/task-verify-user-exists.yml
+      -file: "./common/tasks/task-verify-user-exists.yml"
 
 - name: Get 30 random users and reset password to ComtechAzure123!
   hosts: dc1
@@ -33,4 +33,4 @@
     - role: roles/windows/get-random-users
   tasks:
     - ansible.builtin.import_tasks:
-      - file: ./common/tasks/tasks-update-inventory.yml 
+      - file: "./common/tasks/tasks-update-inventory.yml" 
