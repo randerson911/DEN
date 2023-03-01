@@ -2,27 +2,14 @@
 - name: Install community.general collection
   hosts: localhost
   gather_facts: false
+  vars:
+    galaxy_collections:
+      - name: community.general
+      - name: ansible.windows
+      - name: ansible.posix
   tasks:
-    - name: Check if collection is already installed
-      command: ansible-galaxy collection list
-      register: galaxy_list
-      changed_when: false
-
-    - name: Install ansible-windows collections
-      include_role:
-        name: ansible-galaxy
-      vars:
-        galaxy_install_collections:
-          - ansible.windows
-      when: "'ansible.windows' not in galaxy_list.stdout"
-
-    - name: Install ansible-windows collections
-      include_role:
-        name: ansible-galaxy
-      vars:
-        galaxy_install_collections:
-          - ansible.posix
-      when: "'ansible.posix' not in galaxy_list.stdout"
+    - ansible.builtin.import_tasks:
+      - file: tasks-ansible-collections.yml
 
 - name: Download Required Files to Localhost
   hosts: localhost
