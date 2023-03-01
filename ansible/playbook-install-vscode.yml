@@ -51,15 +51,6 @@
   vars:
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
-    ansible_connection: winrm
-    ansible_winrm_transport: credssp
-    ansible_winrm_server_cert_validation: ignore
-    ansible_winrm_operation_timeout_sec: 1000
-    ansible_winrm_read_timeout_sec: 3200
-    ansible_winrm_connection_timeout_sec: 2000
-    reconnection_retries: 10
-    log_file_path: "./ansible-errors.log"
-    timeout: 60
     vs_code_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
   roles:
     - roles/windows/vscode
