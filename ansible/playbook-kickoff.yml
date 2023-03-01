@@ -69,8 +69,6 @@
 - name: Configure Windows system for log ingestion (Elastic Agent)
   hosts: "{{ elastic_targets }}"
   gather_facts: false
-  vars_files:
-    - cobra.vault
   vars:
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
@@ -82,8 +80,6 @@
   hosts: gns3
   gather_facts: false
   become: true
-  vars_files:
-    - cobra.vault
   vars:
     ansible_user: "{{ vault_linux_user }}"
     ansible_password: "{{ vault_linux_user_password }}"
@@ -125,8 +121,6 @@
 - name: Download and install Python311 on Windows
   hosts: "{{ target_host }}"
   gather_facts: false
-  vars_files:
-    - cobra.vault
   vars:
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
@@ -136,8 +130,6 @@
 - name: Install VS Code on Windows target
   hosts: "{{ target_host }}"
   gather_facts: false
-  vars_files:
-    - cobra.vault
   vars:
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
