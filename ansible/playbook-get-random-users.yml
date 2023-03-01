@@ -12,9 +12,6 @@
   tasks:
     - ansible.builtin.import_tasks: 
       -file: ./common/tasks/task-verify-user-exists.yml
-    - ansible.builtin.import_tasks: 
-      -file: ./common/tasks/task-update-inventory.yml
-
 
 - name: Get 30 random users and reset password to ComtechAzure123!
   hosts: dc1
@@ -34,3 +31,6 @@
     timeout: 60
   roles:
     - role: roles/windows/get-random-users
+  tasks:
+    - ansible.builtin.import_tasks:
+      - file: ./common/tasks/tasks-update-inventory.yml 
