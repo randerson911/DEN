@@ -1,6 +1,5 @@
 ---
 - name: Create user list
-  hosts: localhost
   tasks:
     - name: Check if users file exists
       stat:
