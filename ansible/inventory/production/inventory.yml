@@ -1,131 +1,195 @@
 ---
-windows:
-  vars:
-    ansible_user: "{{ vault_den_user }}"
-    ansible_password: "{{ vault_den_user_password }}"
-    ansible_connection: winrm
-    ansible_winrm_transport: credssp
-    ansible_winrm_server_cert_validation: ignore
-    ansible_winrm_operation_timeout_sec: 1000
-    ansible_winrm_read_timeout_sec: 3200
-    ansible_winrm_connection_timeout_sec: 2000
-    reconnection_retries: 10
-    timeout: 60
+all:
   children:
-    datacenter:
-      children:
-        dc1:
-          hosts:
-            172.17.40.4
-        dc2:
-          hosts:
-            172.17.40.5
-    subnet1:
-      children:
-        user1:
-          hosts:
-            172.17.10.4
-        user2:
-          hosts:
-            172.17.10.5
-        user3:
-          hosts:
-            172.17.10.6
-        user4:
-          hosts:
-            172.17.10.7
-        user5:
-          hosts:
-            172.17.10.8
-        user6:
-          hosts:
-            172.17.10.9
-        user7:
-          hosts:
-            172.17.10.10
-        user8:
-          hosts:
-            172.17.10.11
-        user9:
-          hosts:
-            172.17.10.12
-        user10:
-          hosts:
-            172.17.10.13
-    subnet2:
-      children:
-        user11:
-          hosts:
-            172.17.20.4
-        user12:
-          hosts:
-            172.17.20.5
-        user13:
-          hosts:
-            172.17.20.6
-        user14:
-          hosts:
-            172.17.20.7
-        user15:
-          hosts:
-            172.17.20.8
-        user16:
-          hosts:
-            172.17.20.9
-        user17:
-          hosts:
-            172.17.20.10
-        user18:
-          hosts:
-            172.17.20.11
-        user19:
-          hosts:
-            172.17.20.12
-        user20:
-          hosts:
-            172.17.20.13
-    subnet3:
-      children:
-        user21:
-          hosts:
-            172.17.30.4
-        user22:
-          hosts:
-            172.17.30.5
-        user23:
-          hosts:
-            172.17.30.6
-        user24:
-          hosts:
-            172.17.30.7
-        user25:
-          hosts:
-            172.17.30.8
-        user26:
-          hosts:
-            172.17.30.9
-        user27:
-          hosts:
-            172.17.30.10
-        user28:
-          hosts:
-            172.17.30.11
-        user29:
-          hosts:
-            172.17.30.12
-        user30:
-          hosts:
-            172.17.30.13
-    gns3:
-      hosts:
-        10.255.255.100
-    sensor:
-      hosts:
-        172.17.60.50
-    operators:
+    vars_files:
+      ./cobra.vault
+    windows:
       vars:
-        python_name: python311
-        python_install_path: C:\Tools\Python311
+        ansible_user: "{{ vault_den_user }}"
+        ansible_password: "{{ vault_den_user_password }}"
+        ansible_connection: winrm
+        ansible_winrm_transport: credssp
+        ansible_winrm_server_cert_validation: ignore
+        ansible_winrm_operation_timeout_sec: 1000
+        ansible_winrm_read_timeout_sec: 3200
+        ansible_winrm_connection_timeout_sec: 2000
+        reconnection_retries: 10
+        timeout: 60
+      children:
+        datacenter:
+          children:
+            dc1:
+              hosts:
+                172.17.40.4
+            dc2:
+              hosts:
+                172.17.40.5
+        subnet1:
+          children:
+            user1:
+              hosts:
+                172.17.10.4
+            user2:
+              hosts:
+                172.17.10.5
+            user3:
+              hosts:
+                172.17.10.6
+            user4:
+              hosts:
+                172.17.10.7
+            user5:
+              hosts:
+                172.17.10.8
+            user6:
+              hosts:
+                172.17.10.9
+            user7:
+              hosts:
+                172.17.10.10
+            user8:
+              hosts:
+                172.17.10.11
+            user9:
+              hosts:
+                172.17.10.12
+            user10:
+              hosts:
+                172.17.10.13
+        subnet2:
+          children:
+            user11:
+              hosts:
+                172.17.20.4
+            user12:
+              hosts:
+                172.17.20.5
+            user13:
+              hosts:
+                172.17.20.6
+            user14:
+              hosts:
+                172.17.20.7
+            user15:
+              hosts:
+                172.17.20.8
+            user16:
+              hosts:
+                172.17.20.9
+            user17:
+              hosts:
+                172.17.20.10
+            user18:
+              hosts:
+                172.17.20.11
+            user19:
+              hosts:
+                172.17.20.12
+            user20:
+              hosts:
+                172.17.20.13
+        subnet3:
+          children:
+            user21:
+              hosts:
+                172.17.30.4
+            user22:
+              hosts:
+                172.17.30.5
+            user23:
+              hosts:
+                172.17.30.6
+            user24:
+              hosts:
+                172.17.30.7
+            user25:
+              hosts:
+                172.17.30.8
+            user26:
+              hosts:
+                172.17.30.9
+            user27:
+              hosts:
+                172.17.30.10
+            user28:
+              hosts:
+                172.17.30.11
+            user29:
+              hosts:
+                172.17.30.12
+            user30:
+              hosts:
+                172.17.30.13
+        gns3:
+          hosts:
+            10.255.255.100
+        sensor:
+          hosts:
+            172.17.60.50
+        operators:
+          vars:
+            python_name: python311
+            python_install_path: C:\Tools\Python311
+            pip_packages:
+              - requests
+              - pyyaml
+              - thehive4py
+              - python-magic-dev
+              - libmagic
+              - elasticsearch7
+              - kubernetes
+              - keycloak
+            pip_executable: C:\Tools\Python311\Scripts\pip3.exe
+          children:
+            blue1:
+              hosts:
+                172.17.60.101
+            blue2:
+              hosts:
+                172.17.60.102
+            blue3:
+              hosts:
+                172.17.60.103
+            blue4:
+              hosts:
+                172.17.60.104
+            blue5:
+              hosts:
+                172.17.60.105
+            blue6:
+              hosts:
+                172.17.60.106
+            blue7:
+              hosts:
+                172.17.60.107
+            blue8:
+              hosts:
+                172.17.60.108
+            blue9:
+              hosts:
+                172.17.60.109
+            blue10:
+              hosts:
+                172.17.60.110
+            blue11:
+              hosts:
+                172.17.60.111
+            blue12:
+              hosts:
+                172.17.60.112
+            blue13:
+              hosts:
+                172.17.60.113
+            blue14:
+              hosts:
+                172.17.60.114
+            blue15:
+              hosts:
+                172.17.60.115
+    linux:
+      vars:
+        python_version: 3.11.2
+        python_install_path: opt/tools/python311
         pip_packages:
           - requests
           - pyyaml
@@ -135,81 +199,21 @@ windows:
           - elasticsearch7
           - kubernetes
           - keycloak
-        pip_executable: C:\Tools\Python311\Scripts\pip3.exe
+        pip_executable: /opt/tools/python311/bin/pip
       children:
-        blue1:
-          hosts:
-            172.17.60.101
-        blue2:
-          hosts:
-            172.17.60.102
-        blue3:
-          hosts:
-            172.17.60.103
-        blue4:
-          hosts:
-            172.17.60.104
-        blue5:
-          hosts:
-            172.17.60.105
-        blue6:
-          hosts:
-            172.17.60.106
-        blue7:
-          hosts:
-            172.17.60.107
-        blue8:
-          hosts:
-            172.17.60.108
-        blue9:
-          hosts:
-            172.17.60.109
-        blue10:
-          hosts:
-            172.17.60.110
-        blue11:
-          hosts:
-            172.17.60.111
-        blue12:
-          hosts:
-            172.17.60.112
-        blue13:
-          hosts:
-            172.17.60.113
-        blue14:
-          hosts:
-            172.17.60.114
-        blue15:
-          hosts:
-            172.17.60.115
-linux:
-  vars:
-    python_version: 3.11.2
-    python_install_path: opt/tools/python311
-    pip_packages:
-      - requests
-      - pyyaml
-      - thehive4py
-      - python-magic-dev
-      - libmagic
-      - elasticsearch7
-      - kubernetes
-      - keycloak
-    pip_executable: /opt/tools/python311/bin/pip
-  children:
-    red:
-      children:
-        red4:
-          hosts:
-            10.96.11.9
-        red5:
-          hosts:
-            10.97.3.24
-        red6:
-          hosts:
-            10.99.6.14
-    servers:
-      children:
-        dmz:
-          hosts:
-            172.17.10.253
+        red:
+          children:
+            red4:
+              hosts:
+                10.96.11.9
+            red5:
+              hosts:
+                10.97.3.24
+            red6:
+              hosts:
+                10.99.6.14
+        servers:
+          children:
+            dmz:
+              hosts:
+                172.17.10.253
