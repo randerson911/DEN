@@ -1,13 +1,22 @@
 ---
-- name: Check if community.general collection is already installed
+- name: Check if collections are already installed
   command: ansible-galaxy collection list
   register: galaxy_list
   changed_when: false
 
+- name: Install collections if not already present
+  include_role:
+    name: ansible-galaxy
+  when: "'{{ item }}' not in galaxy_list.stdout"
+  loop: "{{ galaxy_install_collections }}"
+
+
 - name: Install collections
   include_role:
     name: ansible-galaxy
-  vars:
-    galaxy_install_collections:
-      - community.general
-  when: "'community.general' not in galaxy_list.stdout"
+  when: galaxy_collections | selectattr('name', 'notin', galaxy_list.stdout_lines) | list | count > 0
+
+- name: Check if collection is already installed
+  command: ansible-galaxy collection list
+  register: galaxy_list
+  changed_when: false
