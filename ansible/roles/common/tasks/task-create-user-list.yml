@@ -2,8 +2,7 @@
 - name: Create user list
   tasks:
     - name: Check if users file exists
-      block:
-      stat:
+      ansible.builtin.stat:
         path: "{{ users_file_path }}"
       register: users_file
 
