@@ -7,7 +7,7 @@
       register: users_file
 
     - name: Prompt to generate new users file if it exists
-      block:
+      tasks:
         - name: Prompt to generate new users file
           ansible.builtin.pause:
             prompt: "Do you wish to generate a new users file? [Yes/No]"
@@ -22,7 +22,7 @@
       when: users_file.stat.exists
 
     - name: Generate new users file if it doesn't exist
-      block:
+      tasks:
         - name: Run playbook to get random users
           ansible.builtin.include_role:
             name: roles/windows/get-random-users
