@@ -1,61 +1,64 @@
 ---
-- name: Create user list
+- name: Check if users file exists
+  vars:
+    users_file_path: "./files/users.txt"
+  stat:
+    path: "{{ users_file_path }}"
+  register: users_file
+
+- name: Prompt to generate new users file if it exists
+  when: users_file.stat.exists
+  pause:
+    prompt: "Do you wish to generate a new users file?"
+    echo: true
+  register: generate_new_file
+
+- name: Remove existing users file
+  vars:
+    users_file_path: "./files/users.txt"
+  when: generate_new_file.user_input == 'Yes' and users_file.stat.exists
+  file:
+    path: "{{ users_file_path }}"
+    state: absent
+
+- name: Generate new users file if it doesn't exist
+  when: not users_file.stat.exists
+  include_role:
+    name: roles/windows/get-random-users
   vars:
     vault_pass_path: "./.vault_pass"
     inventory_path: "./ansible/inventory.yml"
     playbook_path: "./ansible/playbook-get-random-users.yml"
-    users_file_path: "./users.txt"
-  tasks:
-    - name: Check if users file exists
-      stat:
-        path: "{{ users_file_path }}"
-      register: users_file
+    users_file_path: "./files/users.txt"
+  become: true
+  become_method: su
 
-    - name: Prompt to generate new users file if it exists
-      when: users_file.stat.exists
-      pause:
-        prompt: "Do you wish to generate a new users file?"
-        echo: true
-      register: generate_new_file
+- name: Clean up the generated user file
+  vars:
+    users_file_path: "./files/users.txt"
+  replace:
+    path: "{{ users_file_path }}"
+    regexp: '[^\x20-\x7E]'
+    replace: ''
+  with_items:
+    - '^\n'
+    - '^ \n'
+  when: users_file.stat.exists
 
-    - name: Remove existing users file
-      when: generate_new_file.user_input == 'Yes' and users_file.stat.exists
-      file:
-        path: "{{ users_file_path }}"
-        state: absent
+- name: Remove first line from users file
+  vars:
+    users_file_path: "./files/users.txt"
+  lineinfile:
+    path: "{{ users_file_path }}"
+    state: absent
+    line: "{{ lookup('file', users_file_path) | regex_replace('^.*?\n', '') }}"
+  when: users_file.stat.exists
 
-    - name: Generate new users file if it doesn't exist
-      when: not users_file.stat.exists
-      include_role:
-        name: roles/windows/get-random-users
-      vars:
-        vault_password_file: "{{ vault_pass_path }}"
-        inventory: "{{ inventory_path }}"
-        playbook: "{{ playbook_path }}"
-        output_file: "{{ users_file_path }}"
-      become: true
-      become_method: su
-
-    - name: Clean up the generated user file
-      replace:
-        path: "{{ users_file_path }}"
-        regexp: '[^\x20-\x7E]'
-        replace: ''
-      with_items:
-        - '^\n'
-        - '^ \n'
-      when: users_file.stat.exists
-
-    - name: Remove first line from users file
-      lineinfile:
-        path: "{{ users_file_path }}"
-        state: absent
-        line: "{{ lookup('file', users_file_path) | regex_replace('^.*?\n', '') }}"
-      when: users_file.stat.exists
-
-    - name: Remove whitespace from users file
-      replace:
-        path: "{{ users_file_path }}"
-        regexp: '\s+'
-        replace: ''
-      when: users_file.stat.exists
+- name: Remove whitespace from users file
+  vars:
+    users_file_path: "./files/users.txt"
+  replace:
+    path: "{{ users_file_path }}"
+    regexp: '\s+'
+    replace: ''
+  when: users_file.stat.exists
