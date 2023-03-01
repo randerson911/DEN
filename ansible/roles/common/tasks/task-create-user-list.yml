@@ -5,7 +5,6 @@
       stat:
         path: "{{ users_file_path }}"
       register: users_file
-      when: users_file.stat.exists
 
     - name: Prompt to generate new users file if it exists
       pause:
