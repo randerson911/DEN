@@ -9,8 +9,8 @@
     users_file_path: "{{ project_root }}/files/users.txt"
   tasks:
     - name: Import tasks
-      ansible.builtin.import_tasks:
-        file: "roles/common/tasks/task-verify-user-exists.yml"
+      ansible.builtin.import_tasks: 
+        file: "../../roles/common/tasks/task-verify-user-exists.yml"
 
 - name: Get 30 random users and reset password to ComtechAzure123!
   hosts: dc1
@@ -20,7 +20,7 @@
     ansible_password: "{{ vault_den_user_password }}"
     users_file_path: "{{ project_root }}/files/users.txt"
   roles:
-    - role: roles/windows/get-random-users
+    - role: ../../roles/windows/get-random-users
 
 - name: Update Inventory List
   hosts: localhost
@@ -33,5 +33,6 @@
     playbook_path: "{{ project_root }}playbook/production/playbook-get-random-users.yml"
     users_file_path: "{{ project_root }}/files/users.txt"
   tasks:
-    - ansible.builtin.import_tasks:
-      - file: "{{ project_root }}/roles/common/tasks/tasks-update-inventory.yml" 
+    - name: Update the Inventory
+      ansible.builtin.import_tasks:
+        - file: "../../roles/common/tasks/tasks-update-inventory.yml" 
