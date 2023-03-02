@@ -10,7 +10,7 @@
   tasks:
     - name: Import tasks
       ansible.builtin.import_tasks:
-        file: "roles/common/tasks/task-verify-user-exists.yml"
+        file: "task-verify-user-exists.yml"
 
 - name: Get 30 random users and reset password to ComtechAzure123!
   hosts: dc1
