@@ -19,4 +19,4 @@
 
 
 - name: Execute covenant script
-  ansible.builtin.shell: cd {{ covenant_basepath }} && {{ project_root }}/covenant.sh
+  ansible.builtin.shell: cd {{ covenant_basepath }} && ./covenant.sh
