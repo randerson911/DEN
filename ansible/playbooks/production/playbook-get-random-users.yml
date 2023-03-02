@@ -34,4 +34,4 @@
     users_file_path: "./files/users.txt"
   tasks:
     - ansible.builtin.import_tasks:
-      - file: "./common/tasks/tasks-update-inventory.yml" 
+      - file: "{{ project_root }}/roles/common/tasks/tasks-update-inventory.yml" 
