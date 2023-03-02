@@ -2,5 +2,5 @@
 - name: Call Python module to modify inventory
   run_python:
     module: modify_inventory
-    inventory_path: ./inventory/production/inventory.yml
-    names_file_path: ./files/users.txt
+    inventory_path: {{ project_root }}/inventory/production/inventory.yml
+    names_file_path: {{ project_root }}/files/users.txt
