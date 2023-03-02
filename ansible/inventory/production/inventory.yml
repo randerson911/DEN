@@ -189,9 +189,9 @@ all:
                 172.17.60.115
     linux:
       vars_files:
-        ./cobra.vault
+        {{ project_root }}/cobra.vault
       vars:
-        vault_pass_path: "./.vault_pass"
+        vault_pass_path: "{{ project_root }}/.vault_pass"
         python_version: 3.11.2
         python_install_path: opt/tools/python311
         pip_packages:
