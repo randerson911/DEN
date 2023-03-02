@@ -2,5 +2,3 @@
 - name: Configure the Ansible Environment
   hosts: localhost
   gather_facts: false
-  vars_files:
-    "./cobra.vault"

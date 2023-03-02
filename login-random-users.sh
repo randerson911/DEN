@@ -40,7 +40,7 @@ fi
 
 if [ ! -f lmarker.txt ]; then
   cd ansible
-  lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault | grep linux_user_password | cut -d ' ' -f 2)
+  lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault.yml | grep linux_user_password | cut -d ' ' -f 2)
   cd ..
 
   pip3 install pyyaml
