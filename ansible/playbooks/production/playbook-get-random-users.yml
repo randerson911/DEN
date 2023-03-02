@@ -7,8 +7,11 @@
     inventory_path: "./ansible/inventory/production/inventory.yml"
     playbook_path: "./ansible/playbook/production/playbook-get-random-users.yml"
     users_file_path: "./files/users.txt"
-  ansible.builtin.import_tasks: 
-      -file: "./common/tasks/task-verify-user-exists.yml"
+  tasks:
+    - name: Import tasks
+      ansible.builtin.import_tasks:
+        file: "./common/tasks/task-verify-user-exists.yml"
+
 
 - name: Get 30 random users and reset password to ComtechAzure123!
   hosts: dc1
