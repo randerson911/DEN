@@ -2,10 +2,10 @@
 - name: Create the User List if Needed
   hosts: localhost
   vars:
-    vault_pass_path: "./.vault_pass"
+    vault_pass_path: "{{ project_root }}/.vault_pass"
     inventory_path: "{{ project_root }}inventory/production/inventory.yml"
     playbook_path: "{{ project_root }}playbook/production/playbook-get-random-users.yml"
-    users_file_path: "./files/users.txt"
+    users_file_path: "{{ project_root }}/files/users.txt"
   tasks:
     ansible.builtin.import_playbook: playbook-get-random-users.yml
 
