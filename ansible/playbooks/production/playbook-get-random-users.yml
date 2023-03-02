@@ -3,10 +3,10 @@
   hosts: localhost
   gather_facts: false
   vars:
-    vault_pass_path: "./.vault_pass"
+    vault_pass_path: "{{ project_root }}/.vault_pass"
     inventory_path: "{{ project_root }}inventory/production/inventory.yml"
     playbook_path: "{{ project_root }}playbook/production/playbook-get-random-users.yml"
-    users_file_path: "./files/users.txt"
+    users_file_path: "{{ project_root }}/files/users.txt"
   tasks:
     - name: Import tasks
       ansible.builtin.import_tasks:
@@ -18,7 +18,7 @@
   vars:
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
-    users_file_path: "./files/users.txt"
+    users_file_path: "{{ project_root }}/files/users.txt"
   roles:
     - role: roles/windows/get-random-users
 
@@ -26,7 +26,7 @@
   hosts: localhost
   gather_facts: false
   vars_files:
-    ./cobra.vault
+    {{ project_root }}/cobra.vault
   vars:
     vault_pass_path: "./.vault_pass"
     inventory_path: "{{ project_root }}inventory/production/inventory.yml"
