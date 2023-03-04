@@ -1,4 +1,3 @@
----
 - name: Install community.general collection
   hosts: localhost
   gather_facts: false
@@ -9,7 +8,7 @@
       - name: ansible.posix
   tasks:
     - ansible.builtin.import_tasks:
-      - file: tasks-ansible-collections.yml
+        file: tasks-ansible-collections.yml
 
 - name: Download Required Files to Localhost
   hosts: localhost
@@ -20,7 +19,7 @@
     windows_agent_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
   tasks:  
     - ansible.builtin.import_tasks:
-      - file: tasks-download-vscode
+        file: tasks-download-vscode.yml
 
 - name: Install VS Code on Windows target
   hosts: "{{ target_host }}"
