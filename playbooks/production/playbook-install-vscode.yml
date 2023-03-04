@@ -19,7 +19,7 @@
     windows_agent_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
   tasks:  
     - ansible.builtin.import_tasks:
-        file: roles/common/tasks/tasks-download-vscode.yml
+        file: roles/common/tasks/tasks-download-vscode
 
 - name: Install VS Code on Windows target
   hosts: "{{ target_host }}"
