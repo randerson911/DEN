@@ -46,7 +46,7 @@ fi
 if [ ! -f users.txt ]
 then
     
-    ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_pass playbook-get-random-users.yml
+    ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_passplaybooks/production/playbook-get-random-users.yml
     
     sed -i 's/[^[:print:]]//g' users.txt
     sed -i '/^$/d' users.txt

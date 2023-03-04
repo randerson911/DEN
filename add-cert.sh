@@ -10,7 +10,7 @@ then
 fi
 
 
-ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_pass playbook-root-cert.yml
+ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_passplaybooks/production/playbook-root-cert.yml
 echo ""
 echo ""
 echo "Action complete."
