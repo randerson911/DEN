@@ -6,9 +6,8 @@
       - name: community.general
       - name: ansible.windows
       - name: ansible.posix
-  tasks:
-    - ansible.builtin.import_tasks:
-        file: roles/common/tasks/tasks-ansible-collections.yml
+  roles:
+    - role: common/tasks/tasks-ansible-collections.yml
 
 - name: Download Required Files to Localhost
   hosts: localhost
