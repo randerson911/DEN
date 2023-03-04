@@ -22,7 +22,7 @@ read redHost
 
 sed -i "/- name: Install/{n;s/.*/  hosts: $redHost/}" ansible/playbook-covenant.yml
 
-ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass playbook-covenant.yml
+ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_pass playbook-covenant.yml
 echo ""
 echo ""
 echo "Action complete."
