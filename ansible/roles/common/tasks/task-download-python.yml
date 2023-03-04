@@ -2,8 +2,15 @@
 - name: Check if VSCode for Windows exists
   task:
     ansible.builtin.stat:
-      path: "../../roles/windows/install-python311/files/python311.exe"
-  register: file_exists
+      path: "../../roles/windows/install-python311/files/{{ python_windows_file }}"
+  register: windows_file_exists
+  ignore_errors: true
+
+- name: Check if VSCode for Linux exists
+  task:
+    ansible.builtin.stat:
+      path: "../../roles/linux/install-python311/files/{{ python_linux_file }}"
+  register: linux_file_exists
   ignore_errors: true
 
 - name: Download Python for Windows
