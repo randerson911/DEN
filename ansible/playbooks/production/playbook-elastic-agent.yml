@@ -4,7 +4,7 @@
   gather_facts: false
   tasks:
     - ansible.builtin.import_tasks:
-      - file: ./roles/common/tasks/task-ansible-collection.yml
+      - file: ../../roles/common/tasks/task-ansible-collection.yml
 
 - name: Download Required Files to Localhost
   hosts: localhost
@@ -20,7 +20,7 @@
     linux_agent_file: "elastic-agent-7.17.4-linux-x86_64.zip"
   tasks:
     - ansible.builtin.import_tasks:
-        - file: ./roles/common/tasks/task-download-elastic-agent.yml
+        - file: ../../roles/common/tasks/task-download-elastic-agent.yml
 
 - name: "Configure Windows system for log ingestion (Elastic Agent)"
   hosts: "{{ elastic_targets }}"
