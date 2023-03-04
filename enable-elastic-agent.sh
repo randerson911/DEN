@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -f ansible/.vault_pass ]
+if [ ! -f ./.vaultault_pass ]
 then
     echo "Please enter the vault password: "
     read -s vault_pass
