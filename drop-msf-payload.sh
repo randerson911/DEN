@@ -5,8 +5,8 @@ then
     echo "Please enter the vault password: "
     read -s vault_pass
 
-    echo $vault_pass > ./ansible/.vault_pass
-    chmod 0600 ./ansible/.vault_pass
+    echo $vault_pass > ./.vault_pass
+    chmod 0600 ./.vault_pass
 fi
 
 echo ""
