@@ -1,4 +1,23 @@
 ---
-- name: Configure the Ansible Environment
+- name: Install community.general collection
   hosts: localhost
   gather_facts: false
+  tasks:
+    - ansible.builtin.import_tasks:
+      - file: ../../roles/common/tasks/task-ansible-collection.yml
+
+- name: Download Required Files to Localhost
+  hosts: localhost
+  vars:
+    windows_agent_file: "elastic-agent-7.17.4-windows-x86_64.zip"
+    windows_agent_dir: "roles/windows/elastic-agent/files"
+    windows_agent_name: "elastic-agent-7.17.4-windows-x86_64"
+    windows_agent_exe: "elastic-agent.exe"
+    windows_agent_url: "https://artifacts.elastic.co/downloads/beats/elastic-agent/{{ windows_agent_file }}"
+    linux_agent_url: "https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.17.4-linux-x86_64.tar.gz"
+    linux_agent_name: "elastic-agent-7.17.4-linux-x86_64"
+    linux_agent_dir: "roles/linux/elastic-agent/files"
+    linux_agent_file: "elastic-agent-7.17.4-linux-x86_64.zip"
+  tasks:
+    - ansible.builtin.import_tasks:
+        - file: ../../roles/common/tasks/task-download-elastic-agent.yml
