@@ -1,7 +1,8 @@
 ---
 - name: Check if VSCode for Windows exists
-  ansible.windows.win_stat:
-    path: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
+  task:
+    ansible.builtin.stat:
+      path: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
   register: file_exists
   ignore_errors: true
 
