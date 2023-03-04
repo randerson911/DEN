@@ -12,7 +12,7 @@ all:
         ansible_winrm_read_timeout_sec: 3200
         ansible_winrm_connection_timeout_sec: 2000
         reconnection_retries: 10
-        vault_pass_path: "./.vault_pass"
+        vault_pass_path: "../../.vault_pass"
         timeout: 60
       children:
         datacenter:
