@@ -7,7 +7,8 @@
     playbook_path: "{{ project_root }}playbook/production/playbook-get-random-users.yml"
     users_file_path: "./files/users.txt"
   tasks:
-    ansible.builtin.import_playbook: ./playbook-get-random-users.yml
+    ansible.builtin.import_playbook: 
+      - playbooks: ./playbook-get-random-users.yml
 
 - name: GPUpdate the Machines First
   hosts: subnet1, subnet2, subnet3
