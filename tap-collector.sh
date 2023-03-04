@@ -12,7 +12,7 @@ fi
 
 
 ansible-galaxy collection install davidban77.gns3
-ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_passplaybooks/production/playbook-tap-collector.yml
+ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_pass playbooks/production/playbook-tap-collector.yml
 echo ""
 echo ""
 echo "Action complete."

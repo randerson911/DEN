@@ -48,7 +48,7 @@ fi
 # fi
 
 
-ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_passplaybooks/production/playbook-winlogbeat.yml
+ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_pass playbooks/production/playbook-winlogbeat.yml
 
 
 creds=$(cat elmarker.txt)

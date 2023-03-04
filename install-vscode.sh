@@ -18,6 +18,6 @@ fi
 read -p "Enter target host to install VS Code on: " target_host
 
 
-ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_pass -e "target_host=$target_host"playbooks/production/playbook-install-vscode.yml
+ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_pass -e "target_host=$target_host" playbooks/production/playbook-install-vscode.yml
 
 echo ""
