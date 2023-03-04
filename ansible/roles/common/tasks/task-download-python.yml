@@ -9,4 +9,4 @@
 - name: Download VSCode for Windows
   get_url:
     url: "{{ windows_agent_url }}"
-    dest: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
+    dest: "../../roles/windows/install-python311/files/python311.exe"
