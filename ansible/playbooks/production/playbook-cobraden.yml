@@ -21,3 +21,4 @@
   tasks:
     - ansible.builtin.import_tasks:
         - file: ../../roles/common/tasks/task-download-elastic-agent.yml
+
