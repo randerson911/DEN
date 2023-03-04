@@ -1,6 +1,6 @@
 #! /bin/bash
 
-if [ ! -f ./.vaultault_pass ]
+if [ ! -f ./.vault_pass ]
 then
     echo "Please enter the vault password: "
     read -s vault_pass
