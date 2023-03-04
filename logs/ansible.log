@@ -37,3 +37,15 @@ password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
 password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
 
 2023-03-04 06:39:56,068 p=14522 u=ryananderson n=ansible | ERROR! The vault password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
+2023-03-04 06:40:22,122 p=14659 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 06:40:23,170 p=14665 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (cobra.vault.yml): The vault
+password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
+
+2023-03-04 06:40:23,170 p=14665 u=ryananderson n=ansible | ERROR! The vault password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
+2023-03-04 06:40:25,883 p=14669 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 06:40:25,944 p=14672 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 06:40:26,207 p=14678 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 06:40:27,032 p=14693 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (cobra.vault.yml): The vault
+password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
+
+2023-03-04 06:40:27,032 p=14693 u=ryananderson n=ansible | ERROR! The vault password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
