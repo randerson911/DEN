@@ -19,20 +19,20 @@
 
   - name: Extract Elastic Agent for Windows
     archive:
-      src: "ansible/roles/windows/elastic-agent/files/{{ windows_agent_file }}"
-      dest: "ansible/roles/windows/elastic-agent/files/"
+      src: "../../roles/windows/elastic-agent/files/{{ windows_agent_file }}"
+      dest: "../../roles/windows/elastic-agent/files/"
       format: zip
     when: not (ansible_check_mode | bool) and not (file_exists.stat.exists)
     vars:
-      file_exists: "{{ stat('ansible/roles/windows/elastic-agent/files/' + windows_agent_file) | default(undefined, true) }}"
+      file_exists: "{{ stat('../../roles/windows/elastic-agent/files/' + windows_agent_file) | default(undefined, true) }}"
 
   - name: Download Python for Windows
     get_url:
       url: "{{ python_windows_url }}"
-      dest: "ansible/roles/windows/install-python311/files/{{ python_windows_file }}"
+      dest: "../../roles/windows/install-python311/files/{{ python_windows_file }}"
     when: not (ansible_check_mode | bool) and not (file_exists.stat.exists)
     vars:
-      file_exists: "{{ stat('ansible/roles/windows/install-python311/files/' + python_windows_file) | default(undefined, true) }}"
+      file_exists: "{{ stat('../../roles/windows/install-python311/files/' + python_windows_file) | default(undefined, true) }}"
 
   - name: Download Python for Linux
     get_url:
@@ -48,7 +48,7 @@
         - file_exists.stat.exists
       msg: "Elastic Agent for Windows could not be downloaded or does not exist"
     vars:
-      file_exists: "{{ stat('ansible/roles/windows/elastic-agent/files/' + windows_agent_file) | default(undefined, true) }}"
+      file_exists: "{{ stat('../../roles/windows/elastic-agent/files/' + windows_agent_file) | default(undefined, true) }}"
 
   - name: Verify Python for Windows exists
     assert:
@@ -56,7 +56,7 @@
         - file_exists.stat.exists
       msg: "Python for Windows could not be downloaded or does not exist"
     vars:
-      file_exists: "{{ stat('ansible/roles/windows/install-python311/files/' + python_windows_file) | default(undefined, true) }}"
+      file_exists: "{{ stat('../../roles/windows/install-python311/files/' + python_windows_file) | default(undefined, true) }}"
 
   - name: Verify Python for Linux exists
     assert:
