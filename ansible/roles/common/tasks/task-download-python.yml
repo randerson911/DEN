@@ -1,5 +1,5 @@
 ---
-- name: Check if Elastic Agent for Windows exists
+- name: Check if VSCode for Windows exists
   ansible.windows.win_stat:
     path: "{{ windows_agent_dir }}/{{ windows_agent_file }}"
   register: file_exists
