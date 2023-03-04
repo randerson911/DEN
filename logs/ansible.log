@@ -49,3 +49,7 @@ password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
 password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
 
 2023-03-04 06:40:27,032 p=14693 u=ryananderson n=ansible | ERROR! The vault password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
+2023-03-04 06:42:47,083 p=15012 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 06:42:47,083 p=15013 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 06:42:50,908 p=15031 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 06:42:51,134 p=15037 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
