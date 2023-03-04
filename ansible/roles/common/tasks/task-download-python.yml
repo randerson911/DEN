@@ -2,7 +2,7 @@
 - name: Check if VSCode for Windows exists
   task:
     ansible.builtin.stat:
-      path: "..\..\roles\windows\install-python311\files\"
+      path: "..\..\roles\windows\install-python311\files\python311.exe"
   register: file_exists
   ignore_errors: true
 
