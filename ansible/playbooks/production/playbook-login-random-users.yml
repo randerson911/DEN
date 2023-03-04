@@ -8,7 +8,8 @@
     users_file_path: "./files/users.txt"
   tasks:
     ansible.builtin.import_playbook: 
-      - playbooks: ./playbook-get-random-users.yml
+      playbooks: 
+        - playbook-get-random-users.yml
 
 - name: GPUpdate the Machines First
   hosts: subnet1, subnet2, subnet3
