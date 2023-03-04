@@ -12,7 +12,7 @@ fi
 # Read the value of my_secret from my_vault
 cd ansible
 lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault.yml | grep linux_user_password | cut -d ' ' -f 2)
-cd ..
+
 
 # echo $lpass | sudo -S apt update
 # echo $lpass | sudo -S apt install unzip -y
@@ -35,4 +35,3 @@ echo ""
 echo ""
 echo "Action complete."
 echo ""
-cd ..

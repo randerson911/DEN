@@ -27,7 +27,7 @@ if [ ! -f users.txt ]
 then
     cd ansible
     ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass playbook-get-random-users.yml
-    cd ..
+    
     sed -i 's/[^[:print:]]//g' users.txt
     sed -i '/^$/d' users.txt
     sed -i '1d' users.txt
@@ -41,7 +41,7 @@ fi
 if [ ! -f lmarker.txt ]; then
   cd ansible
   lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault.yml | grep linux_user_password | cut -d ' ' -f 2)
-  cd ..
+  
 
   pip3 install pyyaml
   
@@ -54,7 +54,7 @@ fi
 
 cd ansible
 ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass playbook-login-random-users.yml
-cd ..
+
 
 echo ""
 echo ""

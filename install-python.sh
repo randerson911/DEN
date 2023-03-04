@@ -24,7 +24,7 @@ echo ""
 read -p "Enter target hosts to install Python 3.11 (comma-separated): " python_targets
 cd ansible
 ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass -e "python_targets=$python_targets" playbook-install-python311.yml
-cd ..
+
 echo ""
 echo ""
 echo "Action complete."
