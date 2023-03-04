@@ -8,7 +8,7 @@
       - name: ansible.posix
   tasks:
     - ansible.builtin.import_tasks:
-        file: tasks-ansible-collections.yml
+        file: common/tasks/tasks-ansible-collections.yml
 
 - name: Download Required Files to Localhost
   hosts: localhost
