@@ -19,7 +19,7 @@ then
     echo "Complete." > linuxcreds.txt
 fi
 
-cd ansible
+
 ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass playbook-config-filebeat-zeek.yml
 
 

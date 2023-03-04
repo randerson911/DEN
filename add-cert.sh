@@ -9,7 +9,7 @@ then
     chmod 0600 ./ansible/.vault_pass
 fi
 
-cd ansible
+
 ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass playbook-root-cert.yml
 echo ""
 echo ""

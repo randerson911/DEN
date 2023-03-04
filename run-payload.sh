@@ -29,7 +29,7 @@ echo "Enter the payload to be sent to the devices. Leave blank to re-run the pre
 read payload
 [[ -z "$payload" ]] && echo "Continuing On" || echo $payload > ansible/roles/red/run-payload/files/payload-template.j2
 
-cd ansible
+
 ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass playbook-run-payload.yml
 echo ""
 echo ""

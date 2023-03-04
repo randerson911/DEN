@@ -11,7 +11,7 @@ fi
 
 
 # Read the value of my_secret from my_vault
-cd ansible
+
 lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault.yml | grep linux_user_password | cut -d ' ' -f 2)
 
 
@@ -33,7 +33,7 @@ fi
 
 if [ ! -f users.txt ]
 then
-    cd ansible
+    
     ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass playbook-get-random-users.yml
     
     sed -i 's/[^[:print:]]//g' users.txt
@@ -100,7 +100,7 @@ read -p "Enter target hosts to install Python 3.11 (comma-separated): " targets
 echo "Targets updated in playbook file"
 
 # Run the playbook
-cd ansible
+
 ansible-galaxy collection install davidban77.gns3
 ansible-galaxy collection install ansible.windows
 ansible-galaxy collection install ansible.posix

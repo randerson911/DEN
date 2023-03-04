@@ -10,7 +10,7 @@ then
 fi
 
 # Read the value of my_secret from my_vault
-cd ansible
+
 lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault.yml | grep linux_user_password | cut -d ' ' -f 2)
 
 
@@ -28,7 +28,7 @@ lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault.yml |
 # fi
 
 
-cd ansible
+
 ansible-playbook -i inventory.yml --vault-password-file ./.vault_pass -e "elastic_targets=datacenter,subnet1,subnet2,subnet3" playbook-elastic-agent.yml
 
 echo ""
