@@ -1,3 +1,4 @@
+---
 - name: Check if collection is already installed
   command: ansible-galaxy collection list
   register: galaxy_list
