@@ -1,3 +1,15 @@
 2023-03-05 06:27:39,646 p=44237 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
 2023-03-05 06:53:48,685 p=47393 u=ryananderson n=ansible | ERROR! input is not vault encrypted data. cobra.vault is not a vault encrypted file for cobra.vault
 2023-03-05 06:59:09,823 p=48190 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-05 07:00:33,227 p=48547 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-05 07:00:34,024 p=48563 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-05 07:00:34,024 p=48562 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-05 07:00:34,120 p=48565 u=ryananderson n=ansible | [WARNING]: Error in vault password file loading (None): A vault password must
+be specified to decrypt data
+
+2023-03-05 07:00:34,196 p=48565 u=ryananderson n=ansible | ERROR! Empty playbook, nothing to do: /Users/ryananderson/Documents/cobraden/playbooks/development/playbook-test.yml
+2023-03-05 07:00:35,365 p=48578 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-05 07:00:36,117 p=48584 u=ryananderson n=ansible | [WARNING]: Error in vault password file loading (None): A vault password must
+be specified to decrypt data
+
+2023-03-05 07:00:36,175 p=48584 u=ryananderson n=ansible | playbook: playbooks/development/playbook-test.yml
