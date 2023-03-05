@@ -18,3 +18,8 @@ be specified to decrypt data
 be specified to decrypt data
 
 2023-03-05 07:00:59,108 p=48777 u=ryananderson n=ansible | playbook: playbooks/development/playbook-test.yml
+2023-03-05 07:01:12,537 p=48956 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-05 07:01:13,235 p=48962 u=ryananderson n=ansible | [WARNING]: Error in vault password file loading (None): A vault password must
+be specified to decrypt data
+
+2023-03-05 07:01:13,284 p=48962 u=ryananderson n=ansible | playbook: playbooks/development/playbook-test.yml
