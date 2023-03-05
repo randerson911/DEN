@@ -32,5 +32,4 @@
     users_file_path: "./files/users.txt"
   tasks:
     - name: Update the Inventory
-      ansible.builtin.import_tasks:
-        - file: "tasks/task-update-inventory.yml" 
+      ansible.builtin.include_tasks: tasks/task-update-inventory.yml
