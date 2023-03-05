@@ -1272,3 +1272,12 @@ Should be written as:
 2023-03-05 06:03:51,720 p=40013 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
 2023-03-05 06:03:57,786 p=40058 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
 2023-03-05 06:05:53,305 p=40574 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-05 06:13:11,295 p=41414 u=ryananderson n=ansible | # /Users/ryananderson/.ansible/collections/ansible_collections
+Collection            Version
+--------------------- -------
+
+2023-03-05 06:13:11,295 p=41414 u=ryananderson n=ansible | ansible.posix         1.5.1  
+2023-03-05 06:13:11,295 p=41414 u=ryananderson n=ansible | ansible.windows       1.13.0 
+2023-03-05 06:13:11,295 p=41414 u=ryananderson n=ansible | chocolatey.chocolatey 1.4.0  
+2023-03-05 06:13:11,295 p=41414 u=ryananderson n=ansible | community.general     6.4.0  
+2023-03-05 06:13:11,295 p=41414 u=ryananderson n=ansible | community.windows     1.12.0 
