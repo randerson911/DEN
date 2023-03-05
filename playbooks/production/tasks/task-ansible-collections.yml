@@ -8,7 +8,7 @@
   include_role:
     name: ansible-galaxy
   when: "'{{ item }}' not in galaxy_list.stdout"
-  loop: "{{ galaxy_install_collections }}"
+  loop: "{{ galaxy_collections }}"
 
 
 - name: Install collections
