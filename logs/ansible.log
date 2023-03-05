@@ -111,3 +111,4 @@ be specified to decrypt data
 
 2023-03-04 21:19:21,071 p=24648 u=ryananderson n=ansible | [WARNING]: Error in vault password file loading (None): A vault password must be specified to decrypt data
 
+2023-03-04 21:24:23,652 p=25212 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
