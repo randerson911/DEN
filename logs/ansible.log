@@ -1308,3 +1308,4 @@ The offending line appears to be:
 - name: Install VS Code on Windows target
   ^ here
 
+2023-03-05 06:24:27,648 p=43453 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
