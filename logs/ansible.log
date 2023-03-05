@@ -1068,3 +1068,86 @@ The offending line appears to be:
 - name: Install VS Code extensions
   ^ here
 
+2023-03-04 22:20:39,541 p=37013 u=ryananderson n=ansible | Starting galaxy collection install process
+2023-03-04 22:20:39,549 p=37013 u=ryananderson n=ansible | Process install dependency map
+2023-03-04 22:20:39,550 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:39,655 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:39,760 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:39,865 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:39,971 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:40,076 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:40,181 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:40,287 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:40,392 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:40,497 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:40,601 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:40,706 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:40,811 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:40,917 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:41,022 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:41,127 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:41,233 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:41,337 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:41,439 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:41,545 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:41,645 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:41,749 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:41,854 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:41,955 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:42,058 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:42,164 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:42,269 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:42,374 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:42,480 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:42,585 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:42,689 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:42,794 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:42,896 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:42,999 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:43,102 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:43,208 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:43,313 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:43,418 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:43,524 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:43,629 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:43,734 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:43,839 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:43,944 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:44,050 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:44,153 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:44,257 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:44,359 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:44,464 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:44,569 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:44,674 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:44,780 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:44,881 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:44,987 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:45,087 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:45,193 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:45,293 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:45,396 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:45,497 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:45,603 p=37013 u=ryananderson n=ansible | Starting collection install process
+2023-03-04 22:20:45,603 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:45,604 p=37013 u=ryananderson n=ansible | Downloading https://galaxy.ansible.com/download/community-windows-1.12.0.tar.gz to /Users/ryananderson/.ansible/tmp/ansible-local-37013bj51hld6/tmpbikntmx0/community-windows-1.12.0-o6yyjml6
+2023-03-04 22:20:45,709 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:45,814 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:45,920 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:46,021 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:46,126 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:46,230 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:46,335 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:46,440 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:46,545 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:46,646 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:46,751 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:46,857 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:46,957 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:47,063 p=37013 u=ryananderson n=ansible | -
+2023-03-04 22:20:47,168 p=37013 u=ryananderson n=ansible | Installing 'community.windows:1.12.0' to '/Users/ryananderson/.ansible/collections/ansible_collections/community/windows'
+2023-03-04 22:20:47,168 p=37013 u=ryananderson n=ansible | \
+2023-03-04 22:20:47,271 p=37013 u=ryananderson n=ansible | |
+2023-03-04 22:20:47,376 p=37013 u=ryananderson n=ansible | /
+2023-03-04 22:20:47,481 p=37013 u=ryananderson n=ansible | community.windows:1.12.0 was installed successfully
+2023-03-04 22:20:47,481 p=37013 u=ryananderson n=ansible | 'ansible.windows:1.13.0' is already installed, skipping.
