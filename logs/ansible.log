@@ -23,3 +23,5 @@ be specified to decrypt data
 be specified to decrypt data
 
 2023-03-05 07:01:13,284 p=48962 u=ryananderson n=ansible | playbook: playbooks/development/playbook-test.yml
+2023-03-05 07:02:31,618 p=49341 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-05 07:02:34,901 p=49357 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
