@@ -307,3 +307,23 @@ The offending line appears to be:
     - ./common/tasks/tasks-download-vscode.yml
       ^ here
 
+2023-03-04 21:57:48,322 p=31470 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:57:49,409 p=31477 u=ryananderson n=ansible | [WARNING]: Ignoring invalid path provided to plugin path:
+'/Users/ryananderson/Documents/cobraden/roles/common/tasks/task-ansible-
+collections.yml' is not a directory
+
+2023-03-04 21:57:49,410 p=31477 u=ryananderson n=ansible | [WARNING]: Ignoring invalid path provided to plugin path:
+'/Users/ryananderson/Documents/cobraden/roles/common/tasks/task-download-
+vscode.yml' is not a directory
+
+2023-03-04 21:57:49,451 p=31477 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'win_chocolatey'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/roles/windows/vscode/tasks/main.yml': line 48, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: Install VS Code extensions
+  ^ here
+
