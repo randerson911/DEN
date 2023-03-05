@@ -5,11 +5,12 @@
   changed_when: false
 
 - name: Install required collections
-  command: ansible-galaxy collection install {{ item.name }}
+  shell: ansible-galaxy collection install {{ item.name }}
   register: install_result
-  when: "'{{ item.name }}' not in galaxy_list.stdout"
+  changed_when: install_result.rc != 0
   loop: "{{ galaxy_collections }}"
-
+  
 - debug:
-    msg: "The following collections were installed: {{ galaxy_collections }}"
-  when: install_result|changed
+    msg: "Collection {{ item.item.name }} was {% if item.changed %}installed{% else %}skipped{% endif %}"
+  loop: "{{ install_result.results }}"
+  
