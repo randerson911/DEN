@@ -159,3 +159,18 @@ The offending line appears to be:
       - roles/common/tasks/task-ansible-collection.yml
         ^ here
 
+2023-03-04 21:25:16,180 p=25614 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:25:17,224 p=25623 u=ryananderson n=ansible | [WARNING]: Error in vault password file loading (None): A vault password must
+be specified to decrypt data
+
+2023-03-04 21:25:17,266 p=25623 u=ryananderson n=ansible | ERROR! the role 'roles/common/tasks/task-ansible-collection.yml' was not found in /Users/ryananderson/Documents/cobraden/playbooks/production/roles:/Users/ryananderson/.cache/ansible-compat/667ff6/roles:/Users/ryananderson/Documents/cobraden/roles:/Users/ryananderson/Documents/cobraden/roles:/Users/ryananderson/Documents/cobraden/roles/common:/Users/ryananderson/Documents/cobraden/roles/windows:/Users/ryananderson/Documents/cobraden/roles/linux:/Users/ryananderson/Documents/cobraden/roles/red:/Users/ryananderson/Documents/cobraden/roles/zeek:/Users/ryananderson/Documents/cobraden/playbooks/production
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-cobraden.yml': line 6, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  roles:
+      - roles/common/tasks/task-ansible-collection.yml
+        ^ here
+

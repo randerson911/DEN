@@ -17,7 +17,5 @@
     linux_agent_name: "elastic-agent-7.17.4-linux-x86_64"
     linux_agent_dir: "roles/linux/elastic-agent/files"
     linux_agent_file: "elastic-agent-7.17.4-linux-x86_64.zip"
-  tasks:
-    - ansible.builtin.import_tasks:
-        - file: ../../roles/common/tasks/task-download-elastic-agent.yml
+  roles: roles/common/tasks/task-download-elastic-agent.yml
 
