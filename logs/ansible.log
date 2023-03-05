@@ -190,3 +190,8 @@ The offending line appears to be:
       ^ here
 
 2023-03-04 21:25:32,484 p=25764 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:36:26,135 p=26976 u=ryananderson n=ansible | [WARNING]: Error in vault password file loading (None): A vault password must be specified to decrypt data
+
+2023-03-04 21:36:26,135 p=26976 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (None): The vault password file /Users/ryananderson/Documents/cobraden/cobra.den was not found
+
+2023-03-04 21:36:26,223 p=26976 u=ryananderson n=ansible | Rekey successful
