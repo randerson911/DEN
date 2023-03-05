@@ -13,7 +13,7 @@
 - name: Install collections
   include_role:
     name: ansible-galaxy
-  when: galaxy_collections | selectattr('name', 'notin', galaxy_list.stdout_lines) | list | count > 0
+  when: galaxy_collections | selectattr('name', 'not in', galaxy_list.stdout_lines) | list | count > 0
 
 - name: Check if collection is already installed
   command: ansible-galaxy collection list
