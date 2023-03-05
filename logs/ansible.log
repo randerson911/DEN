@@ -214,3 +214,6 @@ The offending line appears to be:
 2023-03-04 21:39:18,515 p=28214 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (default): The vault password file /Users/ryananderson/Documents/cobraden/.cobra.vault was not found
 
 2023-03-04 21:39:18,515 p=28214 u=ryananderson n=ansible | ERROR! The vault password file /Users/ryananderson/Documents/cobraden/.cobra.vault was not found
+2023-03-04 21:39:28,702 p=28316 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (None): The vault password file /Users/ryananderson/Documents/cobraden/cobra.vault was not found
+
+2023-03-04 21:39:28,748 p=28316 u=ryananderson n=ansible | Rekey successful
