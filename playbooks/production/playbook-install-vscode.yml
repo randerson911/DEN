@@ -7,7 +7,7 @@
       - name: ansible.windows
       - name: ansible.posix
   roles:
-    - ./common/tasks/tasks-ansible-collections.yml
+    - roles/common/tasks/task-ansible-collections.yml
 
 - name: Download Required Files to Localhost
   hosts: localhost
