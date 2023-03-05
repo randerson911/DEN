@@ -107,3 +107,7 @@ be specified to decrypt data
 2023-03-04 21:18:56,559 p=24490 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (default): The vault password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
 
 2023-03-04 21:18:56,559 p=24490 u=ryananderson n=ansible | ERROR! The vault password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
+2023-03-04 21:19:17,551 p=24632 u=ryananderson n=ansible | [WARNING]: Error in vault password file loading (None): A vault password must be specified to decrypt data
+
+2023-03-04 21:19:21,071 p=24648 u=ryananderson n=ansible | [WARNING]: Error in vault password file loading (None): A vault password must be specified to decrypt data
+
