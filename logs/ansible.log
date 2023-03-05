@@ -853,3 +853,67 @@ The offending line appears to be:
 - name: "Install Python311 on Windows"
   ^ here
 
+2023-03-04 22:05:32,780 p=33393 u=ryananderson n=ansible | ERROR! The field 'hosts' has an invalid value, which includes an undefined variable. The error was: 'python_targets' is undefined. 'python_targets' is undefined
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-install-python311.yml': line 22, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: "Install Python311 on Windows"
+  ^ here
+
+2023-03-04 22:05:32,859 p=33390 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:32,864 p=33389 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:32,869 p=33392 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'gns3_project'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-kickoff.yml': line 103, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Auto-tap routers
+      ^ here
+
+2023-03-04 22:05:33,006 p=33395 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:33,217 p=33401 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:33,574 p=33417 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:34,951 p=33453 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'gns3_project'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-kickoff.yml': line 103, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Auto-tap routers
+      ^ here
+
+2023-03-04 22:05:35,454 p=33461 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:35,629 p=33464 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'gns3_project'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-kickoff.yml': line 103, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Auto-tap routers
+      ^ here
+
+2023-03-04 22:05:35,928 p=33498 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:36,617 p=33505 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:37,497 p=33535 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:37,752 p=33540 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'gns3_project'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-kickoff.yml': line 103, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Auto-tap routers
+      ^ here
+
