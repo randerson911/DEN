@@ -10,7 +10,9 @@
   when: item.name not in galaxy_list.stdout
   loop: "{{ galaxy_collections }}"
 
-- name: Install collections
-  include_role:
-    name: ansible-galaxy
+- name: Install required collections
+  ansible.builtin.ansible_galaxy:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ galaxy_collections }}"
   when: galaxy_collections | map(attribute='name') | difference(galaxy_list.stdout_lines) | list | count > 0
