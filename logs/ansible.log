@@ -576,3 +576,79 @@ The offending line appears to be:
 - name: Install VS Code extensions
   ^ here
 
+2023-03-04 22:04:36,123 p=32807 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:04:36,125 p=32806 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:04:36,128 p=32805 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:04:36,397 p=32814 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:04:36,397 p=32809 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:04:36,431 p=32813 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:04:36,451 p=32815 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:04:38,668 p=32844 u=ryananderson n=ansible | ERROR! unexpected parameter type in action: <class 'ansible.parsing.yaml.objects.AnsibleSequence'>
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-elastic-agent.yml': line 6, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - ansible.builtin.import_tasks:
+      ^ here
+
+2023-03-04 22:04:38,694 p=32846 u=ryananderson n=ansible | ERROR! Unable to retrieve file contents
+Could not find or access '/Users/ryananderson/Documents/cobraden/tasks/task-verify-user-exists.yml' on the Ansible Controller.
+If you are using a module and expect the file to exist on the remote, see the remote_src option
+2023-03-04 22:04:38,722 p=32848 u=ryananderson n=ansible | ERROR! the role './tasks/task-ansible-collection.yml' was not found in /Users/ryananderson/Documents/cobraden/playbooks/production/roles:/Users/ryananderson/.cache/ansible-compat/667ff6/roles:/Users/ryananderson/Documents/cobraden/roles:/Users/ryananderson/Documents/cobraden/roles:/Users/ryananderson/Documents/cobraden/playbooks/production
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-cobraden.yml': line 6, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  roles:
+    - ./tasks/task-ansible-collection.yml
+      ^ here
+
+2023-03-04 22:04:38,945 p=32851 u=ryananderson n=ansible | ERROR! unexpected parameter type in action: <class 'ansible.parsing.yaml.objects.AnsibleSequence'>
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-elastic-agent.yml': line 6, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - ansible.builtin.import_tasks:
+      ^ here
+
+2023-03-04 22:04:38,973 p=32854 u=ryananderson n=ansible | ERROR! the role './tasks/task-ansible-collection.yml' was not found in /Users/ryananderson/Documents/cobraden/playbooks/production/roles:/Users/ryananderson/.cache/ansible-compat/667ff6/roles:/Users/ryananderson/Documents/cobraden/roles:/Users/ryananderson/Documents/cobraden/roles:/Users/ryananderson/Documents/cobraden/playbooks/production
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-cobraden.yml': line 6, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  roles:
+    - ./tasks/task-ansible-collection.yml
+      ^ here
+
+2023-03-04 22:04:38,993 p=32855 u=ryananderson n=ansible | [WARNING]: Ignoring invalid path provided to plugin path:
+'/Users/ryananderson/Documents/cobraden/playbooks/production/tasks/task-
+ansible-collections.yml' is not a directory
+
+2023-03-04 22:04:38,995 p=32855 u=ryananderson n=ansible | [WARNING]: Ignoring invalid path provided to plugin path:
+'/Users/ryananderson/Documents/cobraden/playbooks/production/tasks/task-
+download-vscode.yml' is not a directory
+
+2023-03-04 22:04:39,006 p=32856 u=ryananderson n=ansible | ERROR! Unable to retrieve file contents
+Could not find or access '/Users/ryananderson/Documents/cobraden/tasks/task-verify-user-exists.yml' on the Ansible Controller.
+If you are using a module and expect the file to exist on the remote, see the remote_src option
+2023-03-04 22:04:39,080 p=32855 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'win_chocolatey'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/roles/windows/vscode/tasks/main.yml': line 48, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: Install VS Code extensions
+  ^ here
+

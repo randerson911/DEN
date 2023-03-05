@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: false
   roles:
-    - ./common/task-ansible-collection.yml
+    - ./tasks/task-ansible-collection.yml
 
 - name: Download Required Files to Localhost
   hosts: localhost
@@ -18,5 +18,5 @@
     linux_agent_dir: "roles/linux/elastic-agent/files"
     linux_agent_file: "elastic-agent-7.17.4-linux-x86_64.zip"
   roles: 
-    - ./common/task-download-elastic-agent.yml
+    - ./tasks/task-download-elastic-agent.yml
 
