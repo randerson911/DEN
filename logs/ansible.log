@@ -652,3 +652,43 @@ The offending line appears to be:
 - name: Install VS Code extensions
   ^ here
 
+2023-03-04 22:05:16,584 p=33033 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:16,715 p=33036 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:17,850 p=33046 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:17,900 p=33052 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:18,600 p=33065 u=ryananderson n=ansible | ERROR! unexpected parameter type in action: <class 'ansible.parsing.yaml.objects.AnsibleSequence'>
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-elastic-agent.yml': line 6, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - ansible.builtin.import_tasks:
+      ^ here
+
+2023-03-04 22:05:18,811 p=33072 u=ryananderson n=ansible | ERROR! unexpected parameter type in action: <class 'ansible.parsing.yaml.objects.AnsibleSequence'>
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-elastic-agent.yml': line 6, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - ansible.builtin.import_tasks:
+      ^ here
+
+2023-03-04 22:05:19,542 p=33081 u=ryananderson n=ansible | ERROR! Unable to retrieve file contents
+Could not find or access '/Users/ryananderson/Documents/cobraden/tasks/task-verify-user-exists.yml' on the Ansible Controller.
+If you are using a module and expect the file to exist on the remote, see the remote_src option
+2023-03-04 22:05:19,564 p=33083 u=ryananderson n=ansible | ERROR! unexpected parameter type in action: <class 'ansible.parsing.yaml.objects.AnsibleSequence'>
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-elastic-agent.yml': line 6, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - ansible.builtin.import_tasks:
+      ^ here
+
