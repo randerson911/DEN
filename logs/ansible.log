@@ -112,3 +112,35 @@ be specified to decrypt data
 2023-03-04 21:19:21,071 p=24648 u=ryananderson n=ansible | [WARNING]: Error in vault password file loading (None): A vault password must be specified to decrypt data
 
 2023-03-04 21:24:23,652 p=25212 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:24:37,085 p=25329 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:24:38,185 p=25335 u=ryananderson n=ansible | [WARNING]: Error in vault password file loading (None): A vault password must
+be specified to decrypt data
+
+2023-03-04 21:24:38,255 p=25335 u=ryananderson n=ansible | ERROR! the role 'roles/common/tasks/tasks-ansible-collections.yml' was not found in /Users/ryananderson/Documents/cobraden/playbooks/production/roles:/Users/ryananderson/.cache/ansible-compat/667ff6/roles:/Users/ryananderson/Documents/cobraden/roles:/Users/ryananderson/Documents/cobraden/roles:/Users/ryananderson/Documents/cobraden/roles/common:/Users/ryananderson/Documents/cobraden/roles/windows:/Users/ryananderson/Documents/cobraden/roles/linux:/Users/ryananderson/Documents/cobraden/roles/red:/Users/ryananderson/Documents/cobraden/roles/zeek:/Users/ryananderson/Documents/cobraden/playbooks/production
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-install-vscode.yml': line 10, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  roles:
+    - roles/common/tasks/tasks-ansible-collections.yml
+      ^ here
+
+2023-03-04 21:24:38,602 p=25337 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:24:38,707 p=25340 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:24:39,211 p=25348 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:24:39,922 p=25359 u=ryananderson n=ansible | [WARNING]: Error in vault password file loading (None): A vault password must
+be specified to decrypt data
+
+2023-03-04 21:24:39,966 p=25359 u=ryananderson n=ansible | ERROR! unexpected parameter type in action: <class 'ansible.parsing.yaml.objects.AnsibleSequence'>
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-cobraden.yml': line 6, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - ansible.builtin.import_tasks:
+      ^ here
+
