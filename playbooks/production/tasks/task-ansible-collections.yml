@@ -5,7 +5,7 @@
   changed_when: false
 
 - name: Install required collections
-  community.general.collections:
+  community.general.collection:
     name: "{{ item.name }}"
     state: present
   loop: "{{ galaxy_collections }}"
