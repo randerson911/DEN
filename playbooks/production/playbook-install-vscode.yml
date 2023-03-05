@@ -8,8 +8,7 @@
       - name: ansible.posix
   tasks:
     - name: Verify Ansible Galaxy Collections
-      ansible.builtin.import_tasks:
-        - file: tasks/task-ansible-collections.yml
+      include_tasks: tasks/task-ansible-collections.yml
 
 - name: Download Required Files to Localhost
   hosts: localhost
