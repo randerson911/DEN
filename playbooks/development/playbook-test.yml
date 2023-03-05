@@ -1,11 +1,11 @@
 ---
 - name: Test playbook
   hosts: localhost
-  gather_facts: no
+  gather_facts: false
   vars_files:
     - cobra.vault.yml
   tasks:
     - name: Debug vault variables
-      debug:
+      ansible.builtin.debug:
         var: item.value
       loop: "{{ lookup('dict', vars) }}"
