@@ -1296,3 +1296,15 @@ The offending line appears to be:
 
 2023-03-05 06:14:56,198 p=41855 u=ryananderson n=ansible | playbook: playbooks/production/playbook-install-vscode.yml
 2023-03-05 06:17:45,233 p=42318 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-05 06:17:54,535 p=42443 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-05 06:17:55,262 p=42450 u=ryananderson n=ansible | ERROR! The field 'hosts' has an invalid value, which includes an undefined variable. The error was: 'target_host' is undefined. 'target_host' is undefined
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-install-vscode.yml': line 25, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: Install VS Code on Windows target
+  ^ here
+

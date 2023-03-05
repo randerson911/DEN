@@ -3,10 +3,10 @@
   gather_facts: false
   vars:
     galaxy_collections:
-      - chocolatey.chocolatey
-      - community.general
-      - ansible.windows
-      - ansible.posix
+      - name: chocolatey.chocolatey
+      - name: community.general
+      - name: ansible.windows
+      - name: ansible.posix
   tasks:
     - name: Verify Ansible Galaxy Collections
       ansible.builtin.include_tasks: tasks/task-ansible-collections.yml
