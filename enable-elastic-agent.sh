@@ -29,7 +29,7 @@ lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault.yml |
 
 
 
-ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_pass -e "elastic_targets=datacenter,subnet1,subnet2,subnet3" playbooks/production/playbook-elastic-agent.yml
+ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./.vault_pass -e "elastic_targets=datacenter,subnet1,subnet2,subnet3" playbooks/production/playbook-elastic-agent.yml
 
 echo ""
 echo ""

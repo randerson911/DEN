@@ -23,7 +23,7 @@ fi
 echo ""
 read -p "Enter target hosts to install Python 3.11 (comma-separated): " python_targets
 
-ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_pass -e "python_targets=$python_targets" playbooks/production/playbook-install-python311.yml
+ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./.vault_pass -e "python_targets=$python_targets" playbooks/production/playbook-install-python311.yml
 
 echo ""
 echo ""

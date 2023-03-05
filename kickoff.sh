@@ -34,7 +34,7 @@ fi
 if [ ! -f users.txt ]
 then
     
-    ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_pass playbooks/production/playbook-get-random-users.yml
+    ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./.vault_pass playbooks/production/playbook-get-random-users.yml
     
     sed -i 's/[^[:print:]]//g' users.txt
     sed -i '/^$/d' users.txt
@@ -105,7 +105,7 @@ ansible-galaxy collection install davidban77.gns3
 ansible-galaxy collection install ansible.windows
 ansible-galaxy collection install ansible.posix
 
-ansible-playbook -i inventory/production/inventory.yml.yml --vault-password-file ./.vault_pass -e "target_host=$targets" -e "elastic_targets=datacenter,subnet1,subnet2,subnet3" playbooks/production/playbook-kickoff.yml
+ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./.vault_pass -e "target_host=$targets" -e "elastic_targets=datacenter,subnet1,subnet2,subnet3" playbooks/production/playbook-kickoff.yml
 echo ""
 echo ""
 echo "Action complete."
