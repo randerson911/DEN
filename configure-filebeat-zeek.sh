@@ -14,8 +14,8 @@ then
     echo "Enter linux password: "
     read linuxpass
 
-    sed -i "/linux_user:/c\linux_user: $linuxuser" ansible/group_vars/all/vars.yml
-    sed -i "/linux_user_password:/c\linux_user_password: $linuxpass" ansible/group_vars/all/vars.yml
+    sed -i "/linux_user:/c\linux_user: $linuxuser" ./group_vars/all/vars.yml
+    sed -i "/linux_user_password:/c\linux_user_password: $linuxpass" ./group_vars/all/vars.yml
     echo "Complete." > linuxcreds.txt
 fi
 

@@ -14,8 +14,8 @@ then
     exit
   fi
 
-  sed -i "/el_user:/c\el_user: $elasticuser" ansible/group_vars/all/vars.yml
-  sed -i "/el_user_password:/c\el_user_password: $elasticpass" ansible/group_vars/all/vars.yml
+  sed -i "/el_user:/c\el_user: $elasticuser" ./group_vars/all/vars.yml
+  sed -i "/el_user_password:/c\el_user_password: $elasticpass" ./group_vars/all/vars.yml
   sed -i "s/elastic_user_in_vta/$elasticuser/g" ansible/roles/windows/winlogbeat/files/winlogbeat.yml
   sed -i "s/elastic_password_in_vta/$elasticpass/g" ansible/roles/windows/winlogbeat/files/winlogbeat.yml
   echo $elasticuser:$elasticpass > elmarker.txt
