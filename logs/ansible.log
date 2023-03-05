@@ -917,3 +917,72 @@ The offending line appears to be:
     - name: Auto-tap routers
       ^ here
 
+2023-03-04 22:05:38,299 p=33542 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:38,670 p=33544 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'gns3_project'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-kickoff.yml': line 103, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Auto-tap routers
+      ^ here
+
+2023-03-04 22:05:39,023 p=33551 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:39,537 p=33594 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'gns3_project'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-kickoff.yml': line 103, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Auto-tap routers
+      ^ here
+
+2023-03-04 22:05:39,541 p=33587 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:05:40,490 p=33621 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'gns3_project'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-kickoff.yml': line 103, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Auto-tap routers
+      ^ here
+
+2023-03-04 22:05:41,210 p=33632 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'gns3_project'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-kickoff.yml': line 103, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Auto-tap routers
+      ^ here
+
+2023-03-04 22:05:41,514 p=33645 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'gns3_project'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-kickoff.yml': line 103, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Auto-tap routers
+      ^ here
+
+2023-03-04 22:05:41,806 p=33680 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'gns3_project'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-kickoff.yml': line 103, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Auto-tap routers
+      ^ here
+

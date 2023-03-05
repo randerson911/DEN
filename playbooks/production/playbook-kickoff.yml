@@ -56,7 +56,7 @@
         - file_exists.stat.exists
       msg: "Python for Windows could not be downloaded or does not exist"
     vars:
-      file_exists: "{{ stat('../../roles/windows/install-python311/files/' + python_windows_file) | default(undefined, true) }}"
+      file_exists: "{{ stat('roles/windows/install-python311/files/' + python_windows_file) | default(undefined, true) }}"
 
   - name: Verify Python for Linux exists
     assert:
