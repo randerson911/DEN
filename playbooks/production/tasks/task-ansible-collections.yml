@@ -1,12 +1,14 @@
----
-- name: Check if collections are already installed
+- name: Check if collection is already installed
   command: ansible-galaxy collection list
   register: galaxy_list
   changed_when: false
 
 - name: Install required collections
-  community.general.collection:
-    name: "{{ item.name }}"
-    state: present
+  command: ansible-galaxy collection install {{ item.name }}
+  register: install_result
+  when: "'{{ item.name }}' not in galaxy_list.stdout"
   loop: "{{ galaxy_collections }}"
-  when: item.name not in galaxy_list.stdout
+
+- debug:
+    msg: "The following collections were installed: {{ galaxy_collections }}"
+  when: install_result|changed
