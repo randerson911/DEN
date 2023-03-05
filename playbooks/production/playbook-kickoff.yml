@@ -144,5 +144,5 @@
     timeout: 60
     vs_code_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
   roles:
-    - roles/windows/vscode
+    - windows/vscode
 

@@ -7,7 +7,7 @@
       - name: ansible.windows
       - name: ansible.posix
   roles:
-    - roles/common/tasks/tasks-ansible-collections.yml
+    - common/tasks/tasks-ansible-collections.yml
 
 - name: Download Required Files to Localhost
   hosts: localhost
@@ -17,7 +17,7 @@
     windows_agent_name: "vscode-latest"
     windows_agent_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
   roles:  
-    - roles/common/tasks/tasks-download-vscode.yml
+    - common/tasks/tasks-download-vscode.yml
 
 - name: Install VS Code on Windows target
   hosts: "{{ target_host }}"
@@ -25,4 +25,4 @@
   vars:
     vs_code_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
   roles:
-    - roles/windows/vscode
+    - windows/vscode

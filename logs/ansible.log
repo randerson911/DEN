@@ -217,3 +217,51 @@ The offending line appears to be:
 2023-03-04 21:39:28,702 p=28316 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (None): The vault password file /Users/ryananderson/Documents/cobraden/cobra.vault was not found
 
 2023-03-04 21:39:28,748 p=28316 u=ryananderson n=ansible | Rekey successful
+2023-03-04 21:52:45,137 p=30625 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:52:45,434 p=30629 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:52:45,434 p=30627 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:52:45,475 p=30631 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:52:47,375 p=30651 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'gns3_project'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-kickoff.yml': line 103, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Auto-tap routers
+      ^ here
+
+2023-03-04 21:52:47,448 p=30655 u=ryananderson n=ansible | ERROR! the role 'common/tasks/task-ansible-collection.yml' was not found in /Users/ryananderson/Documents/cobraden/playbooks/production/roles:/Users/ryananderson/.cache/ansible-compat/667ff6/roles:/Users/ryananderson/Documents/cobraden/roles:/Users/ryananderson/Documents/cobraden/roles:/Users/ryananderson/Documents/cobraden/playbooks/production
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-cobraden.yml': line 6, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  roles:
+    - common/tasks/task-ansible-collection.yml
+      ^ here
+
+2023-03-04 21:52:47,451 p=30656 u=ryananderson n=ansible | ERROR! the role 'common/tasks/tasks-ansible-collections.yml' was not found in /Users/ryananderson/Documents/cobraden/playbooks/production/roles:/Users/ryananderson/.cache/ansible-compat/667ff6/roles:/Users/ryananderson/Documents/cobraden/roles:/Users/ryananderson/Documents/cobraden/roles:/Users/ryananderson/Documents/cobraden/playbooks/production
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-install-vscode.yml': line 10, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  roles:
+    - common/tasks/tasks-ansible-collections.yml
+      ^ here
+
+2023-03-04 21:52:47,588 p=30658 u=ryananderson n=ansible | ERROR! couldn't resolve module/action 'gns3_project'. This often indicates a misspelling, missing collection, or incorrect module path.
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-kickoff.yml': line 103, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Auto-tap routers
+      ^ here
+
