@@ -84,3 +84,21 @@ be specified to decrypt data
 2023-03-04 06:51:43,986 p=16665 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
 2023-03-04 06:55:29,026 p=17149 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
 2023-03-04 21:06:46,967 p=23220 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:07:03,951 p=23325 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:07:05,099 p=23335 u=ryananderson n=ansible | [WARNING]: Error in vault password file loading (None): A vault password must
+be specified to decrypt data
+
+2023-03-04 21:07:05,099 p=23335 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (default): The vault password file
+/Users/ryananderson/Documents/cobraden/.vault_pass was not found
+
+2023-03-04 21:07:05,099 p=23335 u=ryananderson n=ansible | ERROR! The vault password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
+2023-03-04 21:07:05,482 p=23337 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:07:05,552 p=23340 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:07:05,846 p=23346 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 21:07:06,707 p=23357 u=ryananderson n=ansible | [WARNING]: Error in vault password file loading (None): A vault password must
+be specified to decrypt data
+
+2023-03-04 21:07:06,707 p=23357 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (default): The vault password file
+/Users/ryananderson/Documents/cobraden/.vault_pass was not found
+
+2023-03-04 21:07:06,707 p=23357 u=ryananderson n=ansible | ERROR! The vault password file /Users/ryananderson/Documents/cobraden/.vault_pass was not found
