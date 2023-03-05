@@ -1,18 +1,18 @@
 #! /bin/bash
 
-if [ ! -f ./.vault_pass ]
+if [ ! -f ./cobra.den ]
 then
     echo "Please enter the vault password: "
-    read -s vault_pass
+    read -scobra.den
 
-    echo $vault_pass > ./.vault_pass
-    chmod 0600 ./.vault_pass
+    echo cobra.den > ./cobra.den
+    chmod 0600 ./cobra.den
 fi
 
 
 # Read the value of my_secret from my_vault
 
-lpass=$(ansible-vault view --vault-password-file ./.vault_pass cobra.vault.yml | grep linux_user_password | cut -d ' ' -f 2)
+lpass=$(ansible-vault view --vault-password-file ./cobra.den cobra.vault.yml | grep linux_user_password | cut -d ' ' -f 2)
 
 
 # echo $lpass | sudo -S apt update
@@ -34,7 +34,7 @@ fi
 if [ ! -f users.txt ]
 then
     
-    ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./.vault_pass playbooks/production/playbook-get-random-users.yml
+    ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.den playbooks/production/playbook-get-random-users.yml
     
     sed -i 's/[^[:print:]]//g' users.txt
     sed -i '/^$/d' users.txt
@@ -105,7 +105,7 @@ ansible-galaxy collection install davidban77.gns3
 ansible-galaxy collection install ansible.windows
 ansible-galaxy collection install ansible.posix
 
-ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./.vault_pass -e "target_host=$targets" -e "elastic_targets=datacenter,subnet1,subnet2,subnet3" playbooks/production/playbook-kickoff.yml
+ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.den -e "target_host=$targets" -e "elastic_targets=datacenter,subnet1,subnet2,subnet3" playbooks/production/playbook-kickoff.yml
 echo ""
 echo ""
 echo "Action complete."

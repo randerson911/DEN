@@ -1,16 +1,16 @@
 #!/bin/bash
 
-if [ ! -f ./.vault_pass ]
+if [ ! -f ./cobra.den ]
 then
     echo "Please enter the vault password: "
-    read -s vault_pass
+    read -scobra.den
 
-    echo $vault_pass > ./.vault_pass
-    chmod 0600 ./.vault_pass
+    echo cobra.den > ./cobra.den
+    chmod 0600 ./cobra.den
 fi
 
 
-ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./.vault_pass playbooks/production/playbook-root-cert.yml
+ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.den playbooks/production/playbook-root-cert.yml
 echo ""
 echo ""
 echo "Action complete."

@@ -20,7 +20,7 @@ then
 fi
 
 
-ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./.vault_pass playbooks/production/playbook-config-filebeat-zeek.yml
+ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.den playbooks/production/playbook-config-filebeat-zeek.yml
 
 
 
