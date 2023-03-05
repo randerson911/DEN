@@ -1019,3 +1019,15 @@ The offending line appears to be:
     - name: Download VSCode
       ^ here
 
+2023-03-04 22:08:30,891 p=34843 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:08:31,992 p=34852 u=ryananderson n=ansible | ERROR! unexpected parameter type in action: <class 'ansible.parsing.yaml.objects.AnsibleSequence'>
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-install-vscode.yml': line 10, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Verify Ansible Galaxy Collections
+      ^ here
+
