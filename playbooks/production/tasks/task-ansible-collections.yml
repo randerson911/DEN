@@ -3,16 +3,10 @@
   command: ansible-galaxy collection list
   register: galaxy_list
   changed_when: false
-
-- name: Install collections if not already present
-  include_role:
-    name: ansible-galaxy
-  when: item.name not in galaxy_list.stdout
-  loop: "{{ galaxy_collections }}"
-
+  
 - name: Install required collections
   ansible.builtin.ansible_galaxy:
     name: "{{ item }}"
     state: present
   loop: "{{ galaxy_collections }}"
-  when: galaxy_collections | map(attribute='name') | difference(galaxy_list.stdout_lines) | list | count > 0
+  when: item.name not in galaxy_list.stdout
