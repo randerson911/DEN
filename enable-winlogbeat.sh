@@ -3,7 +3,7 @@
 if [ ! -f ./cobra.den ]
 then
     echo "Please enter the vault password: "
-    read -scobra.den
+    read -s cobra.den
 
     echo cobra.den > ./cobra.den
     chmod 0600 ./cobra.den
