@@ -1309,3 +1309,4 @@ The offending line appears to be:
   ^ here
 
 2023-03-05 06:24:27,648 p=43453 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-05 06:26:06,113 p=43810 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
