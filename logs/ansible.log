@@ -987,3 +987,19 @@ The offending line appears to be:
       ^ here
 
 2023-03-04 22:06:29,485 p=34263 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:07:39,045 p=34487 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-04 22:07:40,127 p=34497 u=ryananderson n=ansible | [WARNING]: Ignoring invalid path provided to plugin path:
+'/Users/ryananderson/Documents/cobraden/playbooks/production/tasks/task-
+ansible-collections.yml' is not a directory
+
+2023-03-04 22:07:40,129 p=34497 u=ryananderson n=ansible | ERROR! Invalid options for ansible.builtin.import_tasks: -file
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-install-vscode.yml': line 20, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tasks:
+    - name: Download VSCode
+      ^ here
+
