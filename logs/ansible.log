@@ -203,3 +203,7 @@ The offending line appears to be:
 2023-03-04 21:36:55,748 p=27284 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (None): The vault password file /Users/ryananderson/Documents/cobraden/cobra.den was not found
 
 2023-03-04 21:36:55,748 p=27284 u=ryananderson n=ansible | ERROR! Unable to read source file (cobra-den): [Errno 2] No such file or directory: 'cobra-den'
+2023-03-04 21:37:35,168 p=27487 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (None): The vault password file /Users/ryananderson/Documents/cobraden/cobra.den was not found
+
+2023-03-04 21:37:35,168 p=27487 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (None): The vault password file /Users/ryananderson/Documents/cobraden/cobra-den was not found
+
