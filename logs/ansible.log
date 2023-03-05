@@ -207,3 +207,5 @@ The offending line appears to be:
 
 2023-03-04 21:37:35,168 p=27487 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (None): The vault password file /Users/ryananderson/Documents/cobraden/cobra-den was not found
 
+2023-03-04 21:38:23,257 p=27738 u=ryananderson n=ansible | [WARNING]: Error getting vault password file (None): The vault password file /Users/ryananderson/Documents/cobraden/cobra-den was not found
+
