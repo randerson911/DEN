@@ -168,3 +168,15 @@ The offending line appears to be:
 2023-03-06 12:13:32,063 p=73859 u=ryananderson n=args | Unable to load module ansible.windows.win_shell at roles/windows/get-random-users/tasks/main.yml:1 for options validation
 2023-03-06 12:13:32,063 p=73859 u=ryananderson n=args | Unable to load module ansible.windows.win_shell at roles/windows/get-random-users/tasks/main.yml:9 for options validation
 2023-03-06 12:13:32,064 p=73859 u=ryananderson n=args | Unable to load module ansible.windows.win_file at roles/windows/get-random-users/tasks/main.yml:18 for options validation
+2023-03-06 12:13:35,284 p=73913 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-06 12:13:36,551 p=73973 u=ryananderson n=ansible | ERROR! The field 'hosts' has an invalid value, which includes an undefined variable. The error was: 'target_host' is undefined. 'target_host' is undefined
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-install-vscode.yml': line 25, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: Install VS Code on Windows target
+  ^ here
+
