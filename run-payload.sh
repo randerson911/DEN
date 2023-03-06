@@ -1,13 +1,13 @@
 #!/bin/bash
 
 
-if [ ! -f ./cobra.den ]
+if [ ! -f ./cobra.vault ]
 then
     echo "Please enter the vault password: "
     read -s cobra.den
 
-    echo cobra.den > ./cobra.den
-    chmod 0600 ./cobra.den
+    echo cobra.den > ./cobra.vault
+    chmod 0600 ./cobra.vault
 fi
 
 echo ""
@@ -30,7 +30,7 @@ read payload
 [[ -z "$payload" ]] && echo "Continuing On" || echo $payload > ansible/roles/red/run-payload/files/payload-template.j2
 
 
-ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.den playbooks/production/playbook-run-payload.yml
+ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.vault playbooks/production/playbook-run-payload.yml
 echo ""
 echo ""
 echo "Action complete."

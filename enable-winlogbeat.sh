@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if [ ! -f ./cobra.den ]
+if [ ! -f ./cobra.vault ]
 then
     echo "Please enter the vault password: "
     read -s cobra.den
 
-    echo cobra.den > ./cobra.den
-    chmod 0600 ./cobra.den
+    echo cobra.den > ./cobra.vault
+    chmod 0600 ./cobra.vault
 fi
 
 if [ ! -f elmarker.txt ]
@@ -48,7 +48,7 @@ fi
 # fi
 
 
-ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.den playbooks/production/playbook-winlogbeat.yml
+ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.vault playbooks/production/playbook-winlogbeat.yml
 
 
 creds=$(cat elmarker.txt)

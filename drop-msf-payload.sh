@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if [ ! -f ./cobra.den ]
+if [ ! -f ./cobra.vault ]
 then
     echo "Please enter the vault password: "
     read -s cobra.den
 
-    echo cobra.den > ./cobra.den
-    chmod 0600 ./cobra.den
+    echo cobra.den > ./cobra.vault
+    chmod 0600 ./cobra.vault
 fi
 
 echo ""
@@ -32,7 +32,7 @@ read targs
 sed -i "/- name: Drop/{n;s/.*/  hosts: $targs/}" ansible/playbook-msf-drop-payload.yml
 
 
-ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.den playbooks/production/playbook-msf-drop-payload.yml
+ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.vault playbooks/production/playbook-msf-drop-payload.yml
 echo ""
 echo ""
 echo "Action complete."

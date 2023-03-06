@@ -1,17 +1,17 @@
 #!/bin/bash
 
-if [ ! -f ./cobra.den ]
+if [ ! -f ./cobra.vault ]
 then
     echo "Please enter the vault password: "
     read -s cobra.den
 
-    echo cobra.den > ./cobra.den
-    chmod 0600 ./cobra.den
+    echo cobra.den > ./cobra.vault
+    chmod 0600 ./cobra.vault
 fi
 
 # Read the value of my_secret from my_vault
 
-lpass=$(ansible-vault view --vault-password-file ./cobra.den cobra.vault.yml | grep linux_user_password | cut -d ' ' -f 2)
+lpass=$(ansible-vault view --vault-password-file ./cobra.vault cobra.vault.yml | grep linux_user_password | cut -d ' ' -f 2)
 
 
 # echo $lpass | sudo -S apt update
@@ -29,7 +29,7 @@ lpass=$(ansible-vault view --vault-password-file ./cobra.den cobra.vault.yml | g
 
 
 
-ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.den -e "elastic_targets=datacenter,subnet1,subnet2,subnet3" playbooks/production/playbook-elastic-agent.yml
+ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.vault -e "elastic_targets=datacenter,subnet1,subnet2,subnet3" playbooks/production/playbook-elastic-agent.yml
 
 echo ""
 echo ""

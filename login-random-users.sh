@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if [ ! -f ./cobra.den ]
+if [ ! -f ./cobra.vault ]
 then
     echo "Please enter the vault password: "
     read -s cobra.den
 
-    echo cobra.den > ./cobra.den
-    chmod 0600 ./cobra.den
+    echo cobra.den > ./cobra.vault
+    chmod 0600 ./cobra.vault
 fi
 
 if [ -f users.txt ]
@@ -26,7 +26,7 @@ fi
 if [ ! -f users.txt ]
 then
     
-    ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.den playbooks/production/playbook-get-random-users.yml
+    ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.vault playbooks/production/playbook-get-random-users.yml
     
     sed -i 's/[^[:print:]]//g' users.txt
     sed -i '/^$/d' users.txt
@@ -40,7 +40,7 @@ fi
 
 if [ ! -f lmarker.txt ]; then
   
-  lpass=$(ansible-vault view --vault-password-file ./cobra.den cobra.vault.yml | grep linux_user_password | cut -d ' ' -f 2)
+  lpass=$(ansible-vault view --vault-password-file ./cobra.vault cobra.vault.yml | grep linux_user_password | cut -d ' ' -f 2)
   
 
   pip3 install pyyaml
@@ -53,7 +53,7 @@ if [ ! -f lmarker.txt ]; then
 fi
 
 
-ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.den playbooks/production/playbook-login-random-users.yml
+ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.vault playbooks/production/playbook-login-random-users.yml
 
 
 echo ""
