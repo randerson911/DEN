@@ -46,3 +46,4 @@
 2023-03-06 08:27:48,284 p=68167 u=ryananderson n=args | Unable to load module ansible.windows.win_shell at roles/windows/get-random-users/tasks/main.yml:1 for options validation
 2023-03-06 08:27:48,284 p=68167 u=ryananderson n=args | Unable to load module ansible.windows.win_shell at roles/windows/get-random-users/tasks/main.yml:9 for options validation
 2023-03-06 08:27:48,284 p=68167 u=ryananderson n=args | Unable to load module ansible.windows.win_file at roles/windows/get-random-users/tasks/main.yml:18 for options validation
+2023-03-06 12:06:30,757 p=71502 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
