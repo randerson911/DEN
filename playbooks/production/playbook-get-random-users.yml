@@ -9,8 +9,7 @@
     users_file_path: "./files/users.txt"
   tasks:
     - name: Import tasks
-      ansible.builtin.import_tasks: 
-        file: "tasks/task-verify-user-exists.yml"
+      ansible.builtin.import_tasks: "tasks/task-verify-user-exists.yml"
 
 - name: Get 30 random users and reset password to ComtechAzure123!
   hosts: dc1
