@@ -1,18 +1,20 @@
----
-- name: Check if users file exists
-  ansible.builtin.stat:
-    path: "{{ users_file_path }}"
-  register: users_file
+- name: Check if users file exists and prompt to generate new file
+  block:
+    - name: Check if users file exists
+      ansible.builtin.stat:
+        path: "{{ users_file_path }}"
+      register: users_file
 
-- name: Prompt to generate new users file if it exists
-  when: users_file.stat.exists
-  ansible.builtin.pause:
-    prompt: "Do you wish to generate a new users file?"
-    echo: true
-  register: generate_new_file
+    - name: Prompt to generate new users file if it exists
+      when: users_file.stat.exists
+      ansible.builtin.pause:
+        prompt: "Do you wish to generate a new users file?"
+        echo: true
+      register: generate_new_file
 
-- name: Remove existing users file
-  when: generate_new_file.user_input == 'Yes' and users_file.stat.exists
-  ansible.builtin.file:
-    path: "{{ users_file_path }}"
-    state: absent
+    - name: Remove existing users file
+      when: generate_new_file.user_input == 'Yes' and users_file.stat.exists
+      ansible.builtin.file:
+        path: "{{ users_file_path }}"
+        state: absent
+  become: true
