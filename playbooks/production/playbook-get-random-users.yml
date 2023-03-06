@@ -4,6 +4,8 @@
   gather_facts: false
   vars:
     vault_pass_path: "./cobra.vault"
+    ansible_user: "{{ vault_linux_user }}"
+    ansible_password: "{{ vault_linux_user_password }}"
     inventory_path: ".inventory/production/inventory.yml"
     playbook_path: "./playbook/production/playbook-get-random-users.yml"
     users_file_path: "./files/users.txt"
@@ -25,7 +27,9 @@
   hosts: localhost
   gather_facts: false
   vars:
-    vault_pass_path: "./.vault_pass"
+    vault_pass_path: "./cobra.vault"
+    ansible_user: "{{ vault_linux_user }}"
+    ansible_password: "{{ vault_linux_user_password }}"
     inventory_path: "{{ project_root }}inventory/production/inventory.yml"
     playbook_path: "{{ project_root }}playbook/production/playbook-get-random-users.yml"
     users_file_path: "./files/users.txt"
