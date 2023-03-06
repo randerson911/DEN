@@ -12,7 +12,7 @@
 - name: Retrive file to ansible server for record
   fetch:
     src: C:/users.txt
-    dest: {{ users_file_path }}
+    dest: "{{ users_file_path }}"
     flat: yes
 
 - name: Clean up file
