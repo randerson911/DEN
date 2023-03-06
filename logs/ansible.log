@@ -56,3 +56,17 @@
 2023-03-06 12:07:16,966 p=71723 u=ryananderson n=args | Unable to load module ansible.windows.win_file at roles/windows/get-random-users/tasks/main.yml:18 for options validation
 2023-03-06 12:07:16,992 p=71723 u=ryananderson n=args | Unable to load module run_python at playbooks/production/tasks/task-update-inventory.yml:2 for options validation
 2023-03-06 12:07:16,993 p=71723 u=ryananderson n=ansiblelint.rules.fqcn | Unable to resolve FQCN for module run_python
+2023-03-06 12:07:27,924 p=71929 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-06 12:07:27,971 p=71931 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-06 12:07:28,229 p=71937 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-06 12:07:29,166 p=71949 u=ryananderson n=ansible | ERROR! A malformed block was encountered while loading tasks: {'ansible.builtin.import_playbook': {'playbooks': ['playbook-get-random-users.yml']}} should be a list or None but is <class 'ansible.parsing.yaml.objects.AnsibleMapping'>
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-login-random-users.yml': line 2, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+---
+- name: Create the User List if Needed
+  ^ here
+
