@@ -149,3 +149,22 @@ The offending line appears to be:
 - name: Create the User List if Needed
   ^ here
 
+2023-03-06 12:13:30,190 p=73857 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-06 12:13:30,190 p=73859 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-06 12:13:31,901 p=73876 u=ryananderson n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: subnet1
+
+2023-03-06 12:13:31,902 p=73876 u=ryananderson n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: subnet2
+
+2023-03-06 12:13:31,902 p=73876 u=ryananderson n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: subnet3
+
+2023-03-06 12:13:31,903 p=73877 u=ryananderson n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: dc1
+
+2023-03-06 12:13:31,903 p=73876 u=ryananderson n=ansible | playbook: playbooks/production/playbook-login-random-users.yml
+2023-03-06 12:13:31,905 p=73877 u=ryananderson n=ansible | playbook: playbooks/production/playbook-get-random-users.yml
+2023-03-06 12:13:32,028 p=73857 u=ryananderson n=args | Unable to load module ansible.builtin.win_shell at roles/windows/login-random-users/tasks/main.yml:18 for options validation
+2023-03-06 12:13:32,051 p=73859 u=ryananderson n=args | Unable to load module run_python at playbooks/production/tasks/task-update-inventory.yml:2 for options validation
+2023-03-06 12:13:32,052 p=73859 u=ryananderson n=ansiblelint.rules.fqcn | Unable to resolve FQCN for module run_python
+2023-03-06 12:13:32,062 p=73857 u=ryananderson n=args | Unable to load module ansible.windows.win_command at roles/windows/gpupdate/tasks/main.yml:1 for options validation
+2023-03-06 12:13:32,063 p=73859 u=ryananderson n=args | Unable to load module ansible.windows.win_shell at roles/windows/get-random-users/tasks/main.yml:1 for options validation
+2023-03-06 12:13:32,063 p=73859 u=ryananderson n=args | Unable to load module ansible.windows.win_shell at roles/windows/get-random-users/tasks/main.yml:9 for options validation
+2023-03-06 12:13:32,064 p=73859 u=ryananderson n=args | Unable to load module ansible.windows.win_file at roles/windows/get-random-users/tasks/main.yml:18 for options validation

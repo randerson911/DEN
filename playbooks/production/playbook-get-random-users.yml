@@ -2,7 +2,7 @@
 - name: Verify if User File exists
   hosts: localhost
   gather_facts: false
-  var_files:
+  vars_files:
     "./cobra.vault.yml"
   vars:
     vault_pass_path: "./cobra.vault"
@@ -18,7 +18,7 @@
 - name: Get 30 random users and reset password to ComtechAzure123!
   hosts: dc1
   gather_facts: false
-  var_files:
+  vars_files:
     "./cobra.vault.yml"
   vars:
     ansible_user: "{{ vault_den_user }}"
@@ -30,7 +30,7 @@
 - name: Update Inventory List
   hosts: localhost
   gather_facts: false
-  var_files:
+  vars_files:
     "./cobra.vault.yml"
   vars:
     vault_pass_path: "./cobra.vault"
