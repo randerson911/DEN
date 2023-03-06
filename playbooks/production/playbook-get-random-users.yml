@@ -19,7 +19,7 @@
     ansible_password: "{{ vault_den_user_password }}"
     users_file_path: "./files/users.txt"
   roles:
-    - role: roles/windows/get-random-users
+    - role: windows/get-random-users
 
 - name: Update Inventory List
   hosts: localhost
