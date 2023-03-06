@@ -47,3 +47,12 @@
 2023-03-06 08:27:48,284 p=68167 u=ryananderson n=args | Unable to load module ansible.windows.win_shell at roles/windows/get-random-users/tasks/main.yml:9 for options validation
 2023-03-06 08:27:48,284 p=68167 u=ryananderson n=args | Unable to load module ansible.windows.win_file at roles/windows/get-random-users/tasks/main.yml:18 for options validation
 2023-03-06 12:06:30,757 p=71502 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-06 12:07:15,245 p=71723 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-06 12:07:16,868 p=71732 u=ryananderson n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: dc1
+
+2023-03-06 12:07:16,869 p=71732 u=ryananderson n=ansible | playbook: playbooks/production/playbook-get-random-users.yml
+2023-03-06 12:07:16,962 p=71723 u=ryananderson n=args | Unable to load module ansible.windows.win_shell at roles/windows/get-random-users/tasks/main.yml:1 for options validation
+2023-03-06 12:07:16,962 p=71723 u=ryananderson n=args | Unable to load module ansible.windows.win_shell at roles/windows/get-random-users/tasks/main.yml:9 for options validation
+2023-03-06 12:07:16,966 p=71723 u=ryananderson n=args | Unable to load module ansible.windows.win_file at roles/windows/get-random-users/tasks/main.yml:18 for options validation
+2023-03-06 12:07:16,992 p=71723 u=ryananderson n=args | Unable to load module run_python at playbooks/production/tasks/task-update-inventory.yml:2 for options validation
+2023-03-06 12:07:16,993 p=71723 u=ryananderson n=ansiblelint.rules.fqcn | Unable to resolve FQCN for module run_python
