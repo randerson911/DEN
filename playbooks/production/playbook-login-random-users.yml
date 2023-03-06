@@ -1,6 +1,8 @@
 ---
 - name: Create the User List if Needed
   hosts: localhost
+  var_files:
+    "./cobra.vault.yml"
   vars:
     vault_pass_path: "./cobra.vault"
     ansible_user: "{{ vault_linux_user }}"
@@ -17,6 +19,8 @@
 - name: GPUpdate the Machines First
   hosts: subnet1, subnet2, subnet3
   gather_facts: false
+  var_files:
+    "./cobra.vault.yml"
   vars:
     ansible_user: "{{ vault_den_user }}"
     ansible_password: "{{ vault_den_user_password }}"
