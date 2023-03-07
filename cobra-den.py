@@ -45,7 +45,7 @@ def main_menu():
         task5()
     elif choice == "0":
         print("Goodbye!")
-        exit()
+        exit(0)
     else:
         input("Invalid choice. Press enter to try again...")
     main_menu()
