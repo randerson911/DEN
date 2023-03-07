@@ -9,12 +9,15 @@ inventory_file = '.inventory/production/inventory.yml'
 
 
 # Define the functions for each task
+def runCmd(myPlaybook):
+    cmd = f"ansible-playbook {playbook_dir}{playbook_file} -i {inventory_file} --vault-id {vault_file} --vault-pass-file {vault_pass_file}"
+    subprocess.call(cmd.split())
+  
 def task1():
     playbook_file = 'playbook-cobra-den.yml'
 
-    cmd = 'ansible-playbook ' + playbook_dir + playbook_file
-    subprocess.call(cmd.split())
-
+    
+    (cmd)
 
 def task2():
     print("Running task 2...")
