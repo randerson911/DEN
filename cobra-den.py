@@ -51,4 +51,5 @@ def main_menu():
     main_menu()
 
 # Call the main menu function
-main_menu()
+if __name__ == "__main__":
+  main_menu()
