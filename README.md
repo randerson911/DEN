@@ -13,8 +13,6 @@ Ansible Scripts for COBRA DEN configurations instructions.
 4. run command `cd cobraden && chmod +x *.sh`
 
 5. run config script and enter valid credentials.
-
-
 ### Use in the Kibana Dev Tools
 ```
 POST /_security/api_key
