@@ -20,12 +20,17 @@ def task3():
 # Define the main menu function
 def main_menu():
     os.system('clear')
-    print("Welcome to the main menu!")
-    print("Please choose a task:")
-    print("1. Task 1")
-    print("2. Task 2")
-    print("3. Task 3")
-    print("0. Exit")
+    welcomeText = """
+    Welcome to the Cobra Den Ansible Configuration
+    Please choose a task you would like to accomplish
+    1. Install Everything (playbook-cobra-den.yml)
+    2. Install VSCode and Python (playbook-operator-setup.yml)
+    3. Install Elastic and Winlogbeat (playbook-siem-info.yml)
+    4. Configure TAPS and Login Random Users (playbook-traffic.yml)
+    5. Configure the Elastic Indexes (playbook-indexes.yml)
+    0. Exit
+    """
+    print(welcomeText)
 
     choice = input("> ")
     if choice == "1":
@@ -34,6 +39,10 @@ def main_menu():
         task2()
     elif choice == "3":
         task3()
+    elif choice == "5":
+        task4()
+    elif choice == "5":
+        task5()
     elif choice == "0":
         print("Goodbye!")
         exit()
