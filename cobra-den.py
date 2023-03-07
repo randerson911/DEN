@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 
 import os
+# Define Variables that will be used with each task
+vault_file = './cobra.vault.yml'
+vault_pass_file = './cobra.vault'
+playbook_dir = './playbooks/production/'
+inventory_file = '.inventory/production/inventory.yml'
+
 
 # Define the functions for each task
 def task1():
-    playbook_dir = './playbooks/production/'
     playbook_file = 'playbook-cobra-den.yml'
 
     cmd = 'ansible-playbook ' + playbook_dir + playbook_file
