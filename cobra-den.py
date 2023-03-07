@@ -18,10 +18,20 @@ def task1():
     runCmd(playbook_file)
 
 def task2():
-    print("Running task 2...")
+    playbook_file = 'playbook-operator-setup.yml'    
+    runCmd(playbook_file)
 
 def task3():
-    print("Running task 3...")
+    playbook_file = 'playbook-siem-info.yml'    
+    runCmd(playbook_file)
+    
+def task4():
+    playbook_file = 'playbook-traffic.yml'    
+    runCmd(playbook_file)
+    
+def task5():
+    playbook_file = 'playbook-indexes.yml'    
+    runCmd(playbook_file)
 
 # Define the main menu function
 def main_menu():
