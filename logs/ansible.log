@@ -180,3 +180,28 @@ The offending line appears to be:
 - name: Install VS Code on Windows target
   ^ here
 
+2023-03-17 07:16:39,480 p=75416 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-17 07:16:39,481 p=75418 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-17 07:16:41,254 p=75438 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-17 07:16:41,261 p=75439 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-17 07:16:41,278 p=75440 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-17 07:16:41,708 p=75443 u=ryananderson n=ansible | ERROR! The field 'hosts' has an invalid value, which includes an undefined variable. The error was: 'target_host' is undefined. 'target_host' is undefined
+
+The error appears to be in '/Users/ryananderson/Documents/cobraden/playbooks/production/playbook-install-vscode.yml': line 25, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: Install VS Code on Windows target
+  ^ here
+
+2023-03-17 07:16:41,710 p=75444 u=ryananderson n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: dc1
+
+2023-03-17 07:16:41,712 p=75444 u=ryananderson n=ansible | playbook: playbooks/production/playbook-get-random-users.yml
+2023-03-17 07:16:41,838 p=75416 u=ryananderson n=args | Unable to load module ansible.windows.win_shell at roles/windows/get-random-users/tasks/main.yml:1 for options validation
+2023-03-17 07:16:41,838 p=75416 u=ryananderson n=args | Unable to load module ansible.windows.win_shell at roles/windows/get-random-users/tasks/main.yml:9 for options validation
+2023-03-17 07:16:41,840 p=75416 u=ryananderson n=args | Unable to load module ansible.windows.win_file at roles/windows/get-random-users/tasks/main.yml:18 for options validation
+2023-03-17 07:16:41,863 p=75416 u=ryananderson n=args | Unable to load module run_python at playbooks/production/tasks/task-update-inventory.yml:2 for options validation
+2023-03-17 07:16:41,864 p=75416 u=ryananderson n=fqcn | Unable to resolve FQCN for module run_python
+2023-03-17 07:16:44,050 p=75465 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
