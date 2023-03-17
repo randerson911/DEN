@@ -205,3 +205,4 @@ The offending line appears to be:
 2023-03-17 07:16:41,863 p=75416 u=ryananderson n=args | Unable to load module run_python at playbooks/production/tasks/task-update-inventory.yml:2 for options validation
 2023-03-17 07:16:41,864 p=75416 u=ryananderson n=fqcn | Unable to resolve FQCN for module run_python
 2023-03-17 07:16:44,050 p=75465 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
+2023-03-17 07:16:55,649 p=75551 u=ryananderson n=ansiblelint | Guessed /Users/ryananderson/Documents/cobraden as project root directory
