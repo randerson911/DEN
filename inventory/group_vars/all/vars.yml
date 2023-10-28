@@ -1,1 +1,8 @@
 ---
+all:
+  vars:
+    galaxy_collections:
+      - name: chocolatey.chocolatey
+      - name: community.general
+      - name: ansible.windows
+      - name: ansible.posix
