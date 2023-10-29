@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export CURPATH=$(pwd)
+
 if [ ! -f ./cobra.vault ]
 then
     echo "Please enter the vault password: "
@@ -26,7 +28,7 @@ fi
 if [ ! -f users.txt ]
 then
     
-    ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.vault playbooks/production/playbook-get-random-users.yml
+    ansible-playbook -i inventory/production/inventory.yml --vault-password-file $CURPATH/cobra.vault playbooks/production/playbook-get-random-users.yml
     
     sed -i 's/[^[:print:]]//g' users.txt
     sed -i '/^$/d' users.txt
@@ -40,7 +42,7 @@ fi
 
 if [ ! -f lmarker.txt ]; then
   
-  lpass=$(ansible-vault view --vault-password-file ./cobra.vault cobra.vault.yml | grep linux_user_password | cut -d ' ' -f 2)
+  lpass=$(ansible-vault view --vault-password-file $CURPATH/cobra.vault $CURPATH/cobra.vault.yml | grep linux_user_password | cut -d ' ' -f 2)
   
 
   pip3 install pyyaml
@@ -53,7 +55,7 @@ if [ ! -f lmarker.txt ]; then
 fi
 
 
-ansible-playbook -i inventory/production/inventory.yml --vault-password-file ./cobra.vault playbooks/production/playbook-login-random-users.yml
+ansible-playbook -i inventory/production/inventory.yml --vault-password-file $CURPATH/cobra.vault playbooks/production/playbook-login-random-users.yml
 
 
 echo ""
