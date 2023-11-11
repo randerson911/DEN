@@ -1,5 +1,0 @@
----
-- name: Install required pip packages
-  ansible.builtin.pip:
-    name: "{{ pip_packages | join(' ') }}"
-    executable: "{{ pip_executable }}"

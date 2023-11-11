@@ -1,2 +1,0 @@
-- name: Refresh Group Policy
-  ansible.windows.win_command: gpupdate /force /boot
