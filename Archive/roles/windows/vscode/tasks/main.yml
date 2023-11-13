@@ -1,0 +1,75 @@
+---
+- name: Ensure VSCode install directory exists
+  ignore_errors: true
+  ansible.windows.win_file:
+    path: "C:\\Tools\\VSCode\\Install\\"
+    state: directory
+  register: dir_result
+
+# - name: Download VS Code installer
+#   ignore_errors: true
+#   ansible.windows.win_get_url:
+#     url: "{{ vs_code_url }}"
+#     dest: "C:\\Tools\\VSCode\\Install\\vscode-latest.exe"
+#     validate_certs: no
+#   register: url_result
+
+- name: Copy ElasticAgent installation file to host
+  ansible.windows.win_copy:
+    src: "roles/windows/vscode/files"
+    dest: 'C:\\Tools\\VSCode\\Install\\'
+
+- name: Install Visual Studio Code
+  ansible.windows.win_package:
+    path: "C:\\Tools\\VScode\\Install\\vscode-latest.exe"
+    product_id: "Microsoft.VisualStudioCode"
+    arguments: "--addMicrosoft.VisualStudioCode.ProductFamilyName=VSCode --addMicrosoft.VisualStudioCode.AppUserModelId=Microsoft.VisualStudioCode --addMicrosoft.VisualStudioCode.InstallLocation=C:\\Tools\\VSCode --force /VERYSILENT /NORESTART"
+    state: present
+  register: package_result
+
+- name: Install Chocolatey if not already installed
+  ansible.windows.win_shell: |
+    if (!(Test-Path 'C:\ProgramData\chocolatey\bin\choco.exe')) {
+      Set-ExecutionPolicy Bypass -Scope Process -Force;
+      iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    }
+  async: 900
+  poll: 10
+  register: chocolatey_result
+
+- name: Wait for Chocolatey installation to complete
+  async_status:
+    jid: "{{ chocolatey_result.ansible_job_id }}"
+  register: job_result
+  until: job_result.finished
+  retries: 90
+  delay: 10
+
+- name: Install VS Code extensions
+  win_chocolatey:
+    name: "{{ item }}"
+    source: http://internal/odata/repo
+    state: present
+  with_items:
+    - vscode-python
+    - vscode-pylance
+    - vscode-jupyter
+    - vscode-powershell
+    - vscode-prettier
+    - vscode-yaml
+    - vscode-ansible
+  register: extension_result
+  failed_when: "'Chocolatey installed 0/' in extension_result.msg"
+
+- name: Redirect error messages to log file
+  copy:
+    content: "{{ item.msg }}"
+    dest: "{{ log_file_path }}"
+    mode: 'a'
+  with_items:
+    - "{{ dir_result.results }}"
+    - "{{ url_result.results }}"
+    - "{{ package_result.results }}"
+    - "{{ chocolatey_result.results }}"
+    - "{{ extension_result.results }}"
+  when: item is failed

@@ -1,0 +1,21 @@
+- name: Delete Winlogbeat config file
+  ansible.windows.win_file:
+    path: 'C:\Program Files\winlogbeat\winlogbeat.yml'
+    state: absent
+
+- name: Copy New Winlogbeat config file
+  ansible.windows.win_copy:
+    src: ./winlogbeat.yml
+    dest: 'C:\Program Files\winlogbeat\winlogbeat.yml'
+
+- name: Enable Winlogbeat service
+  ansible.windows.win_service:
+    name: winlogbeat
+    start_mode: auto
+    state: started
+
+- name: Enable Sysmon service
+  ansible.windows.win_service:
+    name: sysmon64
+    start_mode: auto
+    state: started

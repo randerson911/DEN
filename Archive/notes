@@ -1,0 +1,25 @@
+https://www.revshells.com/
+
+my_project/
+├── inventory/
+│   ├── development/
+│   ├── production/
+│   ├── staging/
+│   └── group_vars/
+├── roles/
+│   ├── common/
+│   ├── webserver/
+│   └── database/
+├── playbooks/
+│   ├── development/
+│   ├── staging/
+│   └── production/
+├── library/
+├── filter_plugins/
+├── vars/
+├── files/
+├── templates/
+├── handlers/
+└── README.md
+
+Ansible SADL Format

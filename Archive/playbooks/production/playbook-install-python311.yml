@@ -1,0 +1,38 @@
+---
+- name: Download Python to localhost
+  hosts: localhost
+  vars:
+    python_windows_url: https://www.python.org/ftp/python/3.11.2/python-3.11.2-amd64.exe
+    python_windows_dest: roles/windows/install-python311/files/python311.exe
+    python_windows_file: python311.exe
+    python_linux_url: https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
+    python_linux_dest: roles/linux/install-python311/files/python311.tar.gz
+    python_linux_file: python311
+  tasks:
+  - name: Download Python for Windows
+    get_url:
+      url: "{{ python_windows_url }}"
+      dest: "roles/windows/install-python311/files/{{ python_windows_file }}"
+
+  - name: Download Python for Linux
+    get_url:
+      url: "{{ python_linux_url }}"
+      dest: "roles/linux/install-python311/files/{{ python_linux_file }}"
+
+- name: "Install Python311 on Windows"
+  hosts: "{{ python_targets }}"
+  gather_facts: false
+  vars:
+    ansible_user: "{{ vault_den_user }}"
+    ansible_password: "{{ vault_den_user_password }}"
+  roles:
+    - role: roles/windows/install-python311
+
+- name: "Install Pip Modules on Windows"
+  hosts: "{{ python_targets }}"
+  gather_facts: false
+  vars:
+    ansible_user: "{{ vault_den_user }}"
+    ansible_password: "{{ vault_den_user_password }}"
+  roles:
+    - role: roles/windows/install-pip-modules

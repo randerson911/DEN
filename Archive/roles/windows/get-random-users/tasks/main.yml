@@ -1,0 +1,22 @@
+- name: Get random 30 users and output to file
+  ansible.windows.win_shell: Get-ADUser -filter {(SamAccountName -ne "cobra") -and (SamAccountName -ne "rangetech") -and (SamAccountName -ne "guest") -and (SamAccountName -ne "COBRA$") -and (SamAccountName -ne "krbtgt")} -server dc1.basex.cobra.den |
+    select samaccountname |
+    Sort-Object {Get-Random} |
+    select -first 30 |
+    format-table -hidetableheaders |
+    Out-File C:\users.txt
+
+- name: Reset selected accounts with known password
+  ansible.windows.win_shell: Get-Content C:\users.txt | % { if ($_ -ne "") { net user $_.trim() {{ win_user_pass }}  }}
+
+- name: Retrive file to ansible server for record
+  fetch:
+    src: C:/users.txt
+    dest: "{{ users_file_path }}"
+    flat: yes
+
+- name: Clean up file
+  ansible.windows.win_file:
+    path: C:\users.txt
+    state: absent
+

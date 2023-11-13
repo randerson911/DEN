@@ -1,0 +1,31 @@
+- name: Install community.general collection
+  hosts: localhost
+  gather_facts: false
+  vars:
+    galaxy_collections:
+      - name: chocolatey.chocolatey
+      - name: community.general
+      - name: ansible.windows
+      - name: ansible.posix
+  tasks:
+    - name: Verify Ansible Galaxy Collections
+      ansible.builtin.include_tasks: tasks/task-ansible-collections.yml
+
+- name: Download Required Files to Localhost
+  hosts: localhost
+  vars:
+    windows_agent_file: "vscode-latest.exe"
+    windows_agent_dir: "roles/windows/vscode/files"
+    windows_agent_name: "vscode-latest"
+    windows_agent_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
+  tasks:
+    - name: Download VSCode
+      ansible.builtin.include_tasks: tasks/task-download-vscode.yml 
+
+- name: Install VS Code on Windows target
+  hosts: "{{ target_host }}"
+  gather_facts: false
+  vars:
+    vs_code_url: "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
+  roles:
+    - windows/vscode

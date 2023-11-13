@@ -1,0 +1,8 @@
+---
+- name: Install Python packages
+  ansible.builtin.pip:
+    name:
+      - ansible
+      - yq
+      - pyyaml
+    state: present

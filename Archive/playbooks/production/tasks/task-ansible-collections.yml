@@ -1,0 +1,16 @@
+---
+- name: Check if collection is already installed
+  command: ansible-galaxy collection list
+  register: galaxy_list
+  changed_when: false
+
+- name: Install required collections
+  shell: ansible-galaxy collection install {{ item.name }}
+  register: install_result
+  changed_when: install_result.rc != 0
+  loop: "{{ galaxy_collections }}"
+  
+- debug:
+    msg: "Collection {{ item.item.name }} was {% if item.changed %}installed{% else %}skipped{% endif %}"
+  loop: "{{ install_result.results }}"
+  

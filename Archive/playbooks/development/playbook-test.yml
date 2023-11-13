@@ -1,0 +1,9 @@
+---
+- name: Test playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Debug vault variables
+      ansible.builtin.debug:
+        var: item.value
+      loop: "{{ lookup('dict', vars) }}"

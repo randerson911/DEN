@@ -1,0 +1,9 @@
+---
+- name: Run payload
+  hosts: "{{ targets }}"
+  gather_facts: False
+  vars:
+    ansible_user: "{{ vault_den_user }}"
+    ansible_password: "{{ vault_den_user_password }}"
+  roles:
+    - role: roles/red/run-payload

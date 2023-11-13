@@ -1,0 +1,59 @@
+---
+- name: Create TheHive Case Template
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars_files:
+    - name.vault
+  tasks:
+    - name: Get TheHive auth token
+      ansible.builtin.uri:
+        url: https://172.17.60.41:9000/api/auth/login
+        method: POST
+        validate_certs: false
+        body_format: json
+        body:
+          username: "{{ th_user }}"
+          password: "{{ th_user_password }}"
+      register: auth_output
+      no_log: true
+
+    - name: Create TheHive Case Template
+      ansible.builtin.uri:
+        url: https://172.17.40.15:9000/api/case/template
+        method: POST
+        validate_certs: false
+        headers:
+          Authorization: "Bearer {{ auth_output.json.token }}"
+          Content-Type: "application/json"
+        body_format: json
+        body:
+          name: "My Template"
+          description: "This is my template"
+          customFields:
+            - order: 0
+              name: "Date & Time"
+              type: "datetime"
+            - order: 1
+              name: "File Name"
+              type: "string"
+            - order: 2
+              name: "File Hash"
+              type: "string"
+            - order: 3
+              name: "Process Args"
+              type: "string"
+            - order: 4
+              name: "Parent Process Name"
+              type: "string"
+            - order: 5
+              name: "Parent Process Args"
+              type: "string"
+            - order: 6
+              name: "File MD5"
+              type: "string"
+      register: template_output
+
+    - name: Print template output
+      ansible.builtin.debug:
+        var: template_output.json
