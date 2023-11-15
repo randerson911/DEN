@@ -1,2 +1,16 @@
 ---
-- name: Playbook
+- name: Update and Upgrade APT Packages
+  hosts: localhost
+  become: true
+  vars_files:
+    - ../vault/cobraden.yml
+
+  tasks:
+    - name: Run APT Update
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Run APT Upgrade
+      ansibel.builtin.apt:
+        upgrade: dist
