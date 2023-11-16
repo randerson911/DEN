@@ -1,0 +1,38 @@
+---
+# System Settings
+timezone: "UTC"
+ntp_servers:
+  - "0.pool.ntp.org"
+  - "1.pool.ntp.org"
+
+# Application Settings
+
+## VSCode
+
+## Python
+
+## Red Settings
+
+
+# Management Settings
+man_host: "localhost"
+man_user: "cobra"
+man_password: "{{ vault_man_pass }}"
+
+# Windows Settings
+win_user: "cobra"
+win_password: "{{ vault_win_pass }}"
+win_auth: "WinRM"
+win_auth_port: 5985
+
+# Linux Settings
+lin_user: "cobra"
+lin_password: "{{ vault_lin_pass }}"
+lin_auth: "ssh"
+lin_auth_port: 22
+
+# Elastic Settings
+el_host: "172.17.60.40"
+el_user: "elastic"
+el_password: "{{ vault_el_pass }}"
+el_port: 9200
