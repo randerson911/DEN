@@ -1,0 +1,12 @@
+---
+- name: Setup the DEN Range
+  hosts: workstations
+  become: true
+  var_files:
+    - ../vault/cobraden.yml
+
+  roles:
+    - role: cobra-den-range
+      tags: cobra-den-range
+      tasks_from: setup
+      

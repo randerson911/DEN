@@ -2,9 +2,9 @@
 - name: Update and Upgrade APT Packages
   hosts: localhost
   become: true
-  vars_files:
+  var_files:
     - ../vault/cobraden.yml
-
+  
   tasks:
     - name: Run APT Update
       ansible.builtin.apt:
@@ -14,3 +14,7 @@
     - name: Run APT Upgrade
       ansibel.builtin.apt:
         upgrade: dist
+
+    - name: Run APT Autoremove
+      ansible.builtin.apt:
+        autoremove: yes
